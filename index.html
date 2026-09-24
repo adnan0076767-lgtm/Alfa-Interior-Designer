@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ALFA INTERIOR DESIGNER V1.0</title>
+<title>ALFA INTERIOR DESIGNER V1.1</title>
 
 <style>
 *{
@@ -14,275 +13,777 @@
     padding:0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#0b1020;
-    color:#fff;
-    min-height:100vh;
+:root{
+    --gold:#c9a45c;
+    --gold-light:#e7cc91;
+    --dark:#171411;
+    --dark2:#211c17;
+    --panel:#29221b;
+    --panel2:#332a20;
+    --line:#5a4934;
+    --cream:#f3ead9;
+    --muted:#b9aa94;
+    --canvas:#ddd3c2;
 }
 
-.header{
-    height:70px;
-    background:#111827;
-    border-bottom:1px solid #263247;
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:#120f0c;
+    color:var(--cream);
+}
+
+/* =========================
+   APP HEADER
+========================= */
+
+.app-header{
+    height:72px;
+    background:
+        linear-gradient(
+            180deg,
+            #211b16,
+            #15110e
+        );
+    border-bottom:1px solid var(--line);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 22px;
+    padding:0 18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.35);
+    position:relative;
+    z-index:50;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-.logo span{
-    color:#22d3ee;
-}
-
-.version{
-    font-size:12px;
-    color:#94a3b8;
-    margin-top:4px;
-}
-
-.header-actions{
-    display:flex;
-    gap:8px;
-}
-
-button{
-    border:none;
-    cursor:pointer;
-    color:white;
-    background:#1e293b;
-    border:1px solid #334155;
-    padding:10px 15px;
-    border-radius:8px;
-    transition:.2s;
-}
-
-button:hover{
-    background:#263449;
-}
-
-button.primary{
-    background:#0891b2;
-    border-color:#06b6d4;
-}
-
-button.primary:hover{
-    background:#0e7490;
-}
-
-.app{
-    display:grid;
-    grid-template-columns:250px 1fr 270px;
-    min-height:calc(100vh - 70px);
-}
-
-/* LEFT PANEL */
-
-.sidebar{
-    background:#0f172a;
-    border-right:1px solid #263247;
-    padding:18px;
-}
-
-.panel-title{
-    font-size:13px;
-    color:#94a3b8;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:15px;
-}
-
-.tool{
-    width:100%;
-    text-align:left;
-    margin-bottom:9px;
-    background:#111c31;
+.brand{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
 }
 
-.tool-icon{
-    width:32px;
-    height:32px;
-    border-radius:7px;
+.brand-mark{
+    width:43px;
+    height:43px;
+    border:1px solid var(--gold);
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#17243a;
-    font-size:18px;
+    color:var(--gold-light);
+    font-size:20px;
+    box-shadow:
+        inset 0 0 12px rgba(201,164,92,.12),
+        0 0 10px rgba(201,164,92,.08);
 }
 
-.info-box{
-    margin-top:25px;
-    padding:14px;
-    border:1px solid #263247;
-    background:#111827;
-    border-radius:10px;
-    color:#94a3b8;
-    font-size:12px;
+.brand-title{
+    font-size:20px;
+    letter-spacing:1.5px;
+    color:#f5ead7;
+}
+
+.brand-title span{
+    color:var(--gold-light);
+}
+
+.brand-sub{
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    color:#988b79;
+    letter-spacing:2px;
+    margin-top:3px;
+}
+
+.header-tools{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.tool-btn{
+    min-width:38px;
+    height:36px;
+    border:1px solid #4e402f;
+    background:#241e18;
+    color:#e5d5bb;
+    border-radius:6px;
+    cursor:pointer;
+    font-family:Arial,sans-serif;
+    transition:.2s;
+}
+
+.tool-btn:hover{
+    border-color:var(--gold);
+    color:white;
+    background:#30271e;
+}
+
+.tool-btn.gold{
+    background:#8e6d35;
+    border-color:#c9a45c;
+    color:#fff;
+    padding:0 14px;
+}
+
+.tool-btn.gold:hover{
+    background:#a47d3c;
+}
+
+.header-divider{
+    width:1px;
+    height:28px;
+    background:#4b3c2d;
+    margin:0 4px;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.app{
+    height:calc(100vh - 72px);
+    display:grid;
+    grid-template-columns:245px 1fr 280px;
+}
+
+/* =========================
+   LEFT LIBRARY
+========================= */
+
+.library{
+    background:
+        linear-gradient(
+            180deg,
+            #2a231c,
+            #1d1813
+        );
+    border-right:1px solid var(--line);
+    overflow-y:auto;
+    padding:17px 14px 30px;
+}
+
+.section-label{
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    color:#a7957d;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin:5px 4px 12px;
+}
+
+.project-name{
+    padding:12px;
+    border:1px solid #51422f;
+    background:#211b16;
+    border-radius:7px;
+    margin-bottom:18px;
+}
+
+.project-name small{
+    display:block;
+    color:#9c8c75;
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.project-name strong{
+    color:#f2e4ce;
+    font-size:14px;
+    font-weight:normal;
+}
+
+.category{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    padding:9px 8px;
+    margin-top:5px;
+    border:1px solid transparent;
+    background:transparent;
+    color:#cfc0a9;
+    cursor:pointer;
+    border-radius:5px;
+    font-family:Georgia,serif;
+    text-align:left;
+}
+
+.category:hover{
+    background:#30271f;
+    border-color:#493a2b;
+}
+
+.category span:last-child{
+    color:#8f806d;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+}
+
+.furniture-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:7px;
+}
+
+.furniture{
+    min-height:75px;
+    border:1px solid #4c3d2d;
+    border-radius:7px;
+    background:
+        linear-gradient(
+            145deg,
+            #30271f,
+            #211b16
+        );
+    color:#dfd0ba;
+    cursor:pointer;
+    padding:8px 5px;
+    text-align:center;
+    transition:.2s;
+    font-family:Arial,sans-serif;
+}
+
+.furniture:hover{
+    border-color:var(--gold);
+    transform:translateY(-1px);
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+
+.furniture .icon{
+    font-size:27px;
+    display:block;
+    margin-bottom:6px;
+}
+
+.furniture span{
+    font-size:10px;
+}
+
+.library-note{
+    margin-top:18px;
+    padding:12px;
+    border-left:2px solid var(--gold);
+    background:rgba(201,164,92,.05);
+    color:#a99b87;
+    font-family:Arial,sans-serif;
+    font-size:10px;
     line-height:1.6;
 }
 
-/* WORKSPACE */
+/* =========================
+   CANVAS AREA
+========================= */
 
 .workspace{
-    background:
-        linear-gradient(#1e293b 1px,transparent 1px),
-        linear-gradient(90deg,#1e293b 1px,transparent 1px);
-    background-size:30px 30px;
     position:relative;
+    overflow:hidden;
+    background:#b9ad99;
+}
+
+.canvas-topbar{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:45px;
+    background:rgba(29,24,19,.96);
+    border-bottom:1px solid #4d3e2e;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 13px;
+    z-index:20;
+}
+
+.canvas-tools{
+    display:flex;
+    gap:5px;
+}
+
+.canvas-btn{
+    border:1px solid #4b3d2d;
+    background:#251f19;
+    color:#d8c9b1;
+    padding:7px 10px;
+    border-radius:5px;
+    cursor:pointer;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+}
+
+.canvas-btn:hover,
+.canvas-btn.active{
+    border-color:var(--gold);
+    color:#fff;
+}
+
+.canvas-info{
+    color:#9f907b;
+    font-family:Arial,sans-serif;
+    font-size:10px;
+}
+
+/* =========================
+   RULERS
+========================= */
+
+.ruler-top{
+    position:absolute;
+    top:45px;
+    left:35px;
+    right:0;
+    height:25px;
+    background:#d0c4b1;
+    border-bottom:1px solid #988b76;
+    z-index:10;
+    overflow:hidden;
+}
+
+.ruler-left{
+    position:absolute;
+    top:70px;
+    left:0;
+    bottom:0;
+    width:35px;
+    background:#d0c4b1;
+    border-right:1px solid #988b76;
+    z-index:10;
+    overflow:hidden;
+}
+
+.ruler-ticks{
+    position:absolute;
+    inset:0;
+}
+
+.ruler-ticks::after{
+    content:"0    1    2    3    4    5    6    7    8    9    10 m";
+    position:absolute;
+    top:5px;
+    left:8px;
+    white-space:pre;
+    font:8px Arial,sans-serif;
+    color:#645b4e;
+}
+
+.ruler-left .ruler-ticks::after{
+    content:"0\A\A1\A\A2\A\A3\A\A4\A\A5\A\A6\A\A7\A\A8\A\A9";
+    white-space:pre;
+    left:9px;
+    top:5px;
+    line-height:24px;
+}
+
+/* =========================
+   CANVAS
+========================= */
+
+.canvas-scroll{
+    position:absolute;
+    top:70px;
+    left:35px;
+    right:0;
+    bottom:35px;
     overflow:auto;
-    padding:30px;
+    padding:50px;
 }
 
-.workspace-title{
-    position:absolute;
-    top:15px;
-    left:20px;
-    color:#64748b;
-    font-size:12px;
-    pointer-events:none;
-}
-
-.room-area{
-    width:700px;
-    height:470px;
-    background:#e5e7eb;
-    border:10px solid #475569;
-    margin:70px auto 30px;
+.design-canvas{
     position:relative;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
+    width:850px;
+    height:570px;
+    margin:auto;
+    transform-origin:center center;
+    transition:transform .15s;
+    background:
+        linear-gradient(
+            rgba(105,94,77,.15) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(105,94,77,.15) 1px,
+            transparent 1px
+        ),
+        #dcd2c1;
+    background-size:25px 25px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(60,45,30,.25);
 }
 
-.room-label{
+/* room wall */
+
+.room{
     position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    color:#64748b;
-    text-align:center;
+    left:75px;
+    top:55px;
+    width:700px;
+    height:460px;
+    background:
+        linear-gradient(
+            135deg,
+            #eadfcd,
+            #d8cbb7
+        );
+    border:15px solid #705b42;
+    box-shadow:
+        inset 0 0 0 2px #c4b297,
+        0 15px 35px rgba(0,0,0,.28);
+}
+
+/* floor planks */
+
+.room::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(103,78,49,.09) 0px,
+            rgba(103,78,49,.09) 2px,
+            transparent 2px,
+            transparent 32px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 118px,
+            rgba(103,78,49,.08) 119px,
+            rgba(103,78,49,.08) 121px
+        );
     pointer-events:none;
 }
 
-.room-label strong{
-    display:block;
-    font-size:25px;
-    margin-bottom:8px;
+.room-size-label{
+    position:absolute;
+    top:-34px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#695b48;
+    font:11px Arial,sans-serif;
+    white-space:nowrap;
 }
 
-.room-label span{
-    font-size:13px;
+.room-side-label{
+    position:absolute;
+    left:-57px;
+    top:50%;
+    transform:translateY(-50%) rotate(-90deg);
+    color:#695b48;
+    font:11px Arial,sans-serif;
+    white-space:nowrap;
 }
 
-/* RIGHT PANEL */
+/* =========================
+   OBJECTS
+========================= */
+
+.object{
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:move;
+    user-select:none;
+    z-index:5;
+    border:2px solid transparent;
+    transition:border-color .12s;
+}
+
+.object.selected{
+    border:2px dashed #9a7434;
+    box-shadow:0 0 0 3px rgba(201,164,92,.12);
+}
+
+.object-label{
+    position:absolute;
+    bottom:-18px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#5e503e;
+    font:8px Arial,sans-serif;
+    white-space:nowrap;
+    pointer-events:none;
+}
+
+.object-icon{
+    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22));
+}
+
+/* =========================
+   STATUS BAR
+========================= */
+
+.statusbar{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:35px;
+    background:#1c1712;
+    border-top:1px solid #4d3e2e;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 12px;
+    z-index:30;
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    color:#988a76;
+}
+
+.status-left{
+    display:flex;
+    gap:18px;
+}
+
+.status-online{
+    color:#b9c99d;
+}
+
+/* =========================
+   RIGHT PROPERTIES
+========================= */
 
 .properties{
-    background:#0f172a;
-    border-left:1px solid #263247;
-    padding:18px;
+    background:
+        linear-gradient(
+            180deg,
+            #29221b,
+            #1c1712
+        );
+    border-left:1px solid var(--line);
+    overflow-y:auto;
+    padding:17px 15px 30px;
 }
 
-.property-card{
-    background:#111827;
-    border:1px solid #263247;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:15px;
+.prop-card{
+    border:1px solid #4e3f2e;
+    background:#211b16;
+    border-radius:7px;
+    margin-bottom:13px;
+    padding:13px;
 }
 
-.property-card h3{
-    font-size:14px;
-    margin-bottom:15px;
+.prop-card h3{
+    color:#e7d6ba;
+    font-size:13px;
+    font-weight:normal;
+    margin-bottom:12px;
+}
+
+.prop-card h3 span{
+    color:var(--gold-light);
+    margin-right:6px;
 }
 
 .field{
-    margin-bottom:13px;
+    margin-bottom:10px;
 }
 
 .field label{
     display:block;
-    color:#94a3b8;
-    font-size:12px;
-    margin-bottom:6px;
+    color:#9e907d;
+    font:9px Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
 }
 
 .field input,
 .field select{
     width:100%;
-    padding:10px;
-    background:#0b1220;
-    border:1px solid #334155;
-    color:white;
-    border-radius:7px;
+    height:34px;
+    border:1px solid #4b3d2d;
+    background:#17130f;
+    color:#e5d6bd;
+    border-radius:5px;
     outline:none;
+    padding:0 9px;
+    font:12px Arial,sans-serif;
 }
 
 .field input:focus,
 .field select:focus{
-    border-color:#22d3ee;
+    border-color:var(--gold);
 }
 
-.status{
-    color:#22d3ee;
-    font-size:13px;
+.color-row{
+    display:flex;
+    gap:7px;
 }
 
-.footer-info{
+.color{
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    border:2px solid #4b3d2d;
+    cursor:pointer;
+}
+
+.color:hover{
+    border-color:#fff;
+}
+
+.action-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.action-btn{
+    height:34px;
+    border:1px solid #4d3d2c;
+    background:#2b231b;
+    color:#d9c9b0;
+    border-radius:5px;
+    cursor:pointer;
+    font:10px Arial,sans-serif;
+}
+
+.action-btn:hover{
+    border-color:var(--gold);
+    color:#fff;
+}
+
+.action-btn.danger:hover{
+    border-color:#a85d4f;
+    color:#e6a79a;
+}
+
+.empty-selection{
+    color:#8f816e;
+    font:11px Arial,sans-serif;
+    line-height:1.7;
+}
+
+/* =========================
+   ZOOM
+========================= */
+
+.zoom-control{
+    position:absolute;
+    right:14px;
+    bottom:48px;
+    background:#211b16;
+    border:1px solid #4d3e2d;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:5px;
+    z-index:25;
+}
+
+.zoom-control button{
+    width:27px;
+    height:27px;
+    background:#30271f;
+    border:1px solid #4a3b2c;
+    color:#e0cfb3;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.zoom-control span{
+    min-width:46px;
+    text-align:center;
+    color:#b7a891;
+    font:10px Arial,sans-serif;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
     position:fixed;
-    bottom:10px;
     left:50%;
-    transform:translateX(-50%);
-    color:#64748b;
-    font-size:11px;
+    bottom:55px;
+    transform:translateX(-50%) translateY(20px);
+    background:#211b16;
+    border:1px solid var(--gold);
+    color:#f1dfc0;
+    padding:10px 17px;
+    border-radius:6px;
+    font:11px Arial,sans-serif;
+    opacity:0;
     pointer-events:none;
+    transition:.3s;
+    z-index:100;
 }
 
-/* MOBILE */
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
 
-@media(max-width:900px){
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
 
     .app{
+        grid-template-columns:210px 1fr 235px;
+    }
+
+    .furniture-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:800px){
+
+    html,
+    body{
+        overflow:auto;
+    }
+
+    .app{
+        height:auto;
+        min-height:calc(100vh - 72px);
         grid-template-columns:1fr;
     }
 
-    .sidebar,
+    .library,
     .properties{
+        max-height:none;
         border:none;
     }
 
-    .sidebar{
-        border-bottom:1px solid #263247;
-    }
-
-    .properties{
-        border-top:1px solid #263247;
-    }
-
     .workspace{
-        min-height:550px;
+        height:650px;
+        order:-1;
     }
 
-    .room-area{
-        width:90vw;
-        max-width:700px;
-        height:55vw;
-        max-height:470px;
-        min-height:300px;
-    }
-
-    .header{
+    .app-header{
         height:auto;
-        min-height:70px;
-        flex-wrap:wrap;
+        min-height:72px;
         gap:10px;
-        padding:14px;
+        flex-wrap:wrap;
+    }
+
+    .header-tools{
+        width:100%;
+        justify-content:flex-end;
     }
 }
 </style>
@@ -290,197 +791,449 @@ button.primary:hover{
 
 <body>
 
-<header class="header">
+<header class="app-header">
 
-    <div>
-        <div class="logo">
-            ALFA <span>INTERIOR DESIGNER</span>
+    <div class="brand">
+
+        <div class="brand-mark">
+            A
         </div>
 
-        <div class="version">
-            Interior Design Tool • V1.0 FOUNDATION
+        <div>
+            <div class="brand-title">
+                ALFA <span>INTERIOR DESIGNER</span>
+            </div>
+
+            <div class="brand-sub">
+                ARCHITECTURAL PLANNER • V1.1
+            </div>
         </div>
+
     </div>
 
-    <div class="header-actions">
-        <button onclick="newProject()">＋ Project Baru</button>
-        <button class="primary" onclick="saveProject()">💾 Simpan</button>
+    <div class="header-tools">
+
+        <button class="tool-btn" onclick="undoAction()" title="Undo">
+            ↶
+        </button>
+
+        <button class="tool-btn" onclick="redoAction()" title="Redo">
+            ↷
+        </button>
+
+        <div class="header-divider"></div>
+
+        <button class="tool-btn" onclick="resetView()">
+            ⌂
+        </button>
+
+        <button class="tool-btn" onclick="zoomOut()">
+            −
+        </button>
+
+        <button class="tool-btn" onclick="zoomIn()">
+            +
+        </button>
+
+        <button class="tool-btn" onclick="toggleFullscreen()">
+            ⛶
+        </button>
+
+        <div class="header-divider"></div>
+
+        <button class="tool-btn gold" onclick="saveProject()">
+            💾 Simpan
+        </button>
+
     </div>
 
 </header>
 
 
-<main class="app">
+<div class="app">
 
-    <!-- LEFT -->
+    <!-- =====================
+         LIBRARY
+    ====================== -->
 
-    <aside class="sidebar">
+    <aside class="library">
 
-        <div class="panel-title">
-            Furniture & Tools
+        <div class="section-label">
+            Project
         </div>
 
-        <button class="tool">
-            <div class="tool-icon">🛋️</div>
-            Sofa
+        <div class="project-name">
+
+            <small>
+                CURRENT PROJECT
+            </small>
+
+            <strong id="projectTitle">
+                Rumah Luxury Classic
+            </strong>
+
+        </div>
+
+
+        <div class="section-label">
+            Furniture Library
+        </div>
+
+
+        <button class="category">
+            <span>Living Room</span>
+            <span>⌄</span>
         </button>
 
-        <button class="tool">
-            <div class="tool-icon">🛏️</div>
-            Tempat Tidur
+        <div class="furniture-grid">
+
+            <button class="furniture"
+                    onclick="addFurniture('Sofa','🛋️',180,80)">
+                <span class="icon">🛋️</span>
+                <span>Sofa</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Armchair','🪑',75,75)">
+                <span class="icon">🪑</span>
+                <span>Armchair</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Coffee Table','▰',110,65)">
+                <span class="icon">▰</span>
+                <span>Coffee Table</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('TV Cabinet','▤',160,45)">
+                <span class="icon">▤</span>
+                <span>TV Cabinet</span>
+            </button>
+
+        </div>
+
+
+        <button class="category">
+            <span>Bedroom</span>
+            <span>⌄</span>
         </button>
 
-        <button class="tool">
-            <div class="tool-icon">🪑</div>
-            Kursi
+        <div class="furniture-grid">
+
+            <button class="furniture"
+                    onclick="addFurniture('Bed','🛏️',180,140)">
+                <span class="icon">🛏️</span>
+                <span>Bed</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Wardrobe','🚪',120,55)">
+                <span class="icon">🚪</span>
+                <span>Wardrobe</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Nightstand','▣',55,45)">
+                <span class="icon">▣</span>
+                <span>Nightstand</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Dresser','▥',120,45)">
+                <span class="icon">▥</span>
+                <span>Dresser</span>
+            </button>
+
+        </div>
+
+
+        <button class="category">
+            <span>Dining</span>
+            <span>⌄</span>
         </button>
 
-        <button class="tool">
-            <div class="tool-icon">🪵</div>
-            Meja
+        <div class="furniture-grid">
+
+            <button class="furniture"
+                    onclick="addFurniture('Dining Table','▰',170,85)">
+                <span class="icon">▰</span>
+                <span>Dining Table</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Dining Chair','🪑',55,55)">
+                <span class="icon">🪑</span>
+                <span>Dining Chair</span>
+            </button>
+
+        </div>
+
+
+        <button class="category">
+            <span>Kitchen</span>
+            <span>⌄</span>
         </button>
 
-        <button class="tool">
-            <div class="tool-icon">🗄️</div>
-            Lemari
+        <div class="furniture-grid">
+
+            <button class="furniture"
+                    onclick="addFurniture('Kitchen Set','▰',220,55)">
+                <span class="icon">🍳</span>
+                <span>Kitchen Set</span>
+            </button>
+
+            <button class="furniture"
+                    onclick="addFurniture('Kitchen Island','▰',130,65)">
+                <span class="icon">▰</span>
+                <span>Island</span>
+            </button>
+
+        </div>
+
+
+        <button class="category">
+            <span>Decor & Lighting</span>
+            <span>⌄</span>
         </button>
 
-        <button class="tool">
-            <div class="tool-icon">🍳</div>
-            Kitchen
-        </button>
+        <div class="furniture-grid">
 
-        <button class="tool">
-            <div class="tool-icon">🚿</div>
-            Kamar Mandi
-        </button>
+            <button class="furniture"
+                    onclick="addFurniture('Plant','🪴',55,55)">
+                <span class="icon">🪴</span>
+                <span>Plant</span>
+            </button>
 
-        <button class="tool">
-            <div class="tool-icon">🪴</div>
-            Dekorasi
-        </button>
+            <button class="furniture"
+                    onclick="addFurniture('Floor Lamp','💡',45,75)">
+                <span class="icon">💡</span>
+                <span>Floor Lamp</span>
+            </button>
 
-        <div class="info-box">
+            <button class="furniture"
+                    onclick="addFurniture('Rug','▦',160,100)">
+                <span class="icon">▦</span>
+                <span>Rug</span>
+            </button>
 
-            <strong>ALFA DESIGN ENGINE</strong>
+            <button class="furniture"
+                    onclick="addFurniture('Painting','▭',100,45)">
+                <span class="icon">▭</span>
+                <span>Painting</span>
+            </button>
+
+        </div>
+
+
+        <div class="library-note">
+
+            <strong style="color:#d9bd83;">
+                TIP
+            </strong>
+
+            <br>
+
+            Klik furniture untuk memasukkannya
+            ke dalam ruangan.
 
             <br><br>
 
-            V1.0 adalah fondasi editor interior.
-
-            <br><br>
-
-            Furniture, drag & drop,
-            ukuran dan material akan
-            ditambahkan secara bertahap.
+            Setelah masuk, furniture dapat
+            dipilih, dipindahkan, diputar,
+            diubah ukurannya, atau dihapus.
 
         </div>
 
     </aside>
 
 
-    <!-- WORKSPACE -->
+    <!-- =====================
+         WORKSPACE
+    ====================== -->
 
-    <section class="workspace">
+    <main class="workspace" id="workspace">
 
-        <div class="workspace-title">
-            CANVAS / ROOM PLAN
+        <div class="canvas-topbar">
+
+            <div class="canvas-tools">
+
+                <button class="canvas-btn active">
+                    ↖ Select
+                </button>
+
+                <button class="canvas-btn">
+                    ✋ Pan
+                </button>
+
+                <button class="canvas-btn">
+                    📏 Measure
+                </button>
+
+                <button class="canvas-btn">
+                    🧱 Walls
+                </button>
+
+            </div>
+
+            <div class="canvas-info">
+                FLOOR PLAN / 2D
+            </div>
+
         </div>
 
-        <div class="room-area" id="room">
 
-            <div class="room-label" id="roomLabel">
+        <div class="ruler-top">
+            <div class="ruler-ticks"></div>
+        </div>
 
-                <strong>RUANGAN</strong>
+        <div class="ruler-left">
+            <div class="ruler-ticks"></div>
+        </div>
 
-                <span>
-                    4m × 6m
+
+        <div class="canvas-scroll">
+
+            <div
+                class="design-canvas"
+                id="designCanvas"
+            >
+
+                <div class="room" id="room">
+
+                    <div class="room-size-label">
+                        6.00 m
+                    </div>
+
+                    <div class="room-side-label">
+                        4.00 m
+                    </div>
+
+                    <div
+                        id="objectsContainer"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="zoom-control">
+
+            <button onclick="zoomOut()">
+                −
+            </button>
+
+            <span id="zoomText">
+                100%
+            </span>
+
+            <button onclick="zoomIn()">
+                +
+            </button>
+
+        </div>
+
+
+        <div class="statusbar">
+
+            <div class="status-left">
+
+                <span class="status-online">
+                    ● READY
+                </span>
+
+                <span id="cursorPosition">
+                    X: 0.00m / Y: 0.00m
+                </span>
+
+                <span id="objectCount">
+                    Objects: 0
                 </span>
 
             </div>
 
+            <span>
+                ALFA ENGINE V1.1
+            </span>
+
         </div>
 
-    </section>
+    </main>
 
 
-    <!-- RIGHT -->
+    <!-- =====================
+         PROPERTIES
+    ====================== -->
 
     <aside class="properties">
 
-        <div class="panel-title">
+        <div class="section-label">
             Properties
         </div>
 
-        <div class="property-card">
 
-            <h3>📐 Ukuran Ruangan</h3>
+        <div class="prop-card">
 
-            <div class="field">
+            <h3>
+                <span>▣</span>
+                Room Dimensions
+            </h3>
 
-                <label>
-                    Panjang (meter)
-                </label>
+            <div class="field-row">
 
-                <input
-                    type="number"
-                    id="roomLength"
-                    value="6"
-                    min="1"
-                    max="30"
-                    onchange="updateRoom()"
-                >
+                <div class="field">
+
+                    <label>
+                        Length
+                    </label>
+
+                    <input
+                        id="roomLength"
+                        type="number"
+                        value="6"
+                        min="1"
+                        max="30"
+                        step=".1"
+                        onchange="updateRoomDimensions()"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Width
+                    </label>
+
+                    <input
+                        id="roomWidth"
+                        type="number"
+                        value="4"
+                        min="1"
+                        max="30"
+                        step=".1"
+                        onchange="updateRoomDimensions()"
+                    >
+
+                </div>
 
             </div>
 
-            <div class="field">
-
-                <label>
-                    Lebar (meter)
-                </label>
-
-                <input
-                    type="number"
-                    id="roomWidth"
-                    value="4"
-                    min="1"
-                    max="30"
-                    onchange="updateRoom()"
-                >
-
-            </div>
-
-        </div>
-
-
-        <div class="property-card">
-
-            <h3>🎨 Ruangan</h3>
 
             <div class="field">
 
                 <label>
-                    Warna Lantai
+                    Wall Thickness
                 </label>
 
-                <select id="floorColor" onchange="changeFloor()">
-
-                    <option value="#e5e7eb">
-                        Light
-                    </option>
-
-                    <option value="#d6c2a1">
-                        Kayu
-                    </option>
-
-                    <option value="#9ca3af">
-                        Concrete
-                    </option>
-
-                    <option value="#cbd5e1">
-                        Marble
-                    </option>
-
+                <select>
+                    <option>15 cm</option>
+                    <option>10 cm</option>
+                    <option>20 cm</option>
+                    <option>25 cm</option>
                 </select>
 
             </div>
@@ -488,185 +1241,1701 @@ button.primary:hover{
         </div>
 
 
-        <div class="property-card">
+        <div class="prop-card">
 
-            <h3>⚙️ Project</h3>
+            <h3>
+                <span>◆</span>
+                Selected Object
+            </h3>
+
+            <div
+                id="selectionPanel"
+                class="empty-selection"
+            >
+                Belum ada object dipilih.
+
+                <br><br>
+
+                Klik furniture pada canvas
+                untuk melihat properties.
+
+            </div>
+
+        </div>
+
+
+        <div class="prop-card">
+
+            <h3>
+                <span>✦</span>
+                Floor Material
+            </h3>
+
+            <div class="field">
+
+                <select
+                    id="floorMaterial"
+                    onchange="changeFloor(this.value)"
+                >
+
+                    <option value="wood">
+                        Classic Oak
+                    </option>
+
+                    <option value="marble">
+                        White Marble
+                    </option>
+
+                    <option value="stone">
+                        Natural Stone
+                    </option>
+
+                    <option value="concrete">
+                        Modern Concrete
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="color-row">
+
+                <div
+                    class="color"
+                    style="background:#d7c4a5"
+                    onclick="setFloorColor('#d7c4a5')"
+                ></div>
+
+                <div
+                    class="color"
+                    style="background:#eee8dc"
+                    onclick="setFloorColor('#eee8dc')"
+                ></div>
+
+                <div
+                    class="color"
+                    style="background:#9d9180"
+                    onclick="setFloorColor('#9d9180')"
+                ></div>
+
+                <div
+                    class="color"
+                    style="background:#6f665c"
+                    onclick="setFloorColor('#6f665c')"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="prop-card">
+
+            <h3>
+                <span>↻</span>
+                Object Actions
+            </h3>
+
+            <div class="action-grid">
+
+                <button
+                    class="action-btn"
+                    onclick="rotateSelected(-15)"
+                >
+                    ↶ Rotate
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="rotateSelected(15)"
+                >
+                    Rotate ↷
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="duplicateSelected()"
+                >
+                    ⧉ Duplicate
+                </button>
+
+                <button
+                    class="action-btn danger"
+                    onclick="deleteSelected()"
+                >
+                    🗑 Delete
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="prop-card">
+
+            <h3>
+                <span>⌘</span>
+                Project
+            </h3>
 
             <div class="field">
 
                 <label>
-                    Nama Project
+                    Project Name
                 </label>
 
                 <input
                     id="projectName"
-                    value="Desain Rumah Saya"
+                    value="Rumah Luxury Classic"
+                    onchange="updateProjectName()"
                 >
 
             </div>
 
             <button
-                class="primary"
+                class="action-btn"
                 style="width:100%;"
                 onclick="saveProject()"
             >
-                💾 Simpan Project
+                💾 Save Project
+            </button>
+
+            <br><br>
+
+            <button
+                class="action-btn"
+                style="width:100%;"
+                onclick="loadProject()"
+            >
+                ↻ Load Saved Project
             </button>
 
         </div>
 
 
-        <div class="property-card">
+        <div class="prop-card">
 
-            <h3>Status</h3>
+            <h3>
+                <span>⚙</span>
+                Canvas
+            </h3>
 
-            <div class="status">
-                ● SYSTEM READY
-            </div>
+            <button
+                class="action-btn"
+                style="width:100%;"
+                onclick="resetView()"
+            >
+                Reset View
+            </button>
 
-            <br>
+            <br><br>
 
-            <small style="color:#64748b;">
-                ALFA Interior Designer V1.0
-            </small>
+            <button
+                class="action-btn"
+                style="width:100%;"
+                onclick="clearObjects()"
+            >
+                Clear Furniture
+            </button>
 
         </div>
 
     </aside>
 
-</main>
+</div>
 
 
-<div class="footer-info">
-    ALFA INTERIOR DESIGNER • FREE EDITION
+<div
+    class="toast"
+    id="toast"
+>
+    Project berhasil disimpan.
 </div>
 
 
 <script>
 
-function updateRoom(){
+/* =====================================
+   ALFA INTERIOR DESIGNER V1.1
+   CORE ENGINE
+===================================== */
 
-    const length =
-        Number(document.getElementById("roomLength").value);
+let objects = [];
+let selectedObject = null;
+let objectId = 0;
 
-    const width =
-        Number(document.getElementById("roomWidth").value);
+let zoomLevel = 1;
 
-    document.querySelector("#roomLabel span").textContent =
-        width + "m × " + length + "m";
+let undoStack = [];
+let redoStack = [];
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+
+        toast.classList.remove("show");
+
+    },2200);
+}
+
+
+/* =====================================
+   SAVE STATE FOR UNDO
+===================================== */
+
+function saveState(){
+
+    undoStack.push(
+        JSON.stringify(objects)
+    );
+
+    if(undoStack.length > 30){
+
+        undoStack.shift();
+
+    }
+
+    redoStack = [];
 
 }
 
 
-function changeFloor(){
+/* =====================================
+   ADD FURNITURE
+===================================== */
 
-    const color =
-        document.getElementById("floorColor").value;
+function addFurniture(
+    name,
+    icon,
+    width,
+    height
+){
 
-    document.getElementById("room").style.background =
-        color;
+    saveState();
 
-}
+    const room =
+        document.getElementById("room");
 
+    const id =
+        ++objectId;
 
-function saveProject(){
+    const object = {
 
-    const project = {
+        id:id,
 
-        name:
-            document.getElementById("projectName").value,
+        name:name,
 
-        length:
-            document.getElementById("roomLength").value,
+        icon:icon,
 
-        width:
-            document.getElementById("roomWidth").value,
+        width:width,
 
-        floor:
-            document.getElementById("floorColor").value
+        height:height,
+
+        x:
+            300 + Math.random()*100,
+
+        y:
+            170 + Math.random()*100,
+
+        rotation:0
 
     };
 
-    localStorage.setItem(
-        "alfaInteriorProject",
-        JSON.stringify(project)
-    );
+    objects.push(object);
 
-    alert(
-        "✅ Project berhasil disimpan di browser!"
+    renderObject(object);
+
+    selectObject(id);
+
+    updateObjectCount();
+
+    showToast(
+        name + " ditambahkan ke ruangan."
     );
 
 }
 
 
-function newProject(){
+/* =====================================
+   RENDER OBJECT
+===================================== */
 
-    const confirmNew =
-        confirm(
-            "Buat project baru? Pengaturan ruangan akan dikembalikan ke awal."
+function renderObject(object){
+
+    const container =
+        document.getElementById(
+            "objectsContainer"
         );
 
-    if(!confirmNew) return;
+    const el =
+        document.createElement("div");
 
-    document.getElementById("projectName").value =
-        "Desain Rumah Saya";
+    el.className =
+        "object";
 
-    document.getElementById("roomLength").value =
-        6;
+    el.dataset.id =
+        object.id;
 
-    document.getElementById("roomWidth").value =
-        4;
+    el.style.width =
+        object.width + "px";
 
-    document.getElementById("floorColor").value =
-        "#e5e7eb";
+    el.style.height =
+        object.height + "px";
 
-    updateRoom();
+    el.style.left =
+        object.x + "px";
 
-    changeFloor();
+    el.style.top =
+        object.y + "px";
+
+    el.style.transform =
+        "rotate(" +
+        object.rotation +
+        "deg)";
+
+    const icon =
+        document.createElement("div");
+
+    icon.className =
+        "object-icon";
+
+    icon.textContent =
+        object.icon;
+
+    icon.style.fontSize =
+        Math.min(
+            object.width,
+            object.height
+        ) * .42 + "px";
+
+    el.appendChild(icon);
+
+
+    const label =
+        document.createElement("div");
+
+    label.className =
+        "object-label";
+
+    label.textContent =
+        object.name;
+
+    el.appendChild(label);
+
+
+    el.addEventListener(
+        "mousedown",
+        startDrag
+    );
+
+    el.addEventListener(
+        "click",
+        function(e){
+
+            e.stopPropagation();
+
+            selectObject(object.id);
+
+        }
+    );
+
+
+    container.appendChild(el);
 
 }
 
 
-window.onload = function(){
+/* =====================================
+   RENDER ALL
+===================================== */
+
+function renderAll(){
+
+    const container =
+        document.getElementById(
+            "objectsContainer"
+        );
+
+    container.innerHTML = "";
+
+    objects.forEach(function(object){
+
+        renderObject(object);
+
+    });
+
+    updateObjectCount();
+
+}
+
+
+/* =====================================
+   SELECT OBJECT
+===================================== */
+
+function selectObject(id){
+
+    selectedObject =
+        objects.find(function(o){
+
+            return o.id === id;
+
+        });
+
+    document
+        .querySelectorAll(".object")
+        .forEach(function(el){
+
+            el.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    if(!selectedObject){
+
+        document.getElementById(
+            "selectionPanel"
+        ).innerHTML =
+        "Belum ada object dipilih.";
+
+        return;
+
+    }
+
+
+    const selected =
+        document.querySelector(
+            '.object[data-id="' +
+            id +
+            '"]'
+        );
+
+    if(selected){
+
+        selected.classList.add(
+            "selected"
+        );
+
+    }
+
+
+    updateSelectionPanel();
+
+}
+
+
+/* =====================================
+   SELECTION PANEL
+===================================== */
+
+function updateSelectionPanel(){
+
+    if(!selectedObject){
+
+        return;
+
+    }
+
+    const o =
+        selectedObject;
+
+    document.getElementById(
+        "selectionPanel"
+    ).innerHTML = `
+
+        <div class="field">
+
+            <label>Object</label>
+
+            <input
+                value="${escapeHTML(o.name)}"
+                onchange="changeSelectedName(this.value)"
+            >
+
+        </div>
+
+        <div class="field-row">
+
+            <div class="field">
+
+                <label>Width</label>
+
+                <input
+                    type="number"
+                    value="${o.width}"
+                    min="20"
+                    onchange="changeSelectedSize('width',this.value)"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>Height</label>
+
+                <input
+                    type="number"
+                    value="${o.height}"
+                    min="20"
+                    onchange="changeSelectedSize('height',this.value)"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="field">
+
+            <label>Rotation</label>
+
+            <input
+                type="number"
+                value="${o.rotation}"
+                onchange="changeSelectedRotation(this.value)"
+            >
+
+        </div>
+
+        <div style="
+            color:#877966;
+            font:9px Arial;
+            line-height:1.6;
+        ">
+            Posisi:
+            X ${Math.round(o.x)}
+            / Y ${Math.round(o.y)}
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================
+   DRAG SYSTEM
+===================================== */
+
+let dragging = false;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
+
+function startDrag(e){
+
+    const id =
+        Number(
+            e.currentTarget.dataset.id
+        );
+
+    selectObject(id);
+
+    dragging = true;
+
+    const rect =
+        e.currentTarget.getBoundingClientRect();
+
+    const roomRect =
+        document
+        .getElementById("room")
+        .getBoundingClientRect();
+
+    dragOffsetX =
+        e.clientX -
+        rect.left;
+
+    dragOffsetY =
+        e.clientY -
+        rect.top;
+
+
+    function move(event){
+
+        if(!dragging ||
+           !selectedObject){
+
+            return;
+
+        }
+
+
+        const roomRect =
+            document
+            .getElementById("room")
+            .getBoundingClientRect();
+
+
+        let x =
+            (event.clientX -
+            roomRect.left) /
+            zoomLevel -
+            dragOffsetX;
+
+        let y =
+            (event.clientY -
+            roomRect.top) /
+            zoomLevel -
+            dragOffsetY;
+
+
+        const maxX =
+            roomRect.width /
+            zoomLevel -
+            selectedObject.width;
+
+        const maxY =
+            roomRect.height /
+            zoomLevel -
+            selectedObject.height;
+
+
+        x =
+            Math.max(
+                0,
+                Math.min(x,maxX)
+            );
+
+        y =
+            Math.max(
+                0,
+                Math.min(y,maxY)
+            );
+
+
+        selectedObject.x = x;
+        selectedObject.y = y;
+
+
+        const el =
+            document.querySelector(
+                '.object[data-id="' +
+                selectedObject.id +
+                '"]'
+            );
+
+        if(el){
+
+            el.style.left =
+                x + "px";
+
+            el.style.top =
+                y + "px";
+
+        }
+
+        updateSelectionPanel();
+
+    }
+
+
+    function up(){
+
+        if(dragging){
+
+            saveState();
+
+        }
+
+        dragging = false;
+
+        document.removeEventListener(
+            "mousemove",
+            move
+        );
+
+        document.removeEventListener(
+            "mouseup",
+            up
+        );
+
+    }
+
+
+    document.addEventListener(
+        "mousemove",
+        move
+    );
+
+    document.addEventListener(
+        "mouseup",
+        up
+    );
+
+}
+
+
+/* =====================================
+   DELETE
+===================================== */
+
+function deleteSelected(){
+
+    if(!selectedObject){
+
+        showToast(
+            "Pilih furniture terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+    saveState();
+
+    const id =
+        selectedObject.id;
+
+    objects =
+        objects.filter(function(o){
+
+            return o.id !== id;
+
+        });
+
+    selectedObject = null;
+
+    renderAll();
+
+    updateSelectionPanel();
+
+    showToast(
+        "Furniture dihapus."
+    );
+
+}
+
+
+/* =====================================
+   DUPLICATE
+===================================== */
+
+function duplicateSelected(){
+
+    if(!selectedObject){
+
+        showToast(
+            "Pilih furniture terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+    saveState();
+
+    const copy =
+        Object.assign(
+            {},
+            selectedObject
+        );
+
+    copy.id =
+        ++objectId;
+
+    copy.x += 30;
+    copy.y += 30;
+
+    objects.push(copy);
+
+    renderAll();
+
+    selectObject(copy.id);
+
+    showToast(
+        "Furniture berhasil diduplikasi."
+    );
+
+}
+
+
+/* =====================================
+   ROTATE
+===================================== */
+
+function rotateSelected(amount){
+
+    if(!selectedObject){
+
+        showToast(
+            "Pilih furniture terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+    saveState();
+
+    selectedObject.rotation += amount;
+
+    renderAll();
+
+    selectObject(
+        selectedObject.id
+    );
+
+}
+
+
+/* =====================================
+   CHANGE SIZE
+===================================== */
+
+function changeSelectedSize(
+    property,
+    value
+){
+
+    if(!selectedObject){
+
+        return;
+
+    }
+
+    saveState();
+
+    value =
+        Number(value);
+
+    if(!Number.isFinite(value) ||
+       value < 20){
+
+        return;
+
+    }
+
+    selectedObject[property] =
+        value;
+
+    renderAll();
+
+    selectObject(
+        selectedObject.id
+    );
+
+}
+
+
+/* =====================================
+   CHANGE ROTATION
+===================================== */
+
+function changeSelectedRotation(
+    value
+){
+
+    if(!selectedObject){
+
+        return;
+
+    }
+
+    saveState();
+
+    selectedObject.rotation =
+        Number(value) || 0;
+
+    renderAll();
+
+    selectObject(
+        selectedObject.id
+    );
+
+}
+
+
+/* =====================================
+   CHANGE NAME
+===================================== */
+
+function changeSelectedName(
+    value
+){
+
+    if(!selectedObject){
+
+        return;
+
+    }
+
+    saveState();
+
+    selectedObject.name =
+        value || "Object";
+
+    renderAll();
+
+    selectObject(
+        selectedObject.id
+    );
+
+}
+
+
+/* =====================================
+   OBJECT COUNT
+===================================== */
+
+function updateObjectCount(){
+
+    document.getElementById(
+        "objectCount"
+    ).textContent =
+        "Objects: " +
+        objects.length;
+
+}
+
+
+/* =====================================
+   ROOM DIMENSIONS
+===================================== */
+
+function updateRoomDimensions(){
+
+    const length =
+        Number(
+            document.getElementById(
+                "roomLength"
+            ).value
+        );
+
+    const width =
+        Number(
+            document.getElementById(
+                "roomWidth"
+            ).value
+        );
+
+
+    document.querySelector(
+        ".room-size-label"
+    ).textContent =
+        length.toFixed(2) +
+        " m";
+
+
+    document.querySelector(
+        ".room-side-label"
+    ).textContent =
+        width.toFixed(2) +
+        " m";
+
+
+    showToast(
+        "Dimensi ruangan diperbarui."
+    );
+
+}
+
+
+/* =====================================
+   FLOOR
+===================================== */
+
+function changeFloor(type){
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+
+    const patterns = {
+
+        wood:
+        `
+        repeating-linear-gradient(
+            0deg,
+            rgba(103,78,49,.10) 0px,
+            rgba(103,78,49,.10) 2px,
+            transparent 2px,
+            transparent 32px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 118px,
+            rgba(103,78,49,.08) 119px,
+            rgba(103,78,49,.08) 121px
+        ),
+        #d8c4a4
+        `,
+
+        marble:
+        `
+        linear-gradient(
+            125deg,
+            #eee9df,
+            #d8d1c5,
+            #f1ece4
+        )
+        `,
+
+        stone:
+        `
+        repeating-linear-gradient(
+            45deg,
+            #aaa093 0px,
+            #aaa093 3px,
+            #a09587 3px,
+            #a09587 42px
+        )
+        `,
+
+        concrete:
+        `
+        linear-gradient(
+            135deg,
+            #9d978f,
+            #bbb5ad
+        )
+        `
+
+    };
+
+
+    room.style.background =
+        patterns[type] ||
+        patterns.wood;
+
+    showToast(
+        "Material lantai: " +
+        type
+    );
+
+}
+
+
+function setFloorColor(color){
+
+    document.getElementById(
+        "room"
+    ).style.background =
+        color;
+
+    showToast(
+        "Warna lantai diperbarui."
+    );
+
+}
+
+
+/* =====================================
+   PROJECT NAME
+===================================== */
+
+function updateProjectName(){
+
+    const value =
+        document.getElementById(
+            "projectName"
+        ).value;
+
+    document.getElementById(
+        "projectTitle"
+    ).textContent =
+        value || "Untitled Project";
+
+}
+
+
+/* =====================================
+   SAVE PROJECT
+===================================== */
+
+function saveProject(){
+
+    const data = {
+
+        version:"1.1",
+
+        projectName:
+            document.getElementById(
+                "projectName"
+            ).value,
+
+        roomLength:
+            document.getElementById(
+                "roomLength"
+            ).value,
+
+        roomWidth:
+            document.getElementById(
+                "roomWidth"
+            ).value,
+
+        objects:objects,
+
+        objectId:objectId
+
+    };
+
+
+    localStorage.setItem(
+        "alfaInteriorDesignerV11",
+        JSON.stringify(data)
+    );
+
+
+    showToast(
+        "✓ Project berhasil disimpan."
+    );
+
+}
+
+
+/* =====================================
+   LOAD PROJECT
+===================================== */
+
+function loadProject(){
 
     const saved =
         localStorage.getItem(
-            "alfaInteriorProject"
+            "alfaInteriorDesignerV11"
         );
 
-    if(saved){
 
-        try{
+    if(!saved){
 
-            const project =
-                JSON.parse(saved);
+        showToast(
+            "Belum ada project tersimpan."
+        );
 
-            document.getElementById("projectName").value =
-                project.name || "Desain Rumah Saya";
+        return;
 
-            document.getElementById("roomLength").value =
-                project.length || 6;
+    }
 
-            document.getElementById("roomWidth").value =
-                project.width || 4;
 
-            document.getElementById("floorColor").value =
-                project.floor || "#e5e7eb";
+    try{
 
-            updateRoom();
-            changeFloor();
+        const data =
+            JSON.parse(saved);
 
-        }catch(error){
 
-            console.log(
-                "Data project belum tersedia."
+        document.getElementById(
+            "projectName"
+        ).value =
+            data.projectName ||
+            "Rumah Luxury Classic";
+
+
+        document.getElementById(
+            "roomLength"
+        ).value =
+            data.roomLength ||
+            6;
+
+
+        document.getElementById(
+            "roomWidth"
+        ).value =
+            data.roomWidth ||
+            4;
+
+
+        objects =
+            Array.isArray(
+                data.objects
+            )
+            ? data.objects
+            : [];
+
+
+        objectId =
+            data.objectId ||
+            objects.length;
+
+
+        selectedObject = null;
+
+        updateProjectName();
+
+        updateRoomDimensions();
+
+        renderAll();
+
+        updateSelectionPanel();
+
+
+        showToast(
+            "✓ Project berhasil dimuat."
+        );
+
+
+    }catch(error){
+
+        showToast(
+            "Data project tidak valid."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   CLEAR OBJECTS
+===================================== */
+
+function clearObjects(){
+
+    if(objects.length === 0){
+
+        showToast(
+            "Canvas sudah kosong."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Hapus semua furniture dari ruangan?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    saveState();
+
+    objects = [];
+
+    selectedObject = null;
+
+    renderAll();
+
+    updateSelectionPanel();
+
+    showToast(
+        "Semua furniture dihapus."
+    );
+
+}
+
+
+/* =====================================
+   UNDO
+===================================== */
+
+function undoAction(){
+
+    if(
+        undoStack.length === 0
+    ){
+
+        showToast(
+            "Tidak ada perubahan untuk di-undo."
+        );
+
+        return;
+
+    }
+
+
+    redoStack.push(
+        JSON.stringify(objects)
+    );
+
+
+    objects =
+        JSON.parse(
+            undoStack.pop()
+        );
+
+
+    selectedObject = null;
+
+    renderAll();
+
+    updateSelectionPanel();
+
+    showToast(
+        "Undo."
+    );
+
+}
+
+
+/* =====================================
+   REDO
+===================================== */
+
+function redoAction(){
+
+    if(
+        redoStack.length === 0
+    ){
+
+        showToast(
+            "Tidak ada perubahan untuk di-redo."
+        );
+
+        return;
+
+    }
+
+
+    undoStack.push(
+        JSON.stringify(objects)
+    );
+
+
+    objects =
+        JSON.parse(
+            redoStack.pop()
+        );
+
+
+    selectedObject = null;
+
+    renderAll();
+
+    updateSelectionPanel();
+
+    showToast(
+        "Redo."
+    );
+
+}
+
+
+/* =====================================
+   ZOOM
+===================================== */
+
+function applyZoom(){
+
+    const canvas =
+        document.getElementById(
+            "designCanvas"
+        );
+
+    canvas.style.transform =
+        "scale(" +
+        zoomLevel +
+        ")";
+
+
+    document.getElementById(
+        "zoomText"
+    ).textContent =
+        Math.round(
+            zoomLevel * 100
+        ) + "%";
+
+}
+
+
+function zoomIn(){
+
+    zoomLevel =
+        Math.min(
+            1.8,
+            zoomLevel + .1
+        );
+
+    applyZoom();
+
+}
+
+
+function zoomOut(){
+
+    zoomLevel =
+        Math.max(
+            .5,
+            zoomLevel - .1
+        );
+
+    applyZoom();
+
+}
+
+
+function resetView(){
+
+    zoomLevel = 1;
+
+    applyZoom();
+
+    showToast(
+        "View dikembalikan ke 100%."
+    );
+
+}
+
+
+/* =====================================
+   FULLSCREEN
+===================================== */
+
+function toggleFullscreen(){
+
+    const workspace =
+        document.getElementById(
+            "workspace"
+        );
+
+
+    if(
+        !document.fullscreenElement
+    ){
+
+        workspace
+            .requestFullscreen()
+            .catch(function(){
+
+                showToast(
+                    "Fullscreen tidak tersedia."
+                );
+
+            });
+
+    }else{
+
+        document.exitFullscreen();
+
+    }
+
+}
+
+
+/* =====================================
+   CANVAS CLICK
+===================================== */
+
+document
+.getElementById("room")
+.addEventListener(
+    "click",
+    function(){
+
+        selectedObject = null;
+
+        document
+            .querySelectorAll(".object")
+            .forEach(function(el){
+
+                el.classList.remove(
+                    "selected"
+                );
+
+            });
+
+        updateSelectionPanel();
+
+    }
+);
+
+
+/* =====================================
+   CURSOR POSITION
+===================================== */
+
+document
+.getElementById("room")
+.addEventListener(
+    "mousemove",
+    function(e){
+
+        const rect =
+            this.getBoundingClientRect();
+
+        const x =
+            Math.max(
+                0,
+                (e.clientX -
+                rect.left) /
+                zoomLevel
             );
+
+        const y =
+            Math.max(
+                0,
+                (e.clientY -
+                rect.top) /
+                zoomLevel
+            );
+
+
+        document.getElementById(
+            "cursorPosition"
+        ).textContent =
+            "X: " +
+            (x / 100).toFixed(2) +
+            "m / Y: " +
+            (y / 100).toFixed(2) +
+            "m";
+
+    }
+);
+
+
+/* =====================================
+   KEYBOARD
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            e.key === "Delete" &&
+            selectedObject
+        ){
+
+            deleteSelected();
+
+        }
+
+
+        if(
+            e.ctrlKey &&
+            e.key.toLowerCase() === "z"
+        ){
+
+            e.preventDefault();
+
+            undoAction();
+
+        }
+
+
+        if(
+            e.ctrlKey &&
+            e.key.toLowerCase() === "y"
+        ){
+
+            e.preventDefault();
+
+            redoAction();
+
+        }
+
+
+        if(
+            e.ctrlKey &&
+            e.key.toLowerCase() === "s"
+        ){
+
+            e.preventDefault();
+
+            saveProject();
 
         }
 
     }
+);
 
-};
+
+/* =====================================
+   STARTUP
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        const saved =
+            localStorage.getItem(
+                "alfaInteriorDesignerV11"
+            );
+
+
+        if(saved){
+
+            try{
+
+                const data =
+                    JSON.parse(saved);
+
+                if(
+                    data &&
+                    Array.isArray(
+                        data.objects
+                    )
+                ){
+
+                    document.getElementById(
+                        "projectName"
+                    ).value =
+                        data.projectName ||
+                        "Rumah Luxury Classic";
+
+                    document.getElementById(
+                        "roomLength"
+                    ).value =
+                        data.roomLength ||
+                        6;
+
+                    document.getElementById(
+                        "roomWidth"
+                    ).value =
+                        data.roomWidth ||
+                        4;
+
+                    objects =
+                        data.objects;
+
+                    objectId =
+                        data.objectId ||
+                        objects.length;
+
+                    updateProjectName();
+
+                    updateRoomDimensions();
+
+                    renderAll();
+
+                }
+
+            }catch(error){
+
+                console.log(
+                    "No valid saved project."
+                );
+
+            }
+
+        }
+
+    }
+);
 
 </script>
 
