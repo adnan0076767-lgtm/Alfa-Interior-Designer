@@ -1,0 +1,675 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALFA INTERIOR DESIGNER V1.0</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b1020;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:70px;
+    background:#111827;
+    border-bottom:1px solid #263247;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#22d3ee;
+}
+
+.version{
+    font-size:12px;
+    color:#94a3b8;
+    margin-top:4px;
+}
+
+.header-actions{
+    display:flex;
+    gap:8px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    color:white;
+    background:#1e293b;
+    border:1px solid #334155;
+    padding:10px 15px;
+    border-radius:8px;
+    transition:.2s;
+}
+
+button:hover{
+    background:#263449;
+}
+
+button.primary{
+    background:#0891b2;
+    border-color:#06b6d4;
+}
+
+button.primary:hover{
+    background:#0e7490;
+}
+
+.app{
+    display:grid;
+    grid-template-columns:250px 1fr 270px;
+    min-height:calc(100vh - 70px);
+}
+
+/* LEFT PANEL */
+
+.sidebar{
+    background:#0f172a;
+    border-right:1px solid #263247;
+    padding:18px;
+}
+
+.panel-title{
+    font-size:13px;
+    color:#94a3b8;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.tool{
+    width:100%;
+    text-align:left;
+    margin-bottom:9px;
+    background:#111c31;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.tool-icon{
+    width:32px;
+    height:32px;
+    border-radius:7px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#17243a;
+    font-size:18px;
+}
+
+.info-box{
+    margin-top:25px;
+    padding:14px;
+    border:1px solid #263247;
+    background:#111827;
+    border-radius:10px;
+    color:#94a3b8;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* WORKSPACE */
+
+.workspace{
+    background:
+        linear-gradient(#1e293b 1px,transparent 1px),
+        linear-gradient(90deg,#1e293b 1px,transparent 1px);
+    background-size:30px 30px;
+    position:relative;
+    overflow:auto;
+    padding:30px;
+}
+
+.workspace-title{
+    position:absolute;
+    top:15px;
+    left:20px;
+    color:#64748b;
+    font-size:12px;
+    pointer-events:none;
+}
+
+.room-area{
+    width:700px;
+    height:470px;
+    background:#e5e7eb;
+    border:10px solid #475569;
+    margin:70px auto 30px;
+    position:relative;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.room-label{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:#64748b;
+    text-align:center;
+    pointer-events:none;
+}
+
+.room-label strong{
+    display:block;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.room-label span{
+    font-size:13px;
+}
+
+/* RIGHT PANEL */
+
+.properties{
+    background:#0f172a;
+    border-left:1px solid #263247;
+    padding:18px;
+}
+
+.property-card{
+    background:#111827;
+    border:1px solid #263247;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.property-card h3{
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.field{
+    margin-bottom:13px;
+}
+
+.field label{
+    display:block;
+    color:#94a3b8;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:10px;
+    background:#0b1220;
+    border:1px solid #334155;
+    color:white;
+    border-radius:7px;
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:#22d3ee;
+}
+
+.status{
+    color:#22d3ee;
+    font-size:13px;
+}
+
+.footer-info{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#64748b;
+    font-size:11px;
+    pointer-events:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .app{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar,
+    .properties{
+        border:none;
+    }
+
+    .sidebar{
+        border-bottom:1px solid #263247;
+    }
+
+    .properties{
+        border-top:1px solid #263247;
+    }
+
+    .workspace{
+        min-height:550px;
+    }
+
+    .room-area{
+        width:90vw;
+        max-width:700px;
+        height:55vw;
+        max-height:470px;
+        min-height:300px;
+    }
+
+    .header{
+        height:auto;
+        min-height:70px;
+        flex-wrap:wrap;
+        gap:10px;
+        padding:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <div class="logo">
+            ALFA <span>INTERIOR DESIGNER</span>
+        </div>
+
+        <div class="version">
+            Interior Design Tool • V1.0 FOUNDATION
+        </div>
+    </div>
+
+    <div class="header-actions">
+        <button onclick="newProject()">＋ Project Baru</button>
+        <button class="primary" onclick="saveProject()">💾 Simpan</button>
+    </div>
+
+</header>
+
+
+<main class="app">
+
+    <!-- LEFT -->
+
+    <aside class="sidebar">
+
+        <div class="panel-title">
+            Furniture & Tools
+        </div>
+
+        <button class="tool">
+            <div class="tool-icon">🛋️</div>
+            Sofa
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🛏️</div>
+            Tempat Tidur
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🪑</div>
+            Kursi
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🪵</div>
+            Meja
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🗄️</div>
+            Lemari
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🍳</div>
+            Kitchen
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🚿</div>
+            Kamar Mandi
+        </button>
+
+        <button class="tool">
+            <div class="tool-icon">🪴</div>
+            Dekorasi
+        </button>
+
+        <div class="info-box">
+
+            <strong>ALFA DESIGN ENGINE</strong>
+
+            <br><br>
+
+            V1.0 adalah fondasi editor interior.
+
+            <br><br>
+
+            Furniture, drag & drop,
+            ukuran dan material akan
+            ditambahkan secara bertahap.
+
+        </div>
+
+    </aside>
+
+
+    <!-- WORKSPACE -->
+
+    <section class="workspace">
+
+        <div class="workspace-title">
+            CANVAS / ROOM PLAN
+        </div>
+
+        <div class="room-area" id="room">
+
+            <div class="room-label" id="roomLabel">
+
+                <strong>RUANGAN</strong>
+
+                <span>
+                    4m × 6m
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT -->
+
+    <aside class="properties">
+
+        <div class="panel-title">
+            Properties
+        </div>
+
+        <div class="property-card">
+
+            <h3>📐 Ukuran Ruangan</h3>
+
+            <div class="field">
+
+                <label>
+                    Panjang (meter)
+                </label>
+
+                <input
+                    type="number"
+                    id="roomLength"
+                    value="6"
+                    min="1"
+                    max="30"
+                    onchange="updateRoom()"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Lebar (meter)
+                </label>
+
+                <input
+                    type="number"
+                    id="roomWidth"
+                    value="4"
+                    min="1"
+                    max="30"
+                    onchange="updateRoom()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="property-card">
+
+            <h3>🎨 Ruangan</h3>
+
+            <div class="field">
+
+                <label>
+                    Warna Lantai
+                </label>
+
+                <select id="floorColor" onchange="changeFloor()">
+
+                    <option value="#e5e7eb">
+                        Light
+                    </option>
+
+                    <option value="#d6c2a1">
+                        Kayu
+                    </option>
+
+                    <option value="#9ca3af">
+                        Concrete
+                    </option>
+
+                    <option value="#cbd5e1">
+                        Marble
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="property-card">
+
+            <h3>⚙️ Project</h3>
+
+            <div class="field">
+
+                <label>
+                    Nama Project
+                </label>
+
+                <input
+                    id="projectName"
+                    value="Desain Rumah Saya"
+                >
+
+            </div>
+
+            <button
+                class="primary"
+                style="width:100%;"
+                onclick="saveProject()"
+            >
+                💾 Simpan Project
+            </button>
+
+        </div>
+
+
+        <div class="property-card">
+
+            <h3>Status</h3>
+
+            <div class="status">
+                ● SYSTEM READY
+            </div>
+
+            <br>
+
+            <small style="color:#64748b;">
+                ALFA Interior Designer V1.0
+            </small>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+<div class="footer-info">
+    ALFA INTERIOR DESIGNER • FREE EDITION
+</div>
+
+
+<script>
+
+function updateRoom(){
+
+    const length =
+        Number(document.getElementById("roomLength").value);
+
+    const width =
+        Number(document.getElementById("roomWidth").value);
+
+    document.querySelector("#roomLabel span").textContent =
+        width + "m × " + length + "m";
+
+}
+
+
+function changeFloor(){
+
+    const color =
+        document.getElementById("floorColor").value;
+
+    document.getElementById("room").style.background =
+        color;
+
+}
+
+
+function saveProject(){
+
+    const project = {
+
+        name:
+            document.getElementById("projectName").value,
+
+        length:
+            document.getElementById("roomLength").value,
+
+        width:
+            document.getElementById("roomWidth").value,
+
+        floor:
+            document.getElementById("floorColor").value
+
+    };
+
+    localStorage.setItem(
+        "alfaInteriorProject",
+        JSON.stringify(project)
+    );
+
+    alert(
+        "✅ Project berhasil disimpan di browser!"
+    );
+
+}
+
+
+function newProject(){
+
+    const confirmNew =
+        confirm(
+            "Buat project baru? Pengaturan ruangan akan dikembalikan ke awal."
+        );
+
+    if(!confirmNew) return;
+
+    document.getElementById("projectName").value =
+        "Desain Rumah Saya";
+
+    document.getElementById("roomLength").value =
+        6;
+
+    document.getElementById("roomWidth").value =
+        4;
+
+    document.getElementById("floorColor").value =
+        "#e5e7eb";
+
+    updateRoom();
+
+    changeFloor();
+
+}
+
+
+window.onload = function(){
+
+    const saved =
+        localStorage.getItem(
+            "alfaInteriorProject"
+        );
+
+    if(saved){
+
+        try{
+
+            const project =
+                JSON.parse(saved);
+
+            document.getElementById("projectName").value =
+                project.name || "Desain Rumah Saya";
+
+            document.getElementById("roomLength").value =
+                project.length || 6;
+
+            document.getElementById("roomWidth").value =
+                project.width || 4;
+
+            document.getElementById("floorColor").value =
+                project.floor || "#e5e7eb";
+
+            updateRoom();
+            changeFloor();
+
+        }catch(error){
+
+            console.log(
+                "Data project belum tersedia."
+            );
+
+        }
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
+```
