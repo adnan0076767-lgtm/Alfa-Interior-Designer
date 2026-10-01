@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>ALFA INTERIOR DESIGNER V1.1</title>
+<title>ALFA INTERIOR DESIGNER V1.2</title>
 
 <style>
 *{
@@ -15,19 +15,21 @@
 
 :root{
     --gold:#c9a45c;
-    --gold-light:#e7cc91;
-    --dark:#171411;
-    --dark2:#211c17;
+    --gold2:#e7cc91;
+    --gold3:#8f6d35;
+    --dark:#120f0c;
+    --dark2:#1b1611;
     --panel:#29221b;
-    --panel2:#332a20;
-    --line:#5a4934;
+    --panel2:#33291f;
+    --line:#594833;
     --cream:#f3ead9;
-    --muted:#b9aa94;
-    --canvas:#ddd3c2;
+    --muted:#aa9b84;
+    --canvas:#d9cfbd;
+    --green:#93b783;
+    --red:#a86659;
 }
 
-html,
-body{
+html,body{
     width:100%;
     height:100%;
     overflow:hidden;
@@ -35,30 +37,23 @@ body{
 
 body{
     font-family:Georgia,"Times New Roman",serif;
-    background:#120f0c;
+    background:var(--dark);
     color:var(--cream);
 }
 
-/* =========================
-   APP HEADER
-========================= */
+/* HEADER */
 
 .app-header{
     height:72px;
-    background:
-        linear-gradient(
-            180deg,
-            #211b16,
-            #15110e
-        );
-    border-bottom:1px solid var(--line);
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.35);
+    background:linear-gradient(180deg,#241d17,#15110e);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 5px 25px rgba(0,0,0,.4);
     position:relative;
-    z-index:50;
+    z-index:100;
 }
 
 .brand{
@@ -68,152 +63,131 @@ body{
 }
 
 .brand-mark{
-    width:43px;
-    height:43px;
+    width:44px;
+    height:44px;
     border:1px solid var(--gold);
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--gold-light);
-    font-size:20px;
-    box-shadow:
-        inset 0 0 12px rgba(201,164,92,.12),
-        0 0 10px rgba(201,164,92,.08);
+    color:var(--gold2);
+    font-size:21px;
+    box-shadow:inset 0 0 14px rgba(201,164,92,.12);
 }
 
 .brand-title{
     font-size:20px;
     letter-spacing:1.5px;
-    color:#f5ead7;
 }
 
 .brand-title span{
-    color:var(--gold-light);
+    color:var(--gold2);
 }
 
 .brand-sub{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    color:#988b79;
-    letter-spacing:2px;
     margin-top:3px;
+    font:9px Arial,sans-serif;
+    letter-spacing:2px;
+    color:#988b79;
 }
 
 .header-tools{
     display:flex;
     align-items:center;
-    gap:7px;
+    gap:6px;
 }
 
 .tool-btn{
     min-width:38px;
     height:36px;
-    border:1px solid #4e402f;
-    background:#241e18;
-    color:#e5d5bb;
+    border:1px solid #4d3d2c;
+    background:#241d17;
+    color:#e7d8bf;
     border-radius:6px;
     cursor:pointer;
-    font-family:Arial,sans-serif;
     transition:.2s;
+    font:11px Arial,sans-serif;
 }
 
 .tool-btn:hover{
     border-color:var(--gold);
+    background:#30271f;
     color:white;
-    background:#30271e;
 }
 
 .tool-btn.gold{
     background:#8e6d35;
-    border-color:#c9a45c;
-    color:#fff;
+    border-color:var(--gold);
+    color:white;
     padding:0 14px;
-}
-
-.tool-btn.gold:hover{
-    background:#a47d3c;
 }
 
 .header-divider{
     width:1px;
     height:28px;
-    background:#4b3c2d;
-    margin:0 4px;
+    background:#4b3b2b;
+    margin:0 3px;
 }
 
-/* =========================
-   MAIN LAYOUT
-========================= */
+/* MAIN */
 
 .app{
     height:calc(100vh - 72px);
     display:grid;
-    grid-template-columns:245px 1fr 280px;
+    grid-template-columns:250px minmax(450px,1fr) 295px;
 }
 
-/* =========================
-   LEFT LIBRARY
-========================= */
+/* LEFT */
 
 .library{
-    background:
-        linear-gradient(
-            180deg,
-            #2a231c,
-            #1d1813
-        );
+    background:linear-gradient(180deg,#2a231c,#1d1813);
     border-right:1px solid var(--line);
     overflow-y:auto;
-    padding:17px 14px 30px;
+    padding:15px 13px 30px;
 }
 
 .section-label{
-    font-family:Arial,sans-serif;
-    font-size:10px;
+    margin:5px 4px 10px;
+    font:10px Arial,sans-serif;
     color:#a7957d;
     letter-spacing:2px;
     text-transform:uppercase;
-    margin:5px 4px 12px;
 }
 
 .project-name{
     padding:12px;
-    border:1px solid #51422f;
+    margin-bottom:16px;
     background:#211b16;
+    border:1px solid #51422f;
     border-radius:7px;
-    margin-bottom:18px;
 }
 
 .project-name small{
     display:block;
-    color:#9c8c75;
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    letter-spacing:1px;
     margin-bottom:5px;
+    color:#9c8c75;
+    font:9px Arial,sans-serif;
+    letter-spacing:1px;
 }
 
 .project-name strong{
-    color:#f2e4ce;
     font-size:14px;
     font-weight:normal;
+    color:#f2e4ce;
 }
 
 .category{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
     width:100%;
+    display:flex;
+    justify-content:space-between;
     padding:9px 8px;
-    margin-top:5px;
-    border:1px solid transparent;
+    margin-top:4px;
     background:transparent;
-    color:#cfc0a9;
-    cursor:pointer;
+    border:1px solid transparent;
     border-radius:5px;
+    color:#d1c1a9;
+    cursor:pointer;
     font-family:Georgia,serif;
-    text-align:left;
 }
 
 .category:hover{
@@ -223,85 +197,73 @@ body{
 
 .category span:last-child{
     color:#8f806d;
-    font-family:Arial,sans-serif;
-    font-size:11px;
 }
 
 .furniture-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:7px;
-    margin-top:7px;
+    margin:6px 0 8px;
 }
 
 .furniture{
-    min-height:75px;
+    min-height:70px;
+    padding:7px 4px;
     border:1px solid #4c3d2d;
     border-radius:7px;
-    background:
-        linear-gradient(
-            145deg,
-            #30271f,
-            #211b16
-        );
+    background:linear-gradient(145deg,#30271f,#211b16);
     color:#dfd0ba;
     cursor:pointer;
-    padding:8px 5px;
-    text-align:center;
     transition:.2s;
-    font-family:Arial,sans-serif;
 }
 
 .furniture:hover{
-    border-color:var(--gold);
     transform:translateY(-1px);
+    border-color:var(--gold);
     box-shadow:0 5px 15px rgba(0,0,0,.25);
 }
 
 .furniture .icon{
-    font-size:27px;
     display:block;
-    margin-bottom:6px;
+    margin-bottom:5px;
+    font-size:25px;
 }
 
-.furniture span{
-    font-size:10px;
+.furniture span:last-child{
+    font:10px Arial,sans-serif;
 }
 
 .library-note{
-    margin-top:18px;
-    padding:12px;
+    margin-top:16px;
+    padding:11px;
     border-left:2px solid var(--gold);
     background:rgba(201,164,92,.05);
     color:#a99b87;
-    font-family:Arial,sans-serif;
-    font-size:10px;
+    font:10px Arial,sans-serif;
     line-height:1.6;
 }
 
-/* =========================
-   CANVAS AREA
-========================= */
+/* WORKSPACE */
 
 .workspace{
     position:relative;
     overflow:hidden;
-    background:#b9ad99;
+    background:#b8ad99;
 }
 
 .canvas-topbar{
+    height:45px;
     position:absolute;
     top:0;
     left:0;
     right:0;
-    height:45px;
-    background:rgba(29,24,19,.96);
-    border-bottom:1px solid #4d3e2e;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 13px;
-    z-index:20;
+    padding:0 12px;
+    background:rgba(29,24,19,.97);
+    border-bottom:1px solid #4d3e2e;
+    z-index:40;
 }
 
 .canvas-tools{
@@ -310,31 +272,28 @@ body{
 }
 
 .canvas-btn{
+    padding:7px 10px;
     border:1px solid #4b3d2d;
+    border-radius:5px;
     background:#251f19;
     color:#d8c9b1;
-    padding:7px 10px;
-    border-radius:5px;
     cursor:pointer;
-    font-family:Arial,sans-serif;
-    font-size:11px;
+    font:10px Arial,sans-serif;
 }
 
 .canvas-btn:hover,
 .canvas-btn.active{
     border-color:var(--gold);
-    color:#fff;
+    color:white;
+    background:#30271f;
 }
 
 .canvas-info{
     color:#9f907b;
-    font-family:Arial,sans-serif;
-    font-size:10px;
+    font:10px Arial,sans-serif;
 }
 
-/* =========================
-   RULERS
-========================= */
+/* RULERS */
 
 .ruler-top{
     position:absolute;
@@ -344,7 +303,7 @@ body{
     height:25px;
     background:#d0c4b1;
     border-bottom:1px solid #988b76;
-    z-index:10;
+    z-index:20;
     overflow:hidden;
 }
 
@@ -352,12 +311,11 @@ body{
     position:absolute;
     top:70px;
     left:0;
-    bottom:0;
+    bottom:35px;
     width:35px;
     background:#d0c4b1;
     border-right:1px solid #988b76;
-    z-index:10;
-    overflow:hidden;
+    z-index:20;
 }
 
 .ruler-ticks{
@@ -365,27 +323,28 @@ body{
     inset:0;
 }
 
-.ruler-ticks::after{
-    content:"0    1    2    3    4    5    6    7    8    9    10 m";
+.ruler-top .ruler-ticks:after{
+    content:"0     1     2     3     4     5     6     7     8     9     10 m";
     position:absolute;
     top:5px;
     left:8px;
     white-space:pre;
-    font:8px Arial,sans-serif;
     color:#645b4e;
+    font:8px Arial,sans-serif;
 }
 
-.ruler-left .ruler-ticks::after{
+.ruler-left .ruler-ticks:after{
     content:"0\A\A1\A\A2\A\A3\A\A4\A\A5\A\A6\A\A7\A\A8\A\A9";
     white-space:pre;
+    position:absolute;
     left:9px;
     top:5px;
     line-height:24px;
+    color:#645b4e;
+    font:8px Arial,sans-serif;
 }
 
-/* =========================
-   CANVAS
-========================= */
+/* CANVAS */
 
 .canvas-scroll{
     position:absolute;
@@ -394,7 +353,7 @@ body{
     right:0;
     bottom:35px;
     overflow:auto;
-    padding:50px;
+    padding:45px;
 }
 
 .design-canvas{
@@ -403,25 +362,20 @@ body{
     height:570px;
     margin:auto;
     transform-origin:center center;
-    transition:transform .15s;
+    transition:transform .12s;
     background:
-        linear-gradient(
-            rgba(105,94,77,.15) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(105,94,77,.15) 1px,
-            transparent 1px
-        ),
+        linear-gradient(rgba(105,94,77,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(105,94,77,.15) 1px,transparent 1px),
         #dcd2c1;
     background-size:25px 25px;
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.35),
-        inset 0 0 0 1px rgba(60,45,30,.25);
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
-/* room wall */
+.design-canvas.no-grid{
+    background:#dcd2c1;
+}
+
+/* ROOM */
 
 .room{
     position:absolute;
@@ -430,39 +384,34 @@ body{
     width:700px;
     height:460px;
     background:
-        linear-gradient(
-            135deg,
-            #eadfcd,
-            #d8cbb7
-        );
-    border:15px solid #705b42;
-    box-shadow:
-        inset 0 0 0 2px #c4b297,
-        0 15px 35px rgba(0,0,0,.28);
-}
-
-/* floor planks */
-
-.room::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
         repeating-linear-gradient(
             0deg,
-            rgba(103,78,49,.09) 0px,
+            rgba(103,78,49,.09) 0,
             rgba(103,78,49,.09) 2px,
             transparent 2px,
             transparent 32px
         ),
         repeating-linear-gradient(
             90deg,
-            transparent 0px,
+            transparent 0,
             transparent 118px,
             rgba(103,78,49,.08) 119px,
             rgba(103,78,49,.08) 121px
-        );
+        ),
+        #d8c4a4;
+    border:15px solid #705b42;
+    box-shadow:
+        inset 0 0 0 2px #c4b297,
+        0 15px 35px rgba(0,0,0,.28);
+    overflow:hidden;
+}
+
+.room::after{
+    content:"";
+    position:absolute;
+    inset:0;
     pointer-events:none;
+    box-shadow:inset 0 0 60px rgba(80,55,30,.08);
 }
 
 .room-size-label{
@@ -477,7 +426,7 @@ body{
 
 .room-side-label{
     position:absolute;
-    left:-57px;
+    left:-58px;
     top:50%;
     transform:translateY(-50%) rotate(-90deg);
     color:#695b48;
@@ -485,9 +434,7 @@ body{
     white-space:nowrap;
 }
 
-/* =========================
-   OBJECTS
-========================= */
+/* OBJECT */
 
 .object{
     position:absolute;
@@ -496,14 +443,19 @@ body{
     justify-content:center;
     cursor:move;
     user-select:none;
-    z-index:5;
+    z-index:10;
     border:2px solid transparent;
-    transition:border-color .12s;
+    transition:border-color .1s,box-shadow .1s;
 }
 
 .object.selected{
     border:2px dashed #9a7434;
-    box-shadow:0 0 0 3px rgba(201,164,92,.12);
+    box-shadow:0 0 0 3px rgba(201,164,92,.15);
+}
+
+.object-icon{
+    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22));
+    pointer-events:none;
 }
 
 .object-label{
@@ -511,113 +463,160 @@ body{
     bottom:-18px;
     left:50%;
     transform:translateX(-50%);
+    white-space:nowrap;
     color:#5e503e;
     font:8px Arial,sans-serif;
-    white-space:nowrap;
     pointer-events:none;
 }
 
-.object-icon{
-    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22));
+/* WALL */
+
+.wall-object{
+    position:absolute;
+    background:#745d42;
+    border:1px solid #4f3d2a;
+    z-index:7;
+    cursor:move;
 }
 
-/* =========================
-   STATUS BAR
-========================= */
+.wall-object.selected{
+    outline:2px dashed var(--gold);
+}
+
+/* DOOR / WINDOW */
+
+.arch-object{
+    position:absolute;
+    z-index:8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#d2b582;
+    border:2px solid #80653e;
+    color:#3f3121;
+    cursor:move;
+    font:9px Arial,sans-serif;
+}
+
+.window-object{
+    background:#9eb8bf;
+    border-color:#637f87;
+}
+
+/* STATUS */
 
 .statusbar{
     position:absolute;
-    bottom:0;
     left:0;
     right:0;
+    bottom:0;
     height:35px;
-    background:#1c1712;
-    border-top:1px solid #4d3e2e;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 12px;
-    z-index:30;
-    font-family:Arial,sans-serif;
-    font-size:10px;
+    background:#1c1712;
+    border-top:1px solid #4d3e2e;
     color:#988a76;
+    font:10px Arial,sans-serif;
+    z-index:40;
 }
 
 .status-left{
     display:flex;
-    gap:18px;
+    gap:17px;
 }
 
 .status-online{
-    color:#b9c99d;
+    color:var(--green);
 }
 
-/* =========================
-   RIGHT PROPERTIES
-========================= */
+/* ZOOM */
+
+.zoom-control{
+    position:absolute;
+    right:14px;
+    bottom:48px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:5px;
+    background:#211b16;
+    border:1px solid #4d3e2d;
+    border-radius:6px;
+    z-index:50;
+}
+
+.zoom-control button{
+    width:27px;
+    height:27px;
+    border:1px solid #4a3b2c;
+    border-radius:4px;
+    background:#30271f;
+    color:#e0cfb3;
+    cursor:pointer;
+}
+
+.zoom-control span{
+    min-width:46px;
+    text-align:center;
+    color:#b7a891;
+    font:10px Arial,sans-serif;
+}
+
+/* RIGHT */
 
 .properties{
-    background:
-        linear-gradient(
-            180deg,
-            #29221b,
-            #1c1712
-        );
+    background:linear-gradient(180deg,#29221b,#1c1712);
     border-left:1px solid var(--line);
     overflow-y:auto;
-    padding:17px 15px 30px;
+    padding:15px;
 }
 
 .prop-card{
-    border:1px solid #4e3f2e;
-    background:#211b16;
-    border-radius:7px;
-    margin-bottom:13px;
     padding:13px;
+    margin-bottom:12px;
+    background:#211b16;
+    border:1px solid #4e3f2e;
+    border-radius:7px;
 }
 
 .prop-card h3{
+    margin-bottom:11px;
     color:#e7d6ba;
     font-size:13px;
     font-weight:normal;
-    margin-bottom:12px;
 }
 
 .prop-card h3 span{
-    color:var(--gold-light);
+    color:var(--gold2);
     margin-right:6px;
 }
 
 .field{
-    margin-bottom:10px;
+    margin-bottom:9px;
 }
 
 .field label{
     display:block;
+    margin-bottom:5px;
     color:#9e907d;
     font:9px Arial,sans-serif;
-    text-transform:uppercase;
     letter-spacing:1px;
-    margin-bottom:5px;
-}
-
-.field-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
+    text-transform:uppercase;
 }
 
 .field input,
 .field select{
     width:100%;
-    height:34px;
+    height:33px;
+    padding:0 8px;
     border:1px solid #4b3d2d;
-    background:#17130f;
-    color:#e5d6bd;
     border-radius:5px;
     outline:none;
-    padding:0 9px;
-    font:12px Arial,sans-serif;
+    background:#17130f;
+    color:#e5d6bd;
+    font:11px Arial,sans-serif;
 }
 
 .field input:focus,
@@ -625,21 +624,10 @@ body{
     border-color:var(--gold);
 }
 
-.color-row{
-    display:flex;
+.field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:7px;
-}
-
-.color{
-    width:30px;
-    height:30px;
-    border-radius:5px;
-    border:2px solid #4b3d2d;
-    cursor:pointer;
-}
-
-.color:hover{
-    border-color:#fff;
 }
 
 .action-grid{
@@ -649,11 +637,11 @@ body{
 }
 
 .action-btn{
-    height:34px;
+    min-height:33px;
     border:1px solid #4d3d2c;
+    border-radius:5px;
     background:#2b231b;
     color:#d9c9b0;
-    border-radius:5px;
     cursor:pointer;
     font:10px Arial,sans-serif;
 }
@@ -674,60 +662,72 @@ body{
     line-height:1.7;
 }
 
-/* =========================
-   ZOOM
-========================= */
+.layer-list{
+    max-height:150px;
+    overflow-y:auto;
+}
 
-.zoom-control{
-    position:absolute;
-    right:14px;
-    bottom:48px;
-    background:#211b16;
-    border:1px solid #4d3e2d;
-    border-radius:6px;
+.layer-item{
     display:flex;
     align-items:center;
-    gap:6px;
-    padding:5px;
-    z-index:25;
-}
-
-.zoom-control button{
-    width:27px;
-    height:27px;
-    background:#30271f;
-    border:1px solid #4a3b2c;
-    color:#e0cfb3;
-    cursor:pointer;
+    justify-content:space-between;
+    gap:5px;
+    padding:7px;
+    margin-bottom:4px;
+    border:1px solid #3f3326;
     border-radius:4px;
-}
-
-.zoom-control span{
-    min-width:46px;
-    text-align:center;
-    color:#b7a891;
+    background:#191510;
+    color:#cfc0a9;
+    cursor:pointer;
     font:10px Arial,sans-serif;
 }
 
-/* =========================
-   TOAST
-========================= */
+.layer-item:hover,
+.layer-item.active{
+    border-color:var(--gold);
+    color:#fff;
+}
+
+.layer-item small{
+    color:#81735f;
+}
+
+/* COLOR */
+
+.color-row{
+    display:flex;
+    gap:7px;
+}
+
+.color{
+    width:30px;
+    height:30px;
+    border:2px solid #4b3d2d;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.color:hover{
+    border-color:#fff;
+}
+
+/* TOAST */
 
 .toast{
     position:fixed;
     left:50%;
     bottom:55px;
     transform:translateX(-50%) translateY(20px);
-    background:#211b16;
-    border:1px solid var(--gold);
-    color:#f1dfc0;
     padding:10px 17px;
+    border:1px solid var(--gold);
     border-radius:6px;
+    background:#211b16;
+    color:#f1dfc0;
     font:11px Arial,sans-serif;
     opacity:0;
     pointer-events:none;
     transition:.3s;
-    z-index:100;
+    z-index:999;
 }
 
 .toast.show{
@@ -735,14 +735,34 @@ body{
     transform:translateX(-50%) translateY(0);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* MEASURE */
+
+.measure-line{
+    position:absolute;
+    height:2px;
+    background:#9b6835;
+    transform-origin:left center;
+    z-index:90;
+    pointer-events:none;
+}
+
+.measure-label{
+    position:absolute;
+    z-index:91;
+    padding:3px 6px;
+    border-radius:3px;
+    background:#211b16;
+    border:1px solid var(--gold);
+    color:#f1dfc0;
+    font:9px Arial,sans-serif;
+    pointer-events:none;
+}
+
+/* MOBILE */
 
 @media(max-width:1100px){
-
     .app{
-        grid-template-columns:210px 1fr 235px;
+        grid-template-columns:215px 1fr 245px;
     }
 
     .furniture-grid{
@@ -751,9 +771,7 @@ body{
 }
 
 @media(max-width:800px){
-
-    html,
-    body{
+    html,body{
         overflow:auto;
     }
 
@@ -765,8 +783,8 @@ body{
 
     .library,
     .properties{
-        max-height:none;
         border:none;
+        max-height:none;
     }
 
     .workspace{
@@ -777,13 +795,14 @@ body{
     .app-header{
         height:auto;
         min-height:72px;
-        gap:10px;
         flex-wrap:wrap;
+        gap:8px;
     }
 
     .header-tools{
         width:100%;
         justify-content:flex-end;
+        flex-wrap:wrap;
     }
 }
 </style>
@@ -795,9 +814,7 @@ body{
 
     <div class="brand">
 
-        <div class="brand-mark">
-            A
-        </div>
+        <div class="brand-mark">A</div>
 
         <div>
             <div class="brand-title">
@@ -805,7 +822,7 @@ body{
             </div>
 
             <div class="brand-sub">
-                ARCHITECTURAL PLANNER • V1.1
+                LUXURY ARCHITECTURAL PLANNER • V1.2
             </div>
         </div>
 
@@ -813,35 +830,33 @@ body{
 
     <div class="header-tools">
 
-        <button class="tool-btn" onclick="undoAction()" title="Undo">
-            ↶
-        </button>
+        <button class="tool-btn"
+                onclick="undoAction()"
+                title="Undo">↶</button>
 
-        <button class="tool-btn" onclick="redoAction()" title="Redo">
-            ↷
-        </button>
-
-        <div class="header-divider"></div>
-
-        <button class="tool-btn" onclick="resetView()">
-            ⌂
-        </button>
-
-        <button class="tool-btn" onclick="zoomOut()">
-            −
-        </button>
-
-        <button class="tool-btn" onclick="zoomIn()">
-            +
-        </button>
-
-        <button class="tool-btn" onclick="toggleFullscreen()">
-            ⛶
-        </button>
+        <button class="tool-btn"
+                onclick="redoAction()"
+                title="Redo">↷</button>
 
         <div class="header-divider"></div>
 
-        <button class="tool-btn gold" onclick="saveProject()">
+        <button class="tool-btn"
+                onclick="resetView()"
+                title="Reset">⌂</button>
+
+        <button class="tool-btn"
+                onclick="zoomOut()">−</button>
+
+        <button class="tool-btn"
+                onclick="zoomIn()">+</button>
+
+        <button class="tool-btn"
+                onclick="toggleFullscreen()">⛶</button>
+
+        <div class="header-divider"></div>
+
+        <button class="tool-btn gold"
+                onclick="saveProject()">
             💾 Simpan
         </button>
 
@@ -852,613 +867,779 @@ body{
 
 <div class="app">
 
-    <!-- =====================
-         LIBRARY
-    ====================== -->
+<!-- =====================================================
+     LIBRARY
+===================================================== -->
 
-    <aside class="library">
+<aside class="library">
 
-        <div class="section-label">
-            Project
-        </div>
+    <div class="section-label">Project</div>
 
-        <div class="project-name">
+    <div class="project-name">
+        <small>CURRENT PROJECT</small>
 
-            <small>
-                CURRENT PROJECT
-            </small>
-
-            <strong id="projectTitle">
-                Rumah Luxury Classic
-            </strong>
-
-        </div>
+        <strong id="projectTitle">
+            Rumah Luxury Classic
+        </strong>
+    </div>
 
 
-        <div class="section-label">
-            Furniture Library
-        </div>
+    <div class="section-label">Room Presets</div>
 
+    <div class="furniture-grid">
 
-        <button class="category">
+        <button class="furniture"
+                onclick="roomPreset('living')">
+            <span class="icon">🛋️</span>
             <span>Living Room</span>
-            <span>⌄</span>
         </button>
 
-        <div class="furniture-grid">
-
-            <button class="furniture"
-                    onclick="addFurniture('Sofa','🛋️',180,80)">
-                <span class="icon">🛋️</span>
-                <span>Sofa</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Armchair','🪑',75,75)">
-                <span class="icon">🪑</span>
-                <span>Armchair</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Coffee Table','▰',110,65)">
-                <span class="icon">▰</span>
-                <span>Coffee Table</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('TV Cabinet','▤',160,45)">
-                <span class="icon">▤</span>
-                <span>TV Cabinet</span>
-            </button>
-
-        </div>
-
-
-        <button class="category">
+        <button class="furniture"
+                onclick="roomPreset('bedroom')">
+            <span class="icon">🛏️</span>
             <span>Bedroom</span>
-            <span>⌄</span>
         </button>
 
-        <div class="furniture-grid">
-
-            <button class="furniture"
-                    onclick="addFurniture('Bed','🛏️',180,140)">
-                <span class="icon">🛏️</span>
-                <span>Bed</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Wardrobe','🚪',120,55)">
-                <span class="icon">🚪</span>
-                <span>Wardrobe</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Nightstand','▣',55,45)">
-                <span class="icon">▣</span>
-                <span>Nightstand</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Dresser','▥',120,45)">
-                <span class="icon">▥</span>
-                <span>Dresser</span>
-            </button>
-
-        </div>
-
-
-        <button class="category">
-            <span>Dining</span>
-            <span>⌄</span>
-        </button>
-
-        <div class="furniture-grid">
-
-            <button class="furniture"
-                    onclick="addFurniture('Dining Table','▰',170,85)">
-                <span class="icon">▰</span>
-                <span>Dining Table</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Dining Chair','🪑',55,55)">
-                <span class="icon">🪑</span>
-                <span>Dining Chair</span>
-            </button>
-
-        </div>
-
-
-        <button class="category">
+        <button class="furniture"
+                onclick="roomPreset('kitchen')">
+            <span class="icon">🍳</span>
             <span>Kitchen</span>
-            <span>⌄</span>
         </button>
 
-        <div class="furniture-grid">
-
-            <button class="furniture"
-                    onclick="addFurniture('Kitchen Set','▰',220,55)">
-                <span class="icon">🍳</span>
-                <span>Kitchen Set</span>
-            </button>
-
-            <button class="furniture"
-                    onclick="addFurniture('Kitchen Island','▰',130,65)">
-                <span class="icon">▰</span>
-                <span>Island</span>
-            </button>
-
-        </div>
-
-
-        <button class="category">
-            <span>Decor & Lighting</span>
-            <span>⌄</span>
+        <button class="furniture"
+                onclick="roomPreset('office')">
+            <span class="icon">💼</span>
+            <span>Office</span>
         </button>
 
-        <div class="furniture-grid">
+    </div>
 
-            <button class="furniture"
-                    onclick="addFurniture('Plant','🪴',55,55)">
-                <span class="icon">🪴</span>
-                <span>Plant</span>
+
+    <div class="section-label">
+        Furniture Library
+    </div>
+
+
+    <button class="category">
+        <span>Living Room</span>
+        <span>⌄</span>
+    </button>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addFurniture('Sofa','🛋️',180,80)">
+            <span class="icon">🛋️</span>
+            <span>Sofa</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Armchair','🪑',75,75)">
+            <span class="icon">🪑</span>
+            <span>Armchair</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Coffee Table','▰',110,65)">
+            <span class="icon">▰</span>
+            <span>Coffee Table</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('TV Cabinet','▤',160,45)">
+            <span class="icon">▤</span>
+            <span>TV Cabinet</span>
+        </button>
+
+    </div>
+
+
+    <button class="category">
+        <span>Bedroom</span>
+        <span>⌄</span>
+    </button>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addFurniture('Bed','🛏️',180,140)">
+            <span class="icon">🛏️</span>
+            <span>Bed</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Wardrobe','🚪',120,55)">
+            <span class="icon">🚪</span>
+            <span>Wardrobe</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Nightstand','▣',55,45)">
+            <span class="icon">▣</span>
+            <span>Nightstand</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Dresser','▥',120,45)">
+            <span class="icon">▥</span>
+            <span>Dresser</span>
+        </button>
+
+    </div>
+
+
+    <button class="category">
+        <span>Dining</span>
+        <span>⌄</span>
+    </button>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addFurniture('Dining Table','▰',170,85)">
+            <span class="icon">▰</span>
+            <span>Dining Table</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Dining Chair','🪑',55,55)">
+            <span class="icon">🪑</span>
+            <span>Dining Chair</span>
+        </button>
+
+    </div>
+
+
+    <button class="category">
+        <span>Kitchen</span>
+        <span>⌄</span>
+    </button>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addFurniture('Kitchen Set','🍳',220,55)">
+            <span class="icon">🍳</span>
+            <span>Kitchen Set</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Kitchen Island','▰',130,65)">
+            <span class="icon">▰</span>
+            <span>Island</span>
+        </button>
+
+    </div>
+
+
+    <button class="category">
+        <span>Decor & Lighting</span>
+        <span>⌄</span>
+    </button>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addFurniture('Plant','🪴',55,55)">
+            <span class="icon">🪴</span>
+            <span>Plant</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Floor Lamp','💡',45,75)">
+            <span class="icon">💡</span>
+            <span>Floor Lamp</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Rug','▦',160,100)">
+            <span class="icon">▦</span>
+            <span>Rug</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Painting','▭',100,45)">
+            <span class="icon">▭</span>
+            <span>Painting</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Ceiling Light','💡',50,50)">
+            <span class="icon">💡</span>
+            <span>Ceiling Light</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addFurniture('Console','▤',110,40)">
+            <span class="icon">▤</span>
+            <span>Console</span>
+        </button>
+
+    </div>
+
+
+    <div class="section-label">Architecture</div>
+
+    <div class="furniture-grid">
+
+        <button class="furniture"
+                onclick="addDoor()">
+            <span class="icon">🚪</span>
+            <span>Door</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addWindow()">
+            <span class="icon">▣</span>
+            <span>Window</span>
+        </button>
+
+        <button class="furniture"
+                onclick="addWall()">
+            <span class="icon">🧱</span>
+            <span>Wall</span>
+        </button>
+
+        <button class="furniture"
+                onclick="activateMeasure()">
+            <span class="icon">📏</span>
+            <span>Measure</span>
+        </button>
+
+    </div>
+
+
+    <div class="library-note">
+
+        <strong style="color:#d9bd83">
+            TIP
+        </strong>
+
+        <br><br>
+
+        Klik furniture untuk menambahkan.
+
+        <br><br>
+
+        Drag untuk memindahkan.
+
+        <br>
+
+        <b>Arrow</b> = geser object.
+
+        <br>
+
+        <b>Shift + Arrow</b> = geser cepat.
+
+        <br>
+
+        <b>Delete</b> = hapus.
+
+        <br>
+
+        <b>Ctrl + Z / Y</b> = Undo / Redo.
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     WORKSPACE
+===================================================== -->
+
+<main class="workspace" id="workspace">
+
+    <div class="canvas-topbar">
+
+        <div class="canvas-tools">
+
+            <button class="canvas-btn active"
+                    id="selectTool"
+                    onclick="setTool('select')">
+                ↖ Select
             </button>
 
-            <button class="furniture"
-                    onclick="addFurniture('Floor Lamp','💡',45,75)">
-                <span class="icon">💡</span>
-                <span>Floor Lamp</span>
+            <button class="canvas-btn"
+                    id="panTool"
+                    onclick="setTool('pan')">
+                ✋ Pan
             </button>
 
-            <button class="furniture"
-                    onclick="addFurniture('Rug','▦',160,100)">
-                <span class="icon">▦</span>
-                <span>Rug</span>
+            <button class="canvas-btn"
+                    id="measureTool"
+                    onclick="activateMeasure()">
+                📏 Measure
             </button>
 
-            <button class="furniture"
-                    onclick="addFurniture('Painting','▭',100,45)">
-                <span class="icon">▭</span>
-                <span>Painting</span>
+            <button class="canvas-btn"
+                    id="wallTool"
+                    onclick="addWall()">
+                🧱 Wall
+            </button>
+
+            <button class="canvas-btn"
+                    id="gridTool"
+                    onclick="toggleGrid()">
+                🧲 Grid
             </button>
 
         </div>
 
-
-        <div class="library-note">
-
-            <strong style="color:#d9bd83;">
-                TIP
-            </strong>
-
-            <br>
-
-            Klik furniture untuk memasukkannya
-            ke dalam ruangan.
-
-            <br><br>
-
-            Setelah masuk, furniture dapat
-            dipilih, dipindahkan, diputar,
-            diubah ukurannya, atau dihapus.
-
+        <div class="canvas-info">
+            FLOOR PLAN / 2D • V1.2
         </div>
 
-    </aside>
+    </div>
 
 
-    <!-- =====================
-         WORKSPACE
-    ====================== -->
+    <div class="ruler-top">
+        <div class="ruler-ticks"></div>
+    </div>
 
-    <main class="workspace" id="workspace">
-
-        <div class="canvas-topbar">
-
-            <div class="canvas-tools">
-
-                <button class="canvas-btn active">
-                    ↖ Select
-                </button>
-
-                <button class="canvas-btn">
-                    ✋ Pan
-                </button>
-
-                <button class="canvas-btn">
-                    📏 Measure
-                </button>
-
-                <button class="canvas-btn">
-                    🧱 Walls
-                </button>
-
-            </div>
-
-            <div class="canvas-info">
-                FLOOR PLAN / 2D
-            </div>
-
-        </div>
+    <div class="ruler-left">
+        <div class="ruler-ticks"></div>
+    </div>
 
 
-        <div class="ruler-top">
-            <div class="ruler-ticks"></div>
-        </div>
+    <div class="canvas-scroll">
 
-        <div class="ruler-left">
-            <div class="ruler-ticks"></div>
-        </div>
+        <div class="design-canvas"
+             id="designCanvas">
 
+            <div class="room"
+                 id="room">
 
-        <div class="canvas-scroll">
-
-            <div
-                class="design-canvas"
-                id="designCanvas"
-            >
-
-                <div class="room" id="room">
-
-                    <div class="room-size-label">
-                        6.00 m
-                    </div>
-
-                    <div class="room-side-label">
-                        4.00 m
-                    </div>
-
-                    <div
-                        id="objectsContainer"
-                    ></div>
-
+                <div class="room-size-label">
+                    6.00 m
                 </div>
 
+                <div class="room-side-label">
+                    4.00 m
+                </div>
+
+                <div id="objectsContainer"></div>
+
+                <div id="measureContainer"></div>
+
             </div>
 
         </div>
 
+    </div>
 
-        <div class="zoom-control">
 
-            <button onclick="zoomOut()">
-                −
-            </button>
+    <div class="zoom-control">
 
-            <span id="zoomText">
-                100%
+        <button onclick="zoomOut()">−</button>
+
+        <span id="zoomText">100%</span>
+
+        <button onclick="zoomIn()">+</button>
+
+    </div>
+
+
+    <div class="statusbar">
+
+        <div class="status-left">
+
+            <span class="status-online">
+                ● READY
             </span>
 
-            <button onclick="zoomIn()">
-                +
-            </button>
+            <span id="cursorPosition">
+                X: 0.00m / Y: 0.00m
+            </span>
 
-        </div>
+            <span id="objectCount">
+                Objects: 0
+            </span>
 
-
-        <div class="statusbar">
-
-            <div class="status-left">
-
-                <span class="status-online">
-                    ● READY
-                </span>
-
-                <span id="cursorPosition">
-                    X: 0.00m / Y: 0.00m
-                </span>
-
-                <span id="objectCount">
-                    Objects: 0
-                </span>
-
-            </div>
-
-            <span>
-                ALFA ENGINE V1.1
+            <span id="snapStatus">
+                SNAP: ON
             </span>
 
         </div>
 
-    </main>
+        <span>
+            ALFA ENGINE V1.2
+        </span>
+
+    </div>
+
+</main>
 
 
-    <!-- =====================
-         PROPERTIES
-    ====================== -->
+<!-- =====================================================
+     PROPERTIES
+===================================================== -->
 
-    <aside class="properties">
+<aside class="properties">
 
-        <div class="section-label">
-            Properties
-        </div>
+    <div class="section-label">
+        Properties
+    </div>
 
 
-        <div class="prop-card">
+    <!-- ROOM -->
 
-            <h3>
-                <span>▣</span>
-                Room Dimensions
-            </h3>
+    <div class="prop-card">
 
-            <div class="field-row">
+        <h3>
+            <span>▣</span>
+            Room Dimensions
+        </h3>
 
-                <div class="field">
-
-                    <label>
-                        Length
-                    </label>
-
-                    <input
-                        id="roomLength"
-                        type="number"
-                        value="6"
-                        min="1"
-                        max="30"
-                        step=".1"
-                        onchange="updateRoomDimensions()"
-                    >
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Width
-                    </label>
-
-                    <input
-                        id="roomWidth"
-                        type="number"
-                        value="4"
-                        min="1"
-                        max="30"
-                        step=".1"
-                        onchange="updateRoomDimensions()"
-                    >
-
-                </div>
-
-            </div>
-
+        <div class="field-row">
 
             <div class="field">
 
-                <label>
-                    Wall Thickness
-                </label>
+                <label>Length</label>
 
-                <select>
-                    <option>15 cm</option>
-                    <option>10 cm</option>
-                    <option>20 cm</option>
-                    <option>25 cm</option>
-                </select>
-
-            </div>
-
-        </div>
-
-
-        <div class="prop-card">
-
-            <h3>
-                <span>◆</span>
-                Selected Object
-            </h3>
-
-            <div
-                id="selectionPanel"
-                class="empty-selection"
-            >
-                Belum ada object dipilih.
-
-                <br><br>
-
-                Klik furniture pada canvas
-                untuk melihat properties.
+                <input id="roomLength"
+                       type="number"
+                       value="6"
+                       min="1"
+                       max="30"
+                       step=".1"
+                       onchange="updateRoomDimensions()">
 
             </div>
-
-        </div>
-
-
-        <div class="prop-card">
-
-            <h3>
-                <span>✦</span>
-                Floor Material
-            </h3>
 
             <div class="field">
 
-                <select
-                    id="floorMaterial"
-                    onchange="changeFloor(this.value)"
-                >
+                <label>Width</label>
 
-                    <option value="wood">
-                        Classic Oak
-                    </option>
-
-                    <option value="marble">
-                        White Marble
-                    </option>
-
-                    <option value="stone">
-                        Natural Stone
-                    </option>
-
-                    <option value="concrete">
-                        Modern Concrete
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="color-row">
-
-                <div
-                    class="color"
-                    style="background:#d7c4a5"
-                    onclick="setFloorColor('#d7c4a5')"
-                ></div>
-
-                <div
-                    class="color"
-                    style="background:#eee8dc"
-                    onclick="setFloorColor('#eee8dc')"
-                ></div>
-
-                <div
-                    class="color"
-                    style="background:#9d9180"
-                    onclick="setFloorColor('#9d9180')"
-                ></div>
-
-                <div
-                    class="color"
-                    style="background:#6f665c"
-                    onclick="setFloorColor('#6f665c')"
-                ></div>
+                <input id="roomWidth"
+                       type="number"
+                       value="4"
+                       min="1"
+                       max="30"
+                       step=".1"
+                       onchange="updateRoomDimensions()">
 
             </div>
 
         </div>
 
 
-        <div class="prop-card">
+        <div class="field">
 
-            <h3>
-                <span>↻</span>
-                Object Actions
-            </h3>
+            <label>Wall Thickness</label>
 
-            <div class="action-grid">
+            <select id="wallThickness"
+                    onchange="updateWallThickness()">
 
-                <button
-                    class="action-btn"
-                    onclick="rotateSelected(-15)"
-                >
-                    ↶ Rotate
-                </button>
+                <option value="15">15 cm</option>
+                <option value="10">10 cm</option>
+                <option value="20">20 cm</option>
+                <option value="25">25 cm</option>
 
-                <button
-                    class="action-btn"
-                    onclick="rotateSelected(15)"
-                >
-                    Rotate ↷
-                </button>
-
-                <button
-                    class="action-btn"
-                    onclick="duplicateSelected()"
-                >
-                    ⧉ Duplicate
-                </button>
-
-                <button
-                    class="action-btn danger"
-                    onclick="deleteSelected()"
-                >
-                    🗑 Delete
-                </button>
-
-            </div>
+            </select>
 
         </div>
 
+    </div>
 
-        <div class="prop-card">
 
-            <h3>
-                <span>⌘</span>
-                Project
-            </h3>
+    <!-- SELECTED -->
 
-            <div class="field">
+    <div class="prop-card">
 
-                <label>
-                    Project Name
-                </label>
+        <h3>
+            <span>◆</span>
+            Selected Object
+        </h3>
 
-                <input
-                    id="projectName"
-                    value="Rumah Luxury Classic"
-                    onchange="updateProjectName()"
-                >
+        <div id="selectionPanel"
+             class="empty-selection">
 
-            </div>
-
-            <button
-                class="action-btn"
-                style="width:100%;"
-                onclick="saveProject()"
-            >
-                💾 Save Project
-            </button>
+            Belum ada object dipilih.
 
             <br><br>
 
-            <button
-                class="action-btn"
-                style="width:100%;"
-                onclick="loadProject()"
-            >
-                ↻ Load Saved Project
-            </button>
+            Klik furniture pada canvas
+            untuk melihat properties.
+
+        </div>
+
+    </div>
+
+
+    <!-- MATERIAL -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>✦</span>
+            Floor Material
+        </h3>
+
+        <div class="field">
+
+            <select id="floorMaterial"
+                    onchange="changeFloor(this.value)">
+
+                <option value="wood">
+                    Classic Oak
+                </option>
+
+                <option value="marble">
+                    White Marble
+                </option>
+
+                <option value="stone">
+                    Natural Stone
+                </option>
+
+                <option value="concrete">
+                    Modern Concrete
+                </option>
+
+            </select>
 
         </div>
 
 
-        <div class="prop-card">
+        <div class="color-row">
 
-            <h3>
-                <span>⚙</span>
-                Canvas
-            </h3>
+            <div class="color"
+                 style="background:#d7c4a5"
+                 onclick="setFloorColor('#d7c4a5')">
+            </div>
 
-            <button
-                class="action-btn"
-                style="width:100%;"
-                onclick="resetView()"
-            >
-                Reset View
+            <div class="color"
+                 style="background:#eee8dc"
+                 onclick="setFloorColor('#eee8dc')">
+            </div>
+
+            <div class="color"
+                 style="background:#9d9180"
+                 onclick="setFloorColor('#9d9180')">
+            </div>
+
+            <div class="color"
+                 style="background:#6f665c"
+                 onclick="setFloorColor('#6f665c')">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- OBJECT ACTIONS -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>↻</span>
+            Object Actions
+        </h3>
+
+        <div class="action-grid">
+
+            <button class="action-btn"
+                    onclick="rotateSelected(-15)">
+                ↶ Rotate
             </button>
 
-            <br><br>
+            <button class="action-btn"
+                    onclick="rotateSelected(15)">
+                Rotate ↷
+            </button>
 
-            <button
-                class="action-btn"
-                style="width:100%;"
-                onclick="clearObjects()"
-            >
-                Clear Furniture
+            <button class="action-btn"
+                    onclick="duplicateSelected()">
+                ⧉ Duplicate
+            </button>
+
+            <button class="action-btn danger"
+                    onclick="deleteSelected()">
+                🗑 Delete
             </button>
 
         </div>
 
-    </aside>
+    </div>
+
+
+    <!-- MATERIAL OBJECT -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>◆</span>
+            Object Material
+        </h3>
+
+        <div class="field">
+
+            <select id="objectMaterial"
+                    onchange="changeObjectMaterial(this.value)">
+
+                <option value="wood">
+                    Premium Wood
+                </option>
+
+                <option value="marble">
+                    Marble
+                </option>
+
+                <option value="fabric">
+                    Luxury Fabric
+                </option>
+
+                <option value="metal">
+                    Brushed Metal
+                </option>
+
+                <option value="glass">
+                    Glass
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- LAYERS -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>☷</span>
+            Object / Layers
+        </h3>
+
+        <div id="layerList"
+             class="layer-list">
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>⌘</span>
+            Project
+        </h3>
+
+        <div class="field">
+
+            <label>Project Name</label>
+
+            <input id="projectName"
+                   value="Rumah Luxury Classic"
+                   onchange="updateProjectName()">
+
+        </div>
+
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="saveProject()">
+            💾 Save Project
+        </button>
+
+        <br><br>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="loadProject()">
+            ↻ Load Saved Project
+        </button>
+
+    </div>
+
+
+    <!-- FILE -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>⇩</span>
+            Project File
+        </h3>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="exportJSON()">
+            ⇩ Export JSON
+        </button>
+
+        <br><br>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="document.getElementById('importFile').click()">
+            ⇧ Import JSON
+        </button>
+
+        <input type="file"
+               id="importFile"
+               accept=".json"
+               style="display:none"
+               onchange="importJSON(event)">
+
+        <br><br>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="exportPNG()">
+            🖼 Export PNG
+        </button>
+
+    </div>
+
+
+    <!-- CANVAS -->
+
+    <div class="prop-card">
+
+        <h3>
+            <span>⚙</span>
+            Canvas
+        </h3>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="resetView()">
+            Reset View
+        </button>
+
+        <br><br>
+
+        <button class="action-btn"
+                style="width:100%"
+                onclick="clearObjects()">
+            Clear Furniture
+        </button>
+
+    </div>
+
+</aside>
 
 </div>
 
 
-<div
-    class="toast"
-    id="toast"
->
-    Project berhasil disimpan.
+<div class="toast"
+     id="toast">
 </div>
 
 
 <script>
 
-/* =====================================
-   ALFA INTERIOR DESIGNER V1.1
+/* =========================================================
+   ALFA INTERIOR DESIGNER V1.2
    CORE ENGINE
-===================================== */
+========================================================= */
 
 let objects = [];
 let selectedObject = null;
@@ -1469,10 +1650,21 @@ let zoomLevel = 1;
 let undoStack = [];
 let redoStack = [];
 
+let dragging = false;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
 
-/* =====================================
+let snapEnabled = true;
+let gridEnabled = true;
+let currentTool = "select";
+
+let measureStart = null;
+let measureActive = false;
+
+
+/* =========================================================
    TOAST
-===================================== */
+========================================================= */
 
 function showToast(message){
 
@@ -1483,17 +1675,36 @@ function showToast(message){
 
     toast.classList.add("show");
 
-    setTimeout(function(){
+    clearTimeout(window.toastTimer);
 
-        toast.classList.remove("show");
+    window.toastTimer =
+        setTimeout(function(){
 
-    },2200);
+            toast.classList.remove("show");
+
+        },2200);
 }
 
 
-/* =====================================
-   SAVE STATE FOR UNDO
-===================================== */
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   SAVE STATE
+========================================================= */
 
 function saveState(){
 
@@ -1501,7 +1712,7 @@ function saveState(){
         JSON.stringify(objects)
     );
 
-    if(undoStack.length > 30){
+    if(undoStack.length > 40){
 
         undoStack.shift();
 
@@ -1512,9 +1723,24 @@ function saveState(){
 }
 
 
-/* =====================================
+/* =========================================================
+   SNAP
+========================================================= */
+
+function snapValue(value){
+
+    if(!snapEnabled){
+        return value;
+    }
+
+    return Math.round(value / 10) * 10;
+
+}
+
+
+/* =========================================================
    ADD FURNITURE
-===================================== */
+========================================================= */
 
 function addFurniture(
     name,
@@ -1525,15 +1751,14 @@ function addFurniture(
 
     saveState();
 
-    const room =
-        document.getElementById("room");
-
     const id =
         ++objectId;
 
     const object = {
 
         id:id,
+
+        type:"furniture",
 
         name:name,
 
@@ -1543,34 +1768,168 @@ function addFurniture(
 
         height:height,
 
-        x:
-            300 + Math.random()*100,
+        x:snapValue(
+            280 + Math.random()*150
+        ),
 
-        y:
-            170 + Math.random()*100,
+        y:snapValue(
+            140 + Math.random()*150
+        ),
 
-        rotation:0
+        rotation:0,
+
+        material:"wood"
 
     };
 
     objects.push(object);
 
-    renderObject(object);
+    renderAll();
 
     selectObject(id);
 
-    updateObjectCount();
-
     showToast(
-        name + " ditambahkan ke ruangan."
+        name + " ditambahkan."
     );
 
 }
 
 
-/* =====================================
+/* =========================================================
+   ADD DOOR
+========================================================= */
+
+function addDoor(){
+
+    saveState();
+
+    const id =
+        ++objectId;
+
+    objects.push({
+
+        id:id,
+
+        type:"door",
+
+        name:"Door",
+
+        icon:"🚪",
+
+        width:85,
+
+        height:18,
+
+        x:300,
+
+        y:20,
+
+        rotation:0,
+
+        material:"wood"
+
+    });
+
+    renderAll();
+
+    selectObject(id);
+
+    showToast("Door ditambahkan.");
+
+}
+
+
+/* =========================================================
+   ADD WINDOW
+========================================================= */
+
+function addWindow(){
+
+    saveState();
+
+    const id =
+        ++objectId;
+
+    objects.push({
+
+        id:id,
+
+        type:"window",
+
+        name:"Window",
+
+        icon:"▣",
+
+        width:120,
+
+        height:18,
+
+        x:420,
+
+        y:20,
+
+        rotation:0,
+
+        material:"glass"
+
+    });
+
+    renderAll();
+
+    selectObject(id);
+
+    showToast("Window ditambahkan.");
+
+}
+
+
+/* =========================================================
+   ADD WALL
+========================================================= */
+
+function addWall(){
+
+    saveState();
+
+    const id =
+        ++objectId;
+
+    objects.push({
+
+        id:id,
+
+        type:"wall",
+
+        name:"Interior Wall",
+
+        icon:"🧱",
+
+        width:220,
+
+        height:15,
+
+        x:240,
+
+        y:180,
+
+        rotation:0,
+
+        material:"wood"
+
+    });
+
+    renderAll();
+
+    selectObject(id);
+
+    showToast("Wall ditambahkan.");
+
+}
+
+
+/* =========================================================
    RENDER OBJECT
-===================================== */
+========================================================= */
 
 function renderObject(object){
 
@@ -1582,8 +1941,33 @@ function renderObject(object){
     const el =
         document.createElement("div");
 
-    el.className =
-        "object";
+
+    if(object.type === "wall"){
+
+        el.className =
+            "wall-object";
+
+    }else if(
+        object.type === "door"
+    ){
+
+        el.className =
+            "arch-object";
+
+    }else if(
+        object.type === "window"
+    ){
+
+        el.className =
+            "arch-object window-object";
+
+    }else{
+
+        el.className =
+            "object";
+
+    }
+
 
     el.dataset.id =
         object.id;
@@ -1605,34 +1989,65 @@ function renderObject(object){
         object.rotation +
         "deg)";
 
-    const icon =
-        document.createElement("div");
 
-    icon.className =
-        "object-icon";
+    if(object.type === "wall"){
 
-    icon.textContent =
-        object.icon;
+        el.innerHTML = "";
 
-    icon.style.fontSize =
-        Math.min(
-            object.width,
-            object.height
-        ) * .42 + "px";
+    }else{
 
-    el.appendChild(icon);
+        const icon =
+            document.createElement("div");
+
+        icon.className =
+            "object-icon";
+
+        icon.textContent =
+            object.icon || "▣";
+
+        icon.style.fontSize =
+            Math.min(
+                object.width,
+                object.height
+            ) * .42 + "px";
+
+        el.appendChild(icon);
+
+        if(
+            object.type === "door" ||
+            object.type === "window"
+        ){
+
+            const text =
+                document.createElement("span");
+
+            text.textContent =
+                object.name;
+
+            el.appendChild(text);
+
+        }
+
+    }
 
 
-    const label =
-        document.createElement("div");
+    if(object.type === "furniture"){
 
-    label.className =
-        "object-label";
+        const label =
+            document.createElement("div");
 
-    label.textContent =
-        object.name;
+        label.className =
+            "object-label";
 
-    el.appendChild(label);
+        label.textContent =
+            object.name;
+
+        el.appendChild(label);
+
+    }
+
+
+    applyMaterial(el,object.material);
 
 
     el.addEventListener(
@@ -1646,7 +2061,9 @@ function renderObject(object){
 
             e.stopPropagation();
 
-            selectObject(object.id);
+            selectObject(
+                object.id
+            );
 
         }
     );
@@ -1657,9 +2074,9 @@ function renderObject(object){
 }
 
 
-/* =====================================
+/* =========================================================
    RENDER ALL
-===================================== */
+========================================================= */
 
 function renderAll(){
 
@@ -1670,39 +2087,46 @@ function renderAll(){
 
     container.innerHTML = "";
 
-    objects.forEach(function(object){
-
-        renderObject(object);
-
-    });
+    objects.forEach(
+        renderObject
+    );
 
     updateObjectCount();
+
+    updateLayerList();
 
 }
 
 
-/* =====================================
-   SELECT OBJECT
-===================================== */
+/* =========================================================
+   SELECT
+========================================================= */
 
 function selectObject(id){
 
     selectedObject =
-        objects.find(function(o){
+        objects.find(
+            function(o){
 
-            return o.id === id;
+                return o.id === id;
 
-        });
+            }
+        );
+
 
     document
-        .querySelectorAll(".object")
-        .forEach(function(el){
+        .querySelectorAll(
+            ".object,.wall-object,.arch-object"
+        )
+        .forEach(
+            function(el){
 
-            el.classList.remove(
-                "selected"
-            );
+                el.classList.remove(
+                    "selected"
+                );
 
-        });
+            }
+        );
 
 
     if(!selectedObject){
@@ -1710,7 +2134,9 @@ function selectObject(id){
         document.getElementById(
             "selectionPanel"
         ).innerHTML =
-        "Belum ada object dipilih.";
+            "Belum ada object dipilih.";
+
+        updateLayerList();
 
         return;
 
@@ -1719,10 +2145,11 @@ function selectObject(id){
 
     const selected =
         document.querySelector(
-            '.object[data-id="' +
+            '[data-id="' +
             id +
             '"]'
         );
+
 
     if(selected){
 
@@ -1735,23 +2162,32 @@ function selectObject(id){
 
     updateSelectionPanel();
 
+    updateLayerList();
+
 }
 
 
-/* =====================================
+/* =========================================================
    SELECTION PANEL
-===================================== */
+========================================================= */
 
 function updateSelectionPanel(){
 
     if(!selectedObject){
 
+        document.getElementById(
+            "selectionPanel"
+        ).innerHTML =
+            "Belum ada object dipilih.";
+
         return;
 
     }
 
+
     const o =
         selectedObject;
+
 
     document.getElementById(
         "selectionPanel"
@@ -1776,9 +2212,14 @@ function updateSelectionPanel(){
 
                 <input
                     type="number"
-                    value="${o.width}"
-                    min="20"
-                    onchange="changeSelectedSize('width',this.value)"
+                    value="${Math.round(o.width)}"
+                    min="10"
+                    onchange="
+                        changeSelectedSize(
+                            'width',
+                            this.value
+                        )
+                    "
                 >
 
             </div>
@@ -1789,9 +2230,14 @@ function updateSelectionPanel(){
 
                 <input
                     type="number"
-                    value="${o.height}"
-                    min="20"
-                    onchange="changeSelectedSize('height',this.value)"
+                    value="${Math.round(o.height)}"
+                    min="10"
+                    onchange="
+                        changeSelectedSize(
+                            'height',
+                            this.value
+                        )
+                    "
                 >
 
             </div>
@@ -1804,8 +2250,12 @@ function updateSelectionPanel(){
 
             <input
                 type="number"
-                value="${o.rotation}"
-                onchange="changeSelectedRotation(this.value)"
+                value="${Math.round(o.rotation)}"
+                onchange="
+                    changeSelectedRotation(
+                        this.value
+                    )
+                "
             >
 
         </div>
@@ -1813,43 +2263,159 @@ function updateSelectionPanel(){
         <div style="
             color:#877966;
             font:9px Arial;
-            line-height:1.6;
+            line-height:1.7;
         ">
-            Posisi:
-            X ${Math.round(o.x)}
-            / Y ${Math.round(o.y)}
-        </div>
 
+            Type:
+            ${escapeHTML(o.type)}
+
+            <br>
+
+            Position:
+            X ${Math.round(o.x)}
+            /
+            Y ${Math.round(o.y)}
+
+        </div>
     `;
 
-}
 
+    const material =
+        document.getElementById(
+            "objectMaterial"
+        );
 
-/* =====================================
-   ESCAPE HTML
-===================================== */
+    if(material){
 
-function escapeHTML(value){
+        material.value =
+            o.material || "wood";
 
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    }
 
 }
 
 
-/* =====================================
-   DRAG SYSTEM
-===================================== */
+/* =========================================================
+   MATERIAL
+========================================================= */
 
-let dragging = false;
-let dragOffsetX = 0;
-let dragOffsetY = 0;
+function applyMaterial(
+    el,
+    material
+){
+
+    el.style.background = "";
+
+    el.style.color = "";
+
+    if(material === "wood"){
+
+        if(
+            el.classList.contains(
+                "object"
+            )
+        ){
+
+            el.style.background =
+                "linear-gradient(145deg,#9a7046,#5d3e24)";
+
+            el.style.color =
+                "#f5e5c8";
+
+        }
+
+    }
+
+    if(material === "marble"){
+
+        el.style.background =
+            "linear-gradient(135deg,#eee9df,#cfc7b9)";
+
+        el.style.color =
+            "#403a32";
+
+    }
+
+    if(material === "fabric"){
+
+        el.style.background =
+            "linear-gradient(145deg,#806c5b,#4c4036)";
+
+        el.style.color =
+            "#eee1d0";
+
+    }
+
+    if(material === "metal"){
+
+        el.style.background =
+            "linear-gradient(145deg,#b8b0a5,#5e5952)";
+
+        el.style.color =
+            "#fff";
+
+    }
+
+    if(material === "glass"){
+
+        el.style.background =
+            "linear-gradient(145deg,rgba(190,220,225,.85),rgba(90,130,140,.7))";
+
+        el.style.color =
+            "#173039";
+
+    }
+
+}
+
+
+/* =========================================================
+   CHANGE MATERIAL
+========================================================= */
+
+function changeObjectMaterial(
+    material
+){
+
+    if(!selectedObject){
+
+        showToast(
+            "Pilih object dahulu."
+        );
+
+        return;
+
+    }
+
+    saveState();
+
+    selectedObject.material =
+        material;
+
+    renderAll();
+
+    selectObject(
+        selectedObject.id
+    );
+
+    showToast(
+        "Material diperbarui."
+    );
+
+}
+
+
+/* =========================================================
+   DRAG
+========================================================= */
 
 function startDrag(e){
+
+    if(currentTool !== "select"){
+
+        return;
+
+    }
 
     const id =
         Number(
@@ -1860,13 +2426,10 @@ function startDrag(e){
 
     dragging = true;
 
+
     const rect =
         e.currentTarget.getBoundingClientRect();
 
-    const roomRect =
-        document
-        .getElementById("room")
-        .getBoundingClientRect();
 
     dragOffsetX =
         e.clientX -
@@ -1879,8 +2442,10 @@ function startDrag(e){
 
     function move(event){
 
-        if(!dragging ||
-           !selectedObject){
+        if(
+            !dragging ||
+            !selectedObject
+        ){
 
             return;
 
@@ -1899,6 +2464,7 @@ function startDrag(e){
             zoomLevel -
             dragOffsetX;
 
+
         let y =
             (event.clientY -
             roomRect.top) /
@@ -1907,49 +2473,70 @@ function startDrag(e){
 
 
         const maxX =
-            roomRect.width /
-            zoomLevel -
-            selectedObject.width;
+            Math.max(
+                0,
+                roomRect.width /
+                zoomLevel -
+                selectedObject.width
+            );
+
 
         const maxY =
-            roomRect.height /
-            zoomLevel -
-            selectedObject.height;
+            Math.max(
+                0,
+                roomRect.height /
+                zoomLevel -
+                selectedObject.height
+            );
 
 
         x =
             Math.max(
                 0,
-                Math.min(x,maxX)
+                Math.min(
+                    x,
+                    maxX
+                )
             );
+
 
         y =
             Math.max(
                 0,
-                Math.min(y,maxY)
+                Math.min(
+                    y,
+                    maxY
+                )
             );
 
 
-        selectedObject.x = x;
-        selectedObject.y = y;
+        selectedObject.x =
+            snapValue(x);
+
+        selectedObject.y =
+            snapValue(y);
 
 
         const el =
             document.querySelector(
-                '.object[data-id="' +
+                '[data-id="' +
                 selectedObject.id +
                 '"]'
             );
 
+
         if(el){
 
             el.style.left =
-                x + "px";
+                selectedObject.x +
+                "px";
 
             el.style.top =
-                y + "px";
+                selectedObject.y +
+                "px";
 
         }
+
 
         updateSelectionPanel();
 
@@ -1992,16 +2579,16 @@ function startDrag(e){
 }
 
 
-/* =====================================
+/* =========================================================
    DELETE
-===================================== */
+========================================================= */
 
 function deleteSelected(){
 
     if(!selectedObject){
 
         showToast(
-            "Pilih furniture terlebih dahulu."
+            "Pilih object terlebih dahulu."
         );
 
         return;
@@ -2014,11 +2601,13 @@ function deleteSelected(){
         selectedObject.id;
 
     objects =
-        objects.filter(function(o){
+        objects.filter(
+            function(o){
 
-            return o.id !== id;
+                return o.id !== id;
 
-        });
+            }
+        );
 
     selectedObject = null;
 
@@ -2027,22 +2616,22 @@ function deleteSelected(){
     updateSelectionPanel();
 
     showToast(
-        "Furniture dihapus."
+        "Object dihapus."
     );
 
 }
 
 
-/* =====================================
+/* =========================================================
    DUPLICATE
-===================================== */
+========================================================= */
 
 function duplicateSelected(){
 
     if(!selectedObject){
 
         showToast(
-            "Pilih furniture terlebih dahulu."
+            "Pilih object terlebih dahulu."
         );
 
         return;
@@ -2060,32 +2649,43 @@ function duplicateSelected(){
     copy.id =
         ++objectId;
 
-    copy.x += 30;
-    copy.y += 30;
+    copy.x =
+        Math.min(
+            copy.x + 30,
+            620
+        );
+
+    copy.y =
+        Math.min(
+            copy.y + 30,
+            380
+        );
 
     objects.push(copy);
 
     renderAll();
 
-    selectObject(copy.id);
+    selectObject(
+        copy.id
+    );
 
     showToast(
-        "Furniture berhasil diduplikasi."
+        "Object diduplikasi."
     );
 
 }
 
 
-/* =====================================
+/* =========================================================
    ROTATE
-===================================== */
+========================================================= */
 
 function rotateSelected(amount){
 
     if(!selectedObject){
 
         showToast(
-            "Pilih furniture terlebih dahulu."
+            "Pilih object terlebih dahulu."
         );
 
         return;
@@ -2094,7 +2694,8 @@ function rotateSelected(amount){
 
     saveState();
 
-    selectedObject.rotation += amount;
+    selectedObject.rotation +=
+        amount;
 
     renderAll();
 
@@ -2105,9 +2706,9 @@ function rotateSelected(amount){
 }
 
 
-/* =====================================
-   CHANGE SIZE
-===================================== */
+/* =========================================================
+   SIZE
+========================================================= */
 
 function changeSelectedSize(
     property,
@@ -2115,22 +2716,22 @@ function changeSelectedSize(
 ){
 
     if(!selectedObject){
+        return;
+    }
+
+    value =
+        Number(value);
+
+    if(
+        !Number.isFinite(value) ||
+        value < 10
+    ){
 
         return;
 
     }
 
     saveState();
-
-    value =
-        Number(value);
-
-    if(!Number.isFinite(value) ||
-       value < 20){
-
-        return;
-
-    }
 
     selectedObject[property] =
         value;
@@ -2144,18 +2745,16 @@ function changeSelectedSize(
 }
 
 
-/* =====================================
-   CHANGE ROTATION
-===================================== */
+/* =========================================================
+   ROTATION INPUT
+========================================================= */
 
 function changeSelectedRotation(
     value
 ){
 
     if(!selectedObject){
-
         return;
-
     }
 
     saveState();
@@ -2172,18 +2771,16 @@ function changeSelectedRotation(
 }
 
 
-/* =====================================
-   CHANGE NAME
-===================================== */
+/* =========================================================
+   NAME
+========================================================= */
 
 function changeSelectedName(
     value
 ){
 
     if(!selectedObject){
-
         return;
-
     }
 
     saveState();
@@ -2200,9 +2797,9 @@ function changeSelectedName(
 }
 
 
-/* =====================================
-   OBJECT COUNT
-===================================== */
+/* =========================================================
+   COUNT
+========================================================= */
 
 function updateObjectCount(){
 
@@ -2215,9 +2812,72 @@ function updateObjectCount(){
 }
 
 
-/* =====================================
+/* =========================================================
+   LAYER LIST
+========================================================= */
+
+function updateLayerList(){
+
+    const list =
+        document.getElementById(
+            "layerList"
+        );
+
+    if(!list){
+        return;
+    }
+
+    if(objects.length === 0){
+
+        list.innerHTML =
+            '<div style="color:#81735f;font:10px Arial;padding:6px">No objects</div>';
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        objects
+        .slice()
+        .reverse()
+        .map(
+            function(o){
+
+                return `
+
+                    <div
+                        class="layer-item ${
+                            selectedObject &&
+                            selectedObject.id === o.id
+                            ? "active"
+                            : ""
+                        }"
+                        onclick="selectObject(${o.id})"
+                    >
+
+                        <span>
+                            ${escapeHTML(o.icon || "▣")}
+                            ${escapeHTML(o.name)}
+                        </span>
+
+                        <small>
+                            ${escapeHTML(o.type)}
+                        </small>
+
+                    </div>
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
    ROOM DIMENSIONS
-===================================== */
+========================================================= */
 
 function updateRoomDimensions(){
 
@@ -2226,14 +2886,14 @@ function updateRoomDimensions(){
             document.getElementById(
                 "roomLength"
             ).value
-        );
+        ) || 6;
 
     const width =
         Number(
             document.getElementById(
                 "roomWidth"
             ).value
-        );
+        ) || 4;
 
 
     document.querySelector(
@@ -2257,9 +2917,36 @@ function updateRoomDimensions(){
 }
 
 
-/* =====================================
+/* =========================================================
+   WALL THICKNESS
+========================================================= */
+
+function updateWallThickness(){
+
+    const thickness =
+        Number(
+            document.getElementById(
+                "wallThickness"
+            ).value
+        ) || 15;
+
+    document.getElementById(
+        "room"
+    ).style.borderWidth =
+        thickness + "px";
+
+    showToast(
+        "Wall thickness: " +
+        thickness +
+        " cm"
+    );
+
+}
+
+
+/* =========================================================
    FLOOR
-===================================== */
+========================================================= */
 
 function changeFloor(type){
 
@@ -2275,14 +2962,14 @@ function changeFloor(type){
         `
         repeating-linear-gradient(
             0deg,
-            rgba(103,78,49,.10) 0px,
+            rgba(103,78,49,.10) 0,
             rgba(103,78,49,.10) 2px,
             transparent 2px,
             transparent 32px
         ),
         repeating-linear-gradient(
             90deg,
-            transparent 0px,
+            transparent 0,
             transparent 118px,
             rgba(103,78,49,.08) 119px,
             rgba(103,78,49,.08) 121px
@@ -2304,7 +2991,7 @@ function changeFloor(type){
         `
         repeating-linear-gradient(
             45deg,
-            #aaa093 0px,
+            #aaa093 0,
             #aaa093 3px,
             #a09587 3px,
             #a09587 42px
@@ -2326,6 +3013,7 @@ function changeFloor(type){
     room.style.background =
         patterns[type] ||
         patterns.wood;
+
 
     showToast(
         "Material lantai: " +
@@ -2349,9 +3037,9 @@ function setFloorColor(color){
 }
 
 
-/* =====================================
+/* =========================================================
    PROJECT NAME
-===================================== */
+========================================================= */
 
 function updateProjectName(){
 
@@ -2363,20 +3051,21 @@ function updateProjectName(){
     document.getElementById(
         "projectTitle"
     ).textContent =
-        value || "Untitled Project";
+        value ||
+        "Untitled Project";
 
 }
 
 
-/* =====================================
-   SAVE PROJECT
-===================================== */
+/* =========================================================
+   BUILD PROJECT DATA
+========================================================= */
 
-function saveProject(){
+function getProjectData(){
 
-    const data = {
+    return {
 
-        version:"1.1",
+        version:"1.2",
 
         projectName:
             document.getElementById(
@@ -2393,12 +3082,46 @@ function saveProject(){
                 "roomWidth"
             ).value,
 
+        wallThickness:
+            document.getElementById(
+                "wallThickness"
+            ).value,
+
+        floorMaterial:
+            document.getElementById(
+                "floorMaterial"
+            ).value,
+
         objects:objects,
 
-        objectId:objectId
+        objectId:objectId,
+
+        snapEnabled:snapEnabled,
+
+        gridEnabled:gridEnabled
 
     };
 
+}
+
+
+/* =========================================================
+   SAVE PROJECT
+========================================================= */
+
+function saveProject(){
+
+    const data =
+        getProjectData();
+
+
+    localStorage.setItem(
+        "alfaInteriorDesignerV12",
+        JSON.stringify(data)
+    );
+
+
+    /* keep V1.1 compatible backup */
 
     localStorage.setItem(
         "alfaInteriorDesignerV11",
@@ -2407,22 +3130,32 @@ function saveProject(){
 
 
     showToast(
-        "✓ Project berhasil disimpan."
+        "✓ Project V1.2 berhasil disimpan."
     );
 
 }
 
 
-/* =====================================
+/* =========================================================
    LOAD PROJECT
-===================================== */
+========================================================= */
 
 function loadProject(){
 
-    const saved =
+    let saved =
         localStorage.getItem(
-            "alfaInteriorDesignerV11"
+            "alfaInteriorDesignerV12"
         );
+
+
+    if(!saved){
+
+        saved =
+            localStorage.getItem(
+                "alfaInteriorDesignerV11"
+            );
+
+    }
 
 
     if(!saved){
@@ -2463,6 +3196,26 @@ function loadProject(){
             4;
 
 
+        if(data.wallThickness){
+
+            document.getElementById(
+                "wallThickness"
+            ).value =
+                data.wallThickness;
+
+        }
+
+
+        if(data.floorMaterial){
+
+            document.getElementById(
+                "floorMaterial"
+            ).value =
+                data.floorMaterial;
+
+        }
+
+
         objects =
             Array.isArray(
                 data.objects
@@ -2476,15 +3229,34 @@ function loadProject(){
             objects.length;
 
 
-        selectedObject = null;
+        snapEnabled =
+            data.snapEnabled !== false;
+
+        gridEnabled =
+            data.gridEnabled !== false;
+
+
+        selectedObject =
+            null;
+
 
         updateProjectName();
 
         updateRoomDimensions();
 
+        updateWallThickness();
+
+        changeFloor(
+            document.getElementById(
+                "floorMaterial"
+            ).value
+        );
+
         renderAll();
 
-        updateSelectionPanel();
+        updateSnapUI();
+
+        applyGrid();
 
 
         showToast(
@@ -2493,6 +3265,8 @@ function loadProject(){
 
 
     }catch(error){
+
+        console.error(error);
 
         showToast(
             "Data project tidak valid."
@@ -2503,9 +3277,9 @@ function loadProject(){
 }
 
 
-/* =====================================
-   CLEAR OBJECTS
-===================================== */
+/* =========================================================
+   CLEAR
+========================================================= */
 
 function clearObjects(){
 
@@ -2522,7 +3296,7 @@ function clearObjects(){
 
     if(
         !confirm(
-            "Hapus semua furniture dari ruangan?"
+            "Hapus semua object dari ruangan?"
         )
     ){
 
@@ -2542,15 +3316,15 @@ function clearObjects(){
     updateSelectionPanel();
 
     showToast(
-        "Semua furniture dihapus."
+        "Semua object dihapus."
     );
 
 }
 
 
-/* =====================================
+/* =========================================================
    UNDO
-===================================== */
+========================================================= */
 
 function undoAction(){
 
@@ -2578,22 +3352,22 @@ function undoAction(){
         );
 
 
-    selectedObject = null;
+    selectedObject =
+        null;
+
 
     renderAll();
 
     updateSelectionPanel();
 
-    showToast(
-        "Undo."
-    );
+    showToast("Undo.");
 
 }
 
 
-/* =====================================
+/* =========================================================
    REDO
-===================================== */
+========================================================= */
 
 function redoAction(){
 
@@ -2621,31 +3395,28 @@ function redoAction(){
         );
 
 
-    selectedObject = null;
+    selectedObject =
+        null;
+
 
     renderAll();
 
     updateSelectionPanel();
 
-    showToast(
-        "Redo."
-    );
+    showToast("Redo.");
 
 }
 
 
-/* =====================================
+/* =========================================================
    ZOOM
-===================================== */
+========================================================= */
 
 function applyZoom(){
 
-    const canvas =
-        document.getElementById(
-            "designCanvas"
-        );
-
-    canvas.style.transform =
+    document.getElementById(
+        "designCanvas"
+    ).style.transform =
         "scale(" +
         zoomLevel +
         ")";
@@ -2700,9 +3471,9 @@ function resetView(){
 }
 
 
-/* =====================================
+/* =========================================================
    FULLSCREEN
-===================================== */
+========================================================= */
 
 function toggleFullscreen(){
 
@@ -2718,13 +3489,15 @@ function toggleFullscreen(){
 
         workspace
             .requestFullscreen()
-            .catch(function(){
+            .catch(
+                function(){
 
-                showToast(
-                    "Fullscreen tidak tersedia."
-                );
+                    showToast(
+                        "Fullscreen tidak tersedia."
+                    );
 
-            });
+                }
+            );
 
     }else{
 
@@ -2735,37 +3508,362 @@ function toggleFullscreen(){
 }
 
 
-/* =====================================
-   CANVAS CLICK
-===================================== */
+/* =========================================================
+   TOOL
+========================================================= */
+
+function setTool(tool){
+
+    currentTool =
+        tool;
+
+
+    document
+        .querySelectorAll(
+            ".canvas-btn"
+        )
+        .forEach(
+            function(btn){
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    if(tool === "select"){
+
+        document
+            .getElementById(
+                "selectTool"
+            )
+            .classList.add(
+                "active"
+            );
+
+    }
+
+    if(tool === "pan"){
+
+        document
+            .getElementById(
+                "panTool"
+            )
+            .classList.add(
+                "active"
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+function toggleGrid(){
+
+    gridEnabled =
+        !gridEnabled;
+
+    applyGrid();
+
+    showToast(
+        gridEnabled
+        ? "Grid ON."
+        : "Grid OFF."
+    );
+
+}
+
+
+function applyGrid(){
+
+    const canvas =
+        document.getElementById(
+            "designCanvas"
+        );
+
+    canvas.classList.toggle(
+        "no-grid",
+        !gridEnabled
+    );
+
+}
+
+
+/* =========================================================
+   SNAP
+========================================================= */
+
+function updateSnapUI(){
+
+    const status =
+        document.getElementById(
+            "snapStatus"
+        );
+
+    status.textContent =
+        snapEnabled
+        ? "SNAP: ON"
+        : "SNAP: OFF";
+
+}
+
+
+/* =========================================================
+   MEASURE
+========================================================= */
+
+function activateMeasure(){
+
+    measureActive =
+        true;
+
+    currentTool =
+        "measure";
+
+    document
+        .querySelectorAll(
+            ".canvas-btn"
+        )
+        .forEach(
+            function(btn){
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    document.getElementById(
+        "measureTool"
+    ).classList.add(
+        "active"
+    );
+
+
+    showToast(
+        "Klik dua titik pada ruangan untuk mengukur."
+    );
+
+}
+
+
+function handleMeasureClick(e){
+
+    if(!measureActive){
+
+        return false;
+
+    }
+
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+
+    const rect =
+        room.getBoundingClientRect();
+
+
+    const x =
+        (e.clientX -
+        rect.left) /
+        zoomLevel;
+
+
+    const y =
+        (e.clientY -
+        rect.top) /
+        zoomLevel;
+
+
+    if(!measureStart){
+
+        measureStart = {
+            x:x,
+            y:y
+        };
+
+        showToast(
+            "Titik pertama tersimpan."
+        );
+
+        return true;
+
+    }
+
+
+    const dx =
+        x -
+        measureStart.x;
+
+    const dy =
+        y -
+        measureStart.y;
+
+
+    const px =
+        Math.sqrt(
+            dx*dx +
+            dy*dy
+        );
+
+
+    const meters =
+        px / 100;
+
+
+    const line =
+        document.createElement(
+            "div"
+        );
+
+    line.className =
+        "measure-line";
+
+
+    const label =
+        document.createElement(
+            "div"
+        );
+
+    label.className =
+        "measure-label";
+
+    label.textContent =
+        meters.toFixed(2) +
+        " m";
+
+
+    const angle =
+        Math.atan2(
+            dy,
+            dx
+        ) *
+        180 /
+        Math.PI;
+
+
+    line.style.left =
+        measureStart.x +
+        "px";
+
+    line.style.top =
+        measureStart.y +
+        "px";
+
+    line.style.width =
+        px +
+        "px";
+
+    line.style.transform =
+        "rotate(" +
+        angle +
+        "deg)";
+
+
+    label.style.left =
+        (
+            measureStart.x +
+            dx/2
+        ) +
+        "px";
+
+    label.style.top =
+        (
+            measureStart.y +
+            dy/2 -
+            18
+        ) +
+        "px";
+
+
+    document.getElementById(
+        "measureContainer"
+    ).appendChild(line);
+
+    document.getElementById(
+        "measureContainer"
+    ).appendChild(label);
+
+
+    measureStart =
+        null;
+
+    measureActive =
+        false;
+
+    setTool("select");
+
+    showToast(
+        "Jarak: " +
+        meters.toFixed(2) +
+        " meter"
+    );
+
+    return true;
+
+}
+
+
+/* =========================================================
+   ROOM CLICK
+========================================================= */
 
 document
 .getElementById("room")
 .addEventListener(
     "click",
-    function(){
+    function(e){
 
-        selectedObject = null;
+        if(
+            handleMeasureClick(e)
+        ){
+
+            return;
+
+        }
+
+
+        selectedObject =
+            null;
+
 
         document
-            .querySelectorAll(".object")
-            .forEach(function(el){
+            .querySelectorAll(
+                ".object,.wall-object,.arch-object"
+            )
+            .forEach(
+                function(el){
 
-                el.classList.remove(
-                    "selected"
-                );
+                    el.classList.remove(
+                        "selected"
+                    );
 
-            });
+                }
+            );
+
 
         updateSelectionPanel();
+
+        updateLayerList();
 
     }
 );
 
 
-/* =====================================
+/* =========================================================
    CURSOR POSITION
-===================================== */
+========================================================= */
 
 document
 .getElementById("room")
@@ -2776,6 +3874,7 @@ document
         const rect =
             this.getBoundingClientRect();
 
+
         const x =
             Math.max(
                 0,
@@ -2783,6 +3882,7 @@ document
                 rect.left) /
                 zoomLevel
             );
+
 
         const y =
             Math.max(
@@ -2797,22 +3897,34 @@ document
             "cursorPosition"
         ).textContent =
             "X: " +
-            (x / 100).toFixed(2) +
+            (x/100).toFixed(2) +
             "m / Y: " +
-            (y / 100).toFixed(2) +
+            (y/100).toFixed(2) +
             "m";
 
     }
 );
 
 
-/* =====================================
+/* =========================================================
    KEYBOARD
-===================================== */
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function(e){
+
+        if(
+            e.target.tagName ===
+            "INPUT" ||
+            e.target.tagName ===
+            "SELECT"
+        ){
+
+            return;
+
+        }
+
 
         if(
             e.key === "Delete" &&
@@ -2820,6 +3932,8 @@ document.addEventListener(
         ){
 
             deleteSelected();
+
+            return;
 
         }
 
@@ -2833,6 +3947,8 @@ document.addEventListener(
 
             undoAction();
 
+            return;
+
         }
 
 
@@ -2844,6 +3960,8 @@ document.addEventListener(
             e.preventDefault();
 
             redoAction();
+
+            return;
 
         }
 
@@ -2857,82 +3975,702 @@ document.addEventListener(
 
             saveProject();
 
+            return;
+
+        }
+
+
+        if(
+            selectedObject &&
+            [
+                "ArrowUp",
+                "ArrowDown",
+                "ArrowLeft",
+                "ArrowRight"
+            ].includes(e.key)
+        ){
+
+            e.preventDefault();
+
+            const step =
+                e.shiftKey
+                ? 10
+                : 2;
+
+
+            saveState();
+
+
+            if(e.key === "ArrowUp"){
+
+                selectedObject.y -=
+                    step;
+
+            }
+
+            if(e.key === "ArrowDown"){
+
+                selectedObject.y +=
+                    step;
+
+            }
+
+            if(e.key === "ArrowLeft"){
+
+                selectedObject.x -=
+                    step;
+
+            }
+
+            if(e.key === "ArrowRight"){
+
+                selectedObject.x +=
+                    step;
+
+            }
+
+
+            selectedObject.x =
+                Math.max(
+                    0,
+                    Math.min(
+                        selectedObject.x,
+                        685 -
+                        selectedObject.width
+                    )
+                );
+
+
+            selectedObject.y =
+                Math.max(
+                    0,
+                    Math.min(
+                        selectedObject.y,
+                        445 -
+                        selectedObject.height
+                    )
+                );
+
+
+            renderAll();
+
+            selectObject(
+                selectedObject.id
+            );
+
         }
 
     }
 );
 
 
-/* =====================================
+/* =========================================================
+   ROOM PRESETS
+========================================================= */
+
+function roomPreset(type){
+
+    saveState();
+
+    objects = [];
+
+    if(type === "living"){
+
+        document.getElementById(
+            "roomLength"
+        ).value = 6;
+
+        document.getElementById(
+            "roomWidth"
+        ).value = 4;
+
+        addFurniture(
+            "Sofa",
+            "🛋️",
+            180,
+            80
+        );
+
+        addFurniture(
+            "Coffee Table",
+            "▰",
+            110,
+            65
+        );
+
+        addFurniture(
+            "TV Cabinet",
+            "▤",
+            160,
+            45
+        );
+
+        addFurniture(
+            "Plant",
+            "🪴",
+            55,
+            55
+        );
+
+    }
+
+
+    if(type === "bedroom"){
+
+        document.getElementById(
+            "roomLength"
+        ).value = 5;
+
+        document.getElementById(
+            "roomWidth"
+        ).value = 4;
+
+        addFurniture(
+            "Bed",
+            "🛏️",
+            180,
+            140
+        );
+
+        addFurniture(
+            "Wardrobe",
+            "🚪",
+            120,
+            55
+        );
+
+        addFurniture(
+            "Nightstand",
+            "▣",
+            55,
+            45
+        );
+
+    }
+
+
+    if(type === "kitchen"){
+
+        document.getElementById(
+            "roomLength"
+        ).value = 5;
+
+        document.getElementById(
+            "roomWidth"
+        ).value = 3.5;
+
+        addFurniture(
+            "Kitchen Set",
+            "🍳",
+            220,
+            55
+        );
+
+        addFurniture(
+            "Kitchen Island",
+            "▰",
+            130,
+            65
+        );
+
+        addFurniture(
+            "Dining Table",
+            "▰",
+            170,
+            85
+        );
+
+    }
+
+
+    if(type === "office"){
+
+        document.getElementById(
+            "roomLength"
+        ).value = 4.5;
+
+        document.getElementById(
+            "roomWidth"
+        ).value = 3.5;
+
+        addFurniture(
+            "Office Desk",
+            "▤",
+            150,
+            70
+        );
+
+        addFurniture(
+            "Armchair",
+            "🪑",
+            75,
+            75
+        );
+
+        addFurniture(
+            "Plant",
+            "🪴",
+            55,
+            55
+        );
+
+    }
+
+
+    updateRoomDimensions();
+
+    renderAll();
+
+    selectedObject = null;
+
+    updateSelectionPanel();
+
+    showToast(
+        "Preset " +
+        type +
+        " dibuat."
+    );
+
+}
+
+
+/* =========================================================
+   EXPORT JSON
+========================================================= */
+
+function exportJSON(){
+
+    const data =
+        JSON.stringify(
+            getProjectData(),
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [data],
+            {
+                type:"application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const a =
+        document.createElement("a");
+
+    a.href =
+        url;
+
+    a.download =
+        "ALFA-Interior-Project.json";
+
+    a.click();
+
+
+    URL.revokeObjectURL(url);
+
+    showToast(
+        "Project JSON diexport."
+    );
+
+}
+
+
+/* =========================================================
+   IMPORT JSON
+========================================================= */
+
+function importJSON(event){
+
+    const file =
+        event.target.files[0];
+
+
+    if(!file){
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(){
+
+            try{
+
+                const data =
+                    JSON.parse(
+                        reader.result
+                    );
+
+
+                document.getElementById(
+                    "projectName"
+                ).value =
+                    data.projectName ||
+                    "Imported Project";
+
+
+                document.getElementById(
+                    "roomLength"
+                ).value =
+                    data.roomLength ||
+                    6;
+
+
+                document.getElementById(
+                    "roomWidth"
+                ).value =
+                    data.roomWidth ||
+                    4;
+
+
+                objects =
+                    Array.isArray(
+                        data.objects
+                    )
+                    ? data.objects
+                    : [];
+
+
+                objectId =
+                    data.objectId ||
+                    objects.length;
+
+
+                updateProjectName();
+
+                updateRoomDimensions();
+
+                renderAll();
+
+                showToast(
+                    "✓ JSON berhasil diimport."
+                );
+
+
+            }catch(error){
+
+                console.error(error);
+
+                showToast(
+                    "JSON tidak valid."
+                );
+
+            }
+
+        };
+
+
+    reader.readAsText(file);
+
+    event.target.value = "";
+
+}
+
+
+/* =========================================================
+   EXPORT PNG
+========================================================= */
+
+function exportPNG(){
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+    canvas.width = 1200;
+
+    canvas.height = 800;
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    ctx.fillStyle =
+        "#17130f";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    ctx.fillStyle =
+        "#e0d5c2";
+
+    ctx.fillRect(
+        100,
+        100,
+        1000,
+        600
+    );
+
+
+    ctx.strokeStyle =
+        "#705b42";
+
+    ctx.lineWidth =
+        18;
+
+    ctx.strokeRect(
+        100,
+        100,
+        1000,
+        600
+    );
+
+
+    /* grid */
+
+    ctx.strokeStyle =
+        "rgba(100,80,50,.13)";
+
+    ctx.lineWidth = 1;
+
+
+    for(
+        let x=110;
+        x<1090;
+        x+=25
+    ){
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x,
+            110
+        );
+
+        ctx.lineTo(
+            x,
+            690
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    for(
+        let y=110;
+        y<690;
+        y+=25
+    ){
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            110,
+            y
+        );
+
+        ctx.lineTo(
+            1090,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    objects.forEach(
+        function(o){
+
+            const x =
+                115 +
+                o.x * 1.38;
+
+            const y =
+                115 +
+                o.y * 1.25;
+
+            const w =
+                o.width * 1.38;
+
+            const h =
+                o.height * 1.25;
+
+
+            ctx.save();
+
+            ctx.translate(
+                x+w/2,
+                y+h/2
+            );
+
+            ctx.rotate(
+                (o.rotation || 0) *
+                Math.PI /
+                180
+            );
+
+
+            if(o.type === "wall"){
+
+                ctx.fillStyle =
+                    "#705b42";
+
+            }else if(
+                o.type === "window"
+            ){
+
+                ctx.fillStyle =
+                    "#91b5be";
+
+            }else if(
+                o.type === "door"
+            ){
+
+                ctx.fillStyle =
+                    "#9a7446";
+
+            }else{
+
+                ctx.fillStyle =
+                    "#9a7046";
+
+            }
+
+
+            ctx.fillRect(
+                -w/2,
+                -h/2,
+                w,
+                h
+            );
+
+
+            ctx.strokeStyle =
+                "#4d3a27";
+
+            ctx.lineWidth =
+                2;
+
+            ctx.strokeRect(
+                -w/2,
+                -h/2,
+                w,
+                h
+            );
+
+
+            ctx.font =
+                Math.max(
+                    14,
+                    Math.min(
+                        w,
+                        h
+                    )*.35
+                ) +
+                "px Arial";
+
+            ctx.textAlign =
+                "center";
+
+            ctx.textBaseline =
+                "middle";
+
+            ctx.fillStyle =
+                "#fff5df";
+
+            ctx.fillText(
+                o.icon || "",
+                0,
+                0
+            );
+
+
+            ctx.restore();
+
+        }
+    );
+
+
+    ctx.fillStyle =
+        "#c9a45c";
+
+    ctx.font =
+        "bold 24px Georgia";
+
+    ctx.fillText(
+        "ALFA INTERIOR DESIGNER",
+        100,
+        55
+    );
+
+
+    ctx.fillStyle =
+        "#b7a891";
+
+    ctx.font =
+        "14px Arial";
+
+    ctx.fillText(
+        document.getElementById(
+            "projectName"
+        ).value ||
+        "Untitled Project",
+        100,
+        78
+    );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.download =
+        "ALFA-Interior-Design.png";
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+    link.click();
+
+
+    showToast(
+        "✓ Desain PNG berhasil dibuat."
+    );
+
+}
+
+
+/* =========================================================
    STARTUP
-===================================== */
+========================================================= */
 
 window.addEventListener(
     "load",
     function(){
 
-        const saved =
-            localStorage.getItem(
-                "alfaInteriorDesignerV11"
-            );
+        loadProject();
 
+        applyZoom();
 
-        if(saved){
+        applyGrid();
 
-            try{
+        updateSnapUI();
 
-                const data =
-                    JSON.parse(saved);
-
-                if(
-                    data &&
-                    Array.isArray(
-                        data.objects
-                    )
-                ){
-
-                    document.getElementById(
-                        "projectName"
-                    ).value =
-                        data.projectName ||
-                        "Rumah Luxury Classic";
-
-                    document.getElementById(
-                        "roomLength"
-                    ).value =
-                        data.roomLength ||
-                        6;
-
-                    document.getElementById(
-                        "roomWidth"
-                    ).value =
-                        data.roomWidth ||
-                        4;
-
-                    objects =
-                        data.objects;
-
-                    objectId =
-                        data.objectId ||
-                        objects.length;
-
-                    updateProjectName();
-
-                    updateRoomDimensions();
-
-                    renderAll();
-
-                }
-
-            }catch(error){
-
-                console.log(
-                    "No valid saved project."
-                );
-
-            }
-
-        }
+        renderAll();
 
     }
 );
@@ -2941,4 +4679,3 @@ window.addEventListener(
 
 </body>
 </html>
-```
