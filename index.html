@@ -3,4677 +3,3596 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>ALFA INTERIOR DESIGNER V1.2</title>
+<meta name="theme-color" content="#0b0b0d">
+<title>ALFA INTERIOR DESIGNER V1.3 | 2D + 3D ARCHITECT</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 :root{
-    --gold:#c9a45c;
-    --gold2:#e7cc91;
-    --gold3:#8f6d35;
-    --dark:#120f0c;
-    --dark2:#1b1611;
-    --panel:#29221b;
-    --panel2:#33291f;
-    --line:#594833;
-    --cream:#f3ead9;
-    --muted:#aa9b84;
-    --canvas:#d9cfbd;
-    --green:#93b783;
-    --red:#a86659;
+  --bg:#08090c;
+  --panel:#111318;
+  --panel2:#17191f;
+  --line:#2c3039;
+  --gold:#d6b36a;
+  --gold2:#f0d18a;
+  --text:#f4f1e8;
+  --muted:#989ba5;
+  --accent:#8e6b35;
+  --danger:#d65b5b;
+  --green:#69b98c;
 }
 
 html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-body{
-    font-family:Georgia,"Times New Roman",serif;
-    background:var(--dark);
-    color:var(--cream);
+button,
+input,
+select{
+  font:inherit;
 }
 
-/* HEADER */
+button{
+  cursor:pointer;
+}
 
-.app-header{
-    height:72px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 18px;
-    background:linear-gradient(180deg,#241d17,#15110e);
-    border-bottom:1px solid var(--line);
-    box-shadow:0 5px 25px rgba(0,0,0,.4);
-    position:relative;
-    z-index:100;
+.app{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* TOPBAR */
+.topbar{
+  height:64px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  background:
+    linear-gradient(90deg,#0b0c0f,#151419,#0b0c0f);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 8px 25px rgba(0,0,0,.35);
+  z-index:20;
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.brand-mark{
-    width:44px;
-    height:44px;
-    border:1px solid var(--gold);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold2);
-    font-size:21px;
-    box-shadow:inset 0 0 14px rgba(201,164,92,.12);
+.logo{
+  width:38px;
+  height:38px;
+  border:1px solid var(--gold);
+  display:grid;
+  place-items:center;
+  color:var(--gold2);
+  font-weight:900;
+  letter-spacing:-1px;
+  box-shadow:0 0 20px rgba(214,179,106,.12);
 }
 
-.brand-title{
-    font-size:20px;
-    letter-spacing:1.5px;
+.brand h1{
+  font-size:15px;
+  letter-spacing:2px;
 }
 
-.brand-title span{
-    color:var(--gold2);
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:2px;
+  margin-top:3px;
 }
 
-.brand-sub{
-    margin-top:3px;
-    font:9px Arial,sans-serif;
-    letter-spacing:2px;
-    color:#988b79;
+.top-actions{
+  display:flex;
+  gap:7px;
+  align-items:center;
 }
 
-.header-tools{
-    display:flex;
-    align-items:center;
-    gap:6px;
+.btn{
+  min-height:34px;
+  padding:0 12px;
+  border:1px solid var(--line);
+  background:#13151a;
+  color:var(--text);
+  border-radius:5px;
+  transition:.18s;
+  font-size:11px;
 }
 
-.tool-btn{
-    min-width:38px;
-    height:36px;
-    border:1px solid #4d3d2c;
-    background:#241d17;
-    color:#e7d8bf;
-    border-radius:6px;
-    cursor:pointer;
-    transition:.2s;
-    font:11px Arial,sans-serif;
+.btn:hover{
+  border-color:var(--gold);
+  color:var(--gold2);
+  transform:translateY(-1px);
 }
 
-.tool-btn:hover{
-    border-color:var(--gold);
-    background:#30271f;
-    color:white;
+.btn.gold{
+  background:linear-gradient(135deg,#8c682f,#d1aa61);
+  color:#090909;
+  border-color:#d7b56f;
+  font-weight:800;
 }
 
-.tool-btn.gold{
-    background:#8e6d35;
-    border-color:var(--gold);
-    color:white;
-    padding:0 14px;
+.btn.danger{
+  color:#ff9696;
 }
 
-.header-divider{
-    width:1px;
-    height:28px;
-    background:#4b3b2b;
-    margin:0 3px;
+.mode-switch{
+  display:flex;
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+  margin-left:5px;
+}
+
+.mode-switch button{
+  border:0;
+  background:#0f1115;
+  color:var(--muted);
+  padding:9px 14px;
+  font-size:11px;
+}
+
+.mode-switch button.active{
+  background:#c29a52;
+  color:#090909;
+  font-weight:900;
 }
 
 /* MAIN */
-
-.app{
-    height:calc(100vh - 72px);
-    display:grid;
-    grid-template-columns:250px minmax(450px,1fr) 295px;
+.main{
+  min-height:0;
+  flex:1;
+  display:flex;
 }
 
-/* LEFT */
-
-.library{
-    background:linear-gradient(180deg,#2a231c,#1d1813);
-    border-right:1px solid var(--line);
-    overflow-y:auto;
-    padding:15px 13px 30px;
+/* LEFT TOOLBAR */
+.sidebar{
+  width:230px;
+  flex:none;
+  background:#0e1014;
+  border-right:1px solid var(--line);
+  overflow:auto;
+  padding:12px;
 }
 
-.section-label{
-    margin:5px 4px 10px;
-    font:10px Arial,sans-serif;
-    color:#a7957d;
-    letter-spacing:2px;
-    text-transform:uppercase;
+.section{
+  margin-bottom:14px;
 }
 
-.project-name{
-    padding:12px;
-    margin-bottom:16px;
-    background:#211b16;
-    border:1px solid #51422f;
-    border-radius:7px;
+.section-title{
+  font-size:9px;
+  letter-spacing:2px;
+  color:#777b85;
+  margin-bottom:8px;
+  text-transform:uppercase;
 }
 
-.project-name small{
-    display:block;
-    margin-bottom:5px;
-    color:#9c8c75;
-    font:9px Arial,sans-serif;
-    letter-spacing:1px;
+.tool-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
 }
 
-.project-name strong{
-    font-size:14px;
-    font-weight:normal;
-    color:#f2e4ce;
+.tool{
+  min-height:58px;
+  background:#15171c;
+  border:1px solid #292d35;
+  color:#d9d7d0;
+  border-radius:5px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  font-size:10px;
+  transition:.18s;
 }
 
-.category{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    padding:9px 8px;
-    margin-top:4px;
-    background:transparent;
-    border:1px solid transparent;
-    border-radius:5px;
-    color:#d1c1a9;
-    cursor:pointer;
-    font-family:Georgia,serif;
+.tool span:first-child{
+  font-size:19px;
 }
 
-.category:hover{
-    background:#30271f;
-    border-color:#493a2b;
+.tool:hover,
+.tool.active{
+  border-color:var(--gold);
+  background:#1d1b18;
+  color:var(--gold2);
 }
 
-.category span:last-child{
-    color:#8f806d;
+.color-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
-.furniture-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
-    margin:6px 0 8px;
+.color-row input[type=color]{
+  width:42px;
+  height:34px;
+  border:1px solid var(--line);
+  background:none;
+  padding:2px;
 }
 
-.furniture{
-    min-height:70px;
-    padding:7px 4px;
-    border:1px solid #4c3d2d;
-    border-radius:7px;
-    background:linear-gradient(145deg,#30271f,#211b16);
-    color:#dfd0ba;
-    cursor:pointer;
-    transition:.2s;
+.input{
+  width:100%;
+  height:34px;
+  background:#0a0c10;
+  border:1px solid var(--line);
+  border-radius:4px;
+  color:white;
+  padding:0 9px;
+  outline:none;
 }
 
-.furniture:hover{
-    transform:translateY(-1px);
-    border-color:var(--gold);
-    box-shadow:0 5px 15px rgba(0,0,0,.25);
-}
-
-.furniture .icon{
-    display:block;
-    margin-bottom:5px;
-    font-size:25px;
-}
-
-.furniture span:last-child{
-    font:10px Arial,sans-serif;
-}
-
-.library-note{
-    margin-top:16px;
-    padding:11px;
-    border-left:2px solid var(--gold);
-    background:rgba(201,164,92,.05);
-    color:#a99b87;
-    font:10px Arial,sans-serif;
-    line-height:1.6;
-}
-
-/* WORKSPACE */
-
-.workspace{
-    position:relative;
-    overflow:hidden;
-    background:#b8ad99;
-}
-
-.canvas-topbar{
-    height:45px;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 12px;
-    background:rgba(29,24,19,.97);
-    border-bottom:1px solid #4d3e2e;
-    z-index:40;
-}
-
-.canvas-tools{
-    display:flex;
-    gap:5px;
-}
-
-.canvas-btn{
-    padding:7px 10px;
-    border:1px solid #4b3d2d;
-    border-radius:5px;
-    background:#251f19;
-    color:#d8c9b1;
-    cursor:pointer;
-    font:10px Arial,sans-serif;
-}
-
-.canvas-btn:hover,
-.canvas-btn.active{
-    border-color:var(--gold);
-    color:white;
-    background:#30271f;
-}
-
-.canvas-info{
-    color:#9f907b;
-    font:10px Arial,sans-serif;
-}
-
-/* RULERS */
-
-.ruler-top{
-    position:absolute;
-    top:45px;
-    left:35px;
-    right:0;
-    height:25px;
-    background:#d0c4b1;
-    border-bottom:1px solid #988b76;
-    z-index:20;
-    overflow:hidden;
-}
-
-.ruler-left{
-    position:absolute;
-    top:70px;
-    left:0;
-    bottom:35px;
-    width:35px;
-    background:#d0c4b1;
-    border-right:1px solid #988b76;
-    z-index:20;
-}
-
-.ruler-ticks{
-    position:absolute;
-    inset:0;
-}
-
-.ruler-top .ruler-ticks:after{
-    content:"0     1     2     3     4     5     6     7     8     9     10 m";
-    position:absolute;
-    top:5px;
-    left:8px;
-    white-space:pre;
-    color:#645b4e;
-    font:8px Arial,sans-serif;
-}
-
-.ruler-left .ruler-ticks:after{
-    content:"0\A\A1\A\A2\A\A3\A\A4\A\A5\A\A6\A\A7\A\A8\A\A9";
-    white-space:pre;
-    position:absolute;
-    left:9px;
-    top:5px;
-    line-height:24px;
-    color:#645b4e;
-    font:8px Arial,sans-serif;
-}
-
-/* CANVAS */
-
-.canvas-scroll{
-    position:absolute;
-    top:70px;
-    left:35px;
-    right:0;
-    bottom:35px;
-    overflow:auto;
-    padding:45px;
-}
-
-.design-canvas{
-    position:relative;
-    width:850px;
-    height:570px;
-    margin:auto;
-    transform-origin:center center;
-    transition:transform .12s;
-    background:
-        linear-gradient(rgba(105,94,77,.15) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(105,94,77,.15) 1px,transparent 1px),
-        #dcd2c1;
-    background-size:25px 25px;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
-
-.design-canvas.no-grid{
-    background:#dcd2c1;
-}
-
-/* ROOM */
-
-.room{
-    position:absolute;
-    left:75px;
-    top:55px;
-    width:700px;
-    height:460px;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(103,78,49,.09) 0,
-            rgba(103,78,49,.09) 2px,
-            transparent 2px,
-            transparent 32px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 118px,
-            rgba(103,78,49,.08) 119px,
-            rgba(103,78,49,.08) 121px
-        ),
-        #d8c4a4;
-    border:15px solid #705b42;
-    box-shadow:
-        inset 0 0 0 2px #c4b297,
-        0 15px 35px rgba(0,0,0,.28);
-    overflow:hidden;
-}
-
-.room::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    box-shadow:inset 0 0 60px rgba(80,55,30,.08);
-}
-
-.room-size-label{
-    position:absolute;
-    top:-34px;
-    left:50%;
-    transform:translateX(-50%);
-    color:#695b48;
-    font:11px Arial,sans-serif;
-    white-space:nowrap;
-}
-
-.room-side-label{
-    position:absolute;
-    left:-58px;
-    top:50%;
-    transform:translateY(-50%) rotate(-90deg);
-    color:#695b48;
-    font:11px Arial,sans-serif;
-    white-space:nowrap;
-}
-
-/* OBJECT */
-
-.object{
-    position:absolute;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:move;
-    user-select:none;
-    z-index:10;
-    border:2px solid transparent;
-    transition:border-color .1s,box-shadow .1s;
-}
-
-.object.selected{
-    border:2px dashed #9a7434;
-    box-shadow:0 0 0 3px rgba(201,164,92,.15);
-}
-
-.object-icon{
-    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22));
-    pointer-events:none;
-}
-
-.object-label{
-    position:absolute;
-    bottom:-18px;
-    left:50%;
-    transform:translateX(-50%);
-    white-space:nowrap;
-    color:#5e503e;
-    font:8px Arial,sans-serif;
-    pointer-events:none;
-}
-
-/* WALL */
-
-.wall-object{
-    position:absolute;
-    background:#745d42;
-    border:1px solid #4f3d2a;
-    z-index:7;
-    cursor:move;
-}
-
-.wall-object.selected{
-    outline:2px dashed var(--gold);
-}
-
-/* DOOR / WINDOW */
-
-.arch-object{
-    position:absolute;
-    z-index:8;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#d2b582;
-    border:2px solid #80653e;
-    color:#3f3121;
-    cursor:move;
-    font:9px Arial,sans-serif;
-}
-
-.window-object{
-    background:#9eb8bf;
-    border-color:#637f87;
-}
-
-/* STATUS */
-
-.statusbar{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:35px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 12px;
-    background:#1c1712;
-    border-top:1px solid #4d3e2e;
-    color:#988a76;
-    font:10px Arial,sans-serif;
-    z-index:40;
-}
-
-.status-left{
-    display:flex;
-    gap:17px;
-}
-
-.status-online{
-    color:var(--green);
-}
-
-/* ZOOM */
-
-.zoom-control{
-    position:absolute;
-    right:14px;
-    bottom:48px;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    padding:5px;
-    background:#211b16;
-    border:1px solid #4d3e2d;
-    border-radius:6px;
-    z-index:50;
-}
-
-.zoom-control button{
-    width:27px;
-    height:27px;
-    border:1px solid #4a3b2c;
-    border-radius:4px;
-    background:#30271f;
-    color:#e0cfb3;
-    cursor:pointer;
-}
-
-.zoom-control span{
-    min-width:46px;
-    text-align:center;
-    color:#b7a891;
-    font:10px Arial,sans-serif;
-}
-
-/* RIGHT */
-
-.properties{
-    background:linear-gradient(180deg,#29221b,#1c1712);
-    border-left:1px solid var(--line);
-    overflow-y:auto;
-    padding:15px;
-}
-
-.prop-card{
-    padding:13px;
-    margin-bottom:12px;
-    background:#211b16;
-    border:1px solid #4e3f2e;
-    border-radius:7px;
-}
-
-.prop-card h3{
-    margin-bottom:11px;
-    color:#e7d6ba;
-    font-size:13px;
-    font-weight:normal;
-}
-
-.prop-card h3 span{
-    color:var(--gold2);
-    margin-right:6px;
+.input:focus{
+  border-color:var(--gold);
 }
 
 .field{
-    margin-bottom:9px;
+  margin-bottom:8px;
 }
 
 .field label{
-    display:block;
-    margin-bottom:5px;
-    color:#9e907d;
-    font:9px Arial,sans-serif;
-    letter-spacing:1px;
-    text-transform:uppercase;
+  display:block;
+  font-size:9px;
+  color:var(--muted);
+  margin-bottom:4px;
 }
 
-.field input,
-.field select{
-    width:100%;
-    height:33px;
-    padding:0 8px;
-    border:1px solid #4b3d2d;
-    border-radius:5px;
-    outline:none;
-    background:#17130f;
-    color:#e5d6bd;
-    font:11px Arial,sans-serif;
+.range-wrap{
+  display:flex;
+  gap:8px;
+  align-items:center;
 }
 
-.field input:focus,
-.field select:focus{
-    border-color:var(--gold);
+.range-wrap input[type=range]{
+  flex:1;
 }
 
-.field-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
+.value{
+  width:42px;
+  color:var(--gold2);
+  font-size:10px;
+  text-align:right;
 }
 
-.action-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
+/* WORKSPACE */
+.workspace{
+  min-width:0;
+  flex:1;
+  position:relative;
+  background:#08090c;
+  overflow:hidden;
 }
 
-.action-btn{
-    min-height:33px;
-    border:1px solid #4d3d2c;
-    border-radius:5px;
-    background:#2b231b;
-    color:#d9c9b0;
-    cursor:pointer;
-    font:10px Arial,sans-serif;
+#planCanvas,
+#threeCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
 }
 
-.action-btn:hover{
-    border-color:var(--gold);
-    color:#fff;
+#planCanvas{
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.018),transparent 50%);
 }
 
-.action-btn.danger:hover{
-    border-color:#a85d4f;
-    color:#e6a79a;
+#threeCanvas{
+  display:none;
+  background:#0b0c0f;
 }
 
-.empty-selection{
-    color:#8f816e;
-    font:11px Arial,sans-serif;
-    line-height:1.7;
+.workspace.mode3d #planCanvas{
+  display:none;
 }
 
-.layer-list{
-    max-height:150px;
-    overflow-y:auto;
+.workspace.mode3d #threeCanvas{
+  display:block;
 }
 
-.layer-item{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:5px;
-    padding:7px;
-    margin-bottom:4px;
-    border:1px solid #3f3326;
-    border-radius:4px;
-    background:#191510;
-    color:#cfc0a9;
-    cursor:pointer;
-    font:10px Arial,sans-serif;
+.empty-info{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  color:#676b74;
+  pointer-events:none;
 }
 
-.layer-item:hover,
-.layer-item.active{
-    border-color:var(--gold);
-    color:#fff;
+.empty-info strong{
+  display:block;
+  color:#aaa;
+  font-size:14px;
+  margin-bottom:7px;
 }
 
-.layer-item small{
-    color:#81735f;
+.empty-info span{
+  font-size:11px;
 }
 
-/* COLOR */
-
-.color-row{
-    display:flex;
-    gap:7px;
+/* CANVAS HUD */
+.hud{
+  position:absolute;
+  top:12px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:space-between;
+  pointer-events:none;
 }
 
-.color{
-    width:30px;
-    height:30px;
-    border:2px solid #4b3d2d;
-    border-radius:5px;
-    cursor:pointer;
+.hud-card{
+  background:rgba(9,10,13,.86);
+  border:1px solid #2d3037;
+  backdrop-filter:blur(8px);
+  border-radius:5px;
+  padding:8px 11px;
+  font-size:10px;
+  color:#a7a9b0;
 }
 
-.color:hover{
-    border-color:#fff;
+.hud-card b{
+  color:var(--gold2);
+}
+
+.view-buttons{
+  display:flex;
+  gap:5px;
+  pointer-events:auto;
+}
+
+.view-buttons button{
+  border:1px solid #30343b;
+  background:rgba(10,11,14,.9);
+  color:#aaa;
+  border-radius:4px;
+  padding:7px 9px;
+  font-size:9px;
+}
+
+.view-buttons button.active{
+  color:#090909;
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+/* RIGHT PANEL */
+.properties{
+  width:260px;
+  flex:none;
+  background:#0e1014;
+  border-left:1px solid var(--line);
+  overflow:auto;
+  padding:14px;
+}
+
+.prop-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
+.prop-title h2{
+  font-size:11px;
+  letter-spacing:1.5px;
+}
+
+.badge{
+  font-size:8px;
+  padding:4px 6px;
+  border:1px solid #343840;
+  border-radius:3px;
+  color:var(--muted);
+}
+
+.prop-block{
+  border-top:1px solid #24272d;
+  padding-top:12px;
+  margin-top:12px;
+}
+
+.prop-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.prop-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-top:8px;
+}
+
+.layer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#14161b;
+  border:1px solid #282b32;
+  padding:8px;
+  margin-bottom:5px;
+  border-radius:4px;
+  font-size:10px;
+}
+
+.layer .dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--gold);
+}
+
+/* BOTTOM */
+.statusbar{
+  height:28px;
+  flex:none;
+  background:#0b0c10;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 12px;
+  color:#737781;
+  font-size:9px;
+}
+
+.statusbar b{
+  color:var(--gold);
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:rgba(0,0,0,.72);
+  z-index:100;
+  backdrop-filter:blur(4px);
+}
+
+.modal.show{
+  display:grid;
+}
+
+.modal-box{
+  width:min(720px,92vw);
+  max-height:85vh;
+  overflow:auto;
+  background:#101217;
+  border:1px solid #383b43;
+  box-shadow:0 25px 80px rgba(0,0,0,.7);
+  border-radius:7px;
+  padding:18px;
+}
+
+.modal-box h2{
+  font-size:15px;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+#jsonArea{
+  width:100%;
+  min-height:400px;
+  resize:vertical;
+  background:#08090c;
+  color:#dcd9cf;
+  border:1px solid #30343b;
+  padding:12px;
+  font-family:Consolas,monospace;
+  font-size:11px;
+  outline:none;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:7px;
+  margin-top:10px;
+}
+
+/* PRESENTATION */
+.presentation{
+  position:fixed;
+  inset:0;
+  background:#07080a;
+  z-index:90;
+  display:none;
+}
+
+.presentation.show{
+  display:block;
+}
+
+.presentation canvas{
+  width:100%;
+  height:100%;
+}
+
+.presentation-close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:5;
 }
 
 /* TOAST */
-
 .toast{
-    position:fixed;
-    left:50%;
-    bottom:55px;
-    transform:translateX(-50%) translateY(20px);
-    padding:10px 17px;
-    border:1px solid var(--gold);
-    border-radius:6px;
-    background:#211b16;
-    color:#f1dfc0;
-    font:11px Arial,sans-serif;
-    opacity:0;
-    pointer-events:none;
-    transition:.3s;
-    z-index:999;
+  position:fixed;
+  left:50%;
+  bottom:45px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  background:#17191e;
+  border:1px solid #454850;
+  color:#eee;
+  padding:10px 15px;
+  border-radius:5px;
+  font-size:11px;
+  z-index:200;
+  transition:.25s;
 }
 
 .toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-}
-
-/* MEASURE */
-
-.measure-line{
-    position:absolute;
-    height:2px;
-    background:#9b6835;
-    transform-origin:left center;
-    z-index:90;
-    pointer-events:none;
-}
-
-.measure-label{
-    position:absolute;
-    z-index:91;
-    padding:3px 6px;
-    border-radius:3px;
-    background:#211b16;
-    border:1px solid var(--gold);
-    color:#f1dfc0;
-    font:9px Arial,sans-serif;
-    pointer-events:none;
+  opacity:1;
+  transform:translate(-50%,0);
 }
 
 /* MOBILE */
+@media(max-width:900px){
+  .sidebar{
+    width:185px;
+  }
 
-@media(max-width:1100px){
-    .app{
-        grid-template-columns:215px 1fr 245px;
-    }
+  .properties{
+    width:220px;
+  }
 
-    .furniture-grid{
-        grid-template-columns:1fr;
-    }
+  .top-actions .btn:nth-child(2),
+  .top-actions .btn:nth-child(3){
+    display:none;
+  }
 }
 
-@media(max-width:800px){
-    html,body{
-        overflow:auto;
-    }
+@media(max-width:700px){
+  .sidebar{
+    width:64px;
+    padding:6px;
+  }
 
-    .app{
-        height:auto;
-        min-height:calc(100vh - 72px);
-        grid-template-columns:1fr;
-    }
+  .sidebar .section-title,
+  .sidebar .field,
+  .sidebar .color-row,
+  .sidebar .tool span:last-child{
+    display:none;
+  }
 
-    .library,
-    .properties{
-        border:none;
-        max-height:none;
-    }
+  .tool{
+    min-height:45px;
+  }
 
-    .workspace{
-        height:650px;
-        order:-1;
-    }
+  .properties{
+    width:190px;
+    padding:8px;
+  }
 
-    .app-header{
-        height:auto;
-        min-height:72px;
-        flex-wrap:wrap;
-        gap:8px;
-    }
+  .brand small{
+    display:none;
+  }
 
-    .header-tools{
-        width:100%;
-        justify-content:flex-end;
-        flex-wrap:wrap;
-    }
+  .brand h1{
+    font-size:11px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header class="app-header">
+<div class="app">
 
-    <div class="brand">
+<header class="topbar">
 
-        <div class="brand-mark">A</div>
+  <div class="brand">
+    <div class="logo">AD</div>
+    <div>
+      <h1>ALFA INTERIOR</h1>
+      <small>ARCHITECTURAL INTERIOR DESIGNER V1.3</small>
+    </div>
+  </div>
 
-        <div>
-            <div class="brand-title">
-                ALFA <span>INTERIOR DESIGNER</span>
-            </div>
+  <div class="top-actions">
 
-            <div class="brand-sub">
-                LUXURY ARCHITECTURAL PLANNER • V1.2
-            </div>
-        </div>
+    <button class="btn" id="newBtn">＋ New</button>
+    <button class="btn" id="undoBtn">↶ Undo</button>
+    <button class="btn" id="redoBtn">↷ Redo</button>
+    <button class="btn" id="saveBtn">▣ Save</button>
+    <button class="btn" id="loadBtn">↥ Load</button>
+    <button class="btn" id="jsonBtn">JSON</button>
+    <button class="btn" id="pngBtn">PNG</button>
+    <button class="btn gold" id="presentBtn">Presentation</button>
 
+    <div class="mode-switch">
+      <button id="mode2d" class="active">2D PLAN</button>
+      <button id="mode3d">3D VIEW</button>
     </div>
 
-    <div class="header-tools">
-
-        <button class="tool-btn"
-                onclick="undoAction()"
-                title="Undo">↶</button>
-
-        <button class="tool-btn"
-                onclick="redoAction()"
-                title="Redo">↷</button>
-
-        <div class="header-divider"></div>
-
-        <button class="tool-btn"
-                onclick="resetView()"
-                title="Reset">⌂</button>
-
-        <button class="tool-btn"
-                onclick="zoomOut()">−</button>
-
-        <button class="tool-btn"
-                onclick="zoomIn()">+</button>
-
-        <button class="tool-btn"
-                onclick="toggleFullscreen()">⛶</button>
-
-        <div class="header-divider"></div>
-
-        <button class="tool-btn gold"
-                onclick="saveProject()">
-            💾 Simpan
-        </button>
-
-    </div>
+  </div>
 
 </header>
 
+<div class="main">
 
-<div class="app">
+<!-- LEFT -->
+<aside class="sidebar">
 
-<!-- =====================================================
-     LIBRARY
-===================================================== -->
+  <div class="section">
 
-<aside class="library">
+    <div class="section-title">Architecture</div>
 
-    <div class="section-label">Project</div>
+    <div class="tool-grid">
 
-    <div class="project-name">
-        <small>CURRENT PROJECT</small>
+      <button class="tool active" data-tool="select">
+        <span>↖</span>
+        <span>Select</span>
+      </button>
 
-        <strong id="projectTitle">
-            Rumah Luxury Classic
-        </strong>
-    </div>
+      <button class="tool" data-tool="room">
+        <span>▣</span>
+        <span>Room</span>
+      </button>
 
+      <button class="tool" data-tool="wall">
+        <span>╱</span>
+        <span>Wall</span>
+      </button>
 
-    <div class="section-label">Room Presets</div>
+      <button class="tool" data-tool="door">
+        <span>▥</span>
+        <span>Door</span>
+      </button>
 
-    <div class="furniture-grid">
-
-        <button class="furniture"
-                onclick="roomPreset('living')">
-            <span class="icon">🛋️</span>
-            <span>Living Room</span>
-        </button>
-
-        <button class="furniture"
-                onclick="roomPreset('bedroom')">
-            <span class="icon">🛏️</span>
-            <span>Bedroom</span>
-        </button>
-
-        <button class="furniture"
-                onclick="roomPreset('kitchen')">
-            <span class="icon">🍳</span>
-            <span>Kitchen</span>
-        </button>
-
-        <button class="furniture"
-                onclick="roomPreset('office')">
-            <span class="icon">💼</span>
-            <span>Office</span>
-        </button>
+      <button class="tool" data-tool="window">
+        <span>▤</span>
+        <span>Window</span>
+      </button>
 
     </div>
 
+  </div>
 
-    <div class="section-label">
-        Furniture Library
-    </div>
+  <div class="section">
 
+    <div class="section-title">Furniture</div>
 
-    <button class="category">
-        <span>Living Room</span>
-        <span>⌄</span>
-    </button>
+    <div class="tool-grid">
 
-    <div class="furniture-grid">
+      <button class="tool" data-furniture="sofa">
+        <span>▰</span>
+        <span>Sofa</span>
+      </button>
 
-        <button class="furniture"
-                onclick="addFurniture('Sofa','🛋️',180,80)">
-            <span class="icon">🛋️</span>
-            <span>Sofa</span>
-        </button>
+      <button class="tool" data-furniture="bed">
+        <span>▰</span>
+        <span>Bed</span>
+      </button>
 
-        <button class="furniture"
-                onclick="addFurniture('Armchair','🪑',75,75)">
-            <span class="icon">🪑</span>
-            <span>Armchair</span>
-        </button>
+      <button class="tool" data-furniture="table">
+        <span>◫</span>
+        <span>Table</span>
+      </button>
 
-        <button class="furniture"
-                onclick="addFurniture('Coffee Table','▰',110,65)">
-            <span class="icon">▰</span>
-            <span>Coffee Table</span>
-        </button>
+      <button class="tool" data-furniture="chair">
+        <span>♙</span>
+        <span>Chair</span>
+      </button>
 
-        <button class="furniture"
-                onclick="addFurniture('TV Cabinet','▤',160,45)">
-            <span class="icon">▤</span>
-            <span>TV Cabinet</span>
-        </button>
+      <button class="tool" data-furniture="wardrobe">
+        <span>▥</span>
+        <span>Wardrobe</span>
+      </button>
 
-    </div>
-
-
-    <button class="category">
-        <span>Bedroom</span>
-        <span>⌄</span>
-    </button>
-
-    <div class="furniture-grid">
-
-        <button class="furniture"
-                onclick="addFurniture('Bed','🛏️',180,140)">
-            <span class="icon">🛏️</span>
-            <span>Bed</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Wardrobe','🚪',120,55)">
-            <span class="icon">🚪</span>
-            <span>Wardrobe</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Nightstand','▣',55,45)">
-            <span class="icon">▣</span>
-            <span>Nightstand</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Dresser','▥',120,45)">
-            <span class="icon">▥</span>
-            <span>Dresser</span>
-        </button>
-
-    </div>
-
-
-    <button class="category">
-        <span>Dining</span>
-        <span>⌄</span>
-    </button>
-
-    <div class="furniture-grid">
-
-        <button class="furniture"
-                onclick="addFurniture('Dining Table','▰',170,85)">
-            <span class="icon">▰</span>
-            <span>Dining Table</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Dining Chair','🪑',55,55)">
-            <span class="icon">🪑</span>
-            <span>Dining Chair</span>
-        </button>
-
-    </div>
-
-
-    <button class="category">
+      <button class="tool" data-furniture="kitchen">
+        <span>▤</span>
         <span>Kitchen</span>
-        <span>⌄</span>
+      </button>
+
+      <button class="tool" data-furniture="tv">
+        <span>▭</span>
+        <span>TV</span>
+      </button>
+
+      <button class="tool" data-furniture="plant">
+        <span>♣</span>
+        <span>Plant</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-title">Room Settings</div>
+
+    <div class="field">
+      <label>Room Width (m)</label>
+      <input class="input" id="roomWidth" type="number" min="1" max="30" step=".1" value="6">
+    </div>
+
+    <div class="field">
+      <label>Room Depth (m)</label>
+      <input class="input" id="roomDepth" type="number" min="1" max="30" step=".1" value="5">
+    </div>
+
+    <div class="field">
+      <label>Wall Height (m)</label>
+      <input class="input" id="wallHeight" type="number" min="2" max="6" step=".1" value="3">
+    </div>
+
+    <button class="btn gold" style="width:100%" id="applyRoom">
+      Apply Room
     </button>
 
-    <div class="furniture-grid">
+  </div>
 
-        <button class="furniture"
-                onclick="addFurniture('Kitchen Set','🍳',220,55)">
-            <span class="icon">🍳</span>
-            <span>Kitchen Set</span>
-        </button>
+  <div class="section">
 
-        <button class="furniture"
-                onclick="addFurniture('Kitchen Island','▰',130,65)">
-            <span class="icon">▰</span>
-            <span>Island</span>
-        </button>
+    <div class="section-title">Materials</div>
 
+    <div class="color-row">
+      <input type="color" id="floorColor" value="#6c5845">
+      <span style="font-size:10px;color:#aaa">Floor</span>
     </div>
 
+    <div class="color-row" style="margin-top:7px">
+      <input type="color" id="wallColor" value="#d9d2c4">
+      <span style="font-size:10px;color:#aaa">Wall</span>
+    </div>
 
-    <button class="category">
-        <span>Decor & Lighting</span>
-        <span>⌄</span>
+    <div class="color-row" style="margin-top:7px">
+      <input type="color" id="accentColor" value="#b08a50">
+      <span style="font-size:10px;color:#aaa">Accent</span>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-title">2D Controls</div>
+
+    <div class="field">
+      <label>Zoom</label>
+      <div class="range-wrap">
+        <input type="range" id="zoom2d" min=".5" max="3" step=".05" value="1">
+        <span class="value" id="zoomValue">100%</span>
+      </div>
+    </div>
+
+    <button class="btn" style="width:100%" id="resetView">
+      Reset View
     </button>
 
-    <div class="furniture-grid">
-
-        <button class="furniture"
-                onclick="addFurniture('Plant','🪴',55,55)">
-            <span class="icon">🪴</span>
-            <span>Plant</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Floor Lamp','💡',45,75)">
-            <span class="icon">💡</span>
-            <span>Floor Lamp</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Rug','▦',160,100)">
-            <span class="icon">▦</span>
-            <span>Rug</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Painting','▭',100,45)">
-            <span class="icon">▭</span>
-            <span>Painting</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Ceiling Light','💡',50,50)">
-            <span class="icon">💡</span>
-            <span>Ceiling Light</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addFurniture('Console','▤',110,40)">
-            <span class="icon">▤</span>
-            <span>Console</span>
-        </button>
-
-    </div>
-
-
-    <div class="section-label">Architecture</div>
-
-    <div class="furniture-grid">
-
-        <button class="furniture"
-                onclick="addDoor()">
-            <span class="icon">🚪</span>
-            <span>Door</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addWindow()">
-            <span class="icon">▣</span>
-            <span>Window</span>
-        </button>
-
-        <button class="furniture"
-                onclick="addWall()">
-            <span class="icon">🧱</span>
-            <span>Wall</span>
-        </button>
-
-        <button class="furniture"
-                onclick="activateMeasure()">
-            <span class="icon">📏</span>
-            <span>Measure</span>
-        </button>
-
-    </div>
-
-
-    <div class="library-note">
-
-        <strong style="color:#d9bd83">
-            TIP
-        </strong>
-
-        <br><br>
-
-        Klik furniture untuk menambahkan.
-
-        <br><br>
-
-        Drag untuk memindahkan.
-
-        <br>
-
-        <b>Arrow</b> = geser object.
-
-        <br>
-
-        <b>Shift + Arrow</b> = geser cepat.
-
-        <br>
-
-        <b>Delete</b> = hapus.
-
-        <br>
-
-        <b>Ctrl + Z / Y</b> = Undo / Redo.
-
-    </div>
+  </div>
 
 </aside>
 
-
-<!-- =====================================================
-     WORKSPACE
-===================================================== -->
-
+<!-- WORKSPACE -->
 <main class="workspace" id="workspace">
 
-    <div class="canvas-topbar">
+  <canvas id="planCanvas"></canvas>
+  <canvas id="threeCanvas"></canvas>
 
-        <div class="canvas-tools">
+  <div class="empty-info" id="emptyInfo">
+    <strong>ALFA INTERIOR DESIGNER</strong>
+    <span>Buat Room untuk memulai desain interior</span>
+  </div>
 
-            <button class="canvas-btn active"
-                    id="selectTool"
-                    onclick="setTool('select')">
-                ↖ Select
-            </button>
+  <div class="hud">
 
-            <button class="canvas-btn"
-                    id="panTool"
-                    onclick="setTool('pan')">
-                ✋ Pan
-            </button>
+    <div class="hud-card">
+      PROJECT:
+      <b id="projectName">Untitled Interior</b>
+      &nbsp;|&nbsp;
+      SIZE:
+      <b id="sizeReadout">6.0 × 5.0 m</b>
+      &nbsp;|&nbsp;
+      OBJECTS:
+      <b id="objectCount">0</b>
+    </div>
 
-            <button class="canvas-btn"
-                    id="measureTool"
-                    onclick="activateMeasure()">
-                📏 Measure
-            </button>
+    <div class="view-buttons">
 
-            <button class="canvas-btn"
-                    id="wallTool"
-                    onclick="addWall()">
-                🧱 Wall
-            </button>
-
-            <button class="canvas-btn"
-                    id="gridTool"
-                    onclick="toggleGrid()">
-                🧲 Grid
-            </button>
-
-        </div>
-
-        <div class="canvas-info">
-            FLOOR PLAN / 2D • V1.2
-        </div>
+      <button id="viewTop" class="active">TOP</button>
+      <button id="viewFront">FRONT</button>
+      <button id="viewPerspective">PERSPECTIVE</button>
+      <button id="toggleCeiling">CEILING</button>
 
     </div>
 
-
-    <div class="ruler-top">
-        <div class="ruler-ticks"></div>
-    </div>
-
-    <div class="ruler-left">
-        <div class="ruler-ticks"></div>
-    </div>
-
-
-    <div class="canvas-scroll">
-
-        <div class="design-canvas"
-             id="designCanvas">
-
-            <div class="room"
-                 id="room">
-
-                <div class="room-size-label">
-                    6.00 m
-                </div>
-
-                <div class="room-side-label">
-                    4.00 m
-                </div>
-
-                <div id="objectsContainer"></div>
-
-                <div id="measureContainer"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="zoom-control">
-
-        <button onclick="zoomOut()">−</button>
-
-        <span id="zoomText">100%</span>
-
-        <button onclick="zoomIn()">+</button>
-
-    </div>
-
-
-    <div class="statusbar">
-
-        <div class="status-left">
-
-            <span class="status-online">
-                ● READY
-            </span>
-
-            <span id="cursorPosition">
-                X: 0.00m / Y: 0.00m
-            </span>
-
-            <span id="objectCount">
-                Objects: 0
-            </span>
-
-            <span id="snapStatus">
-                SNAP: ON
-            </span>
-
-        </div>
-
-        <span>
-            ALFA ENGINE V1.2
-        </span>
-
-    </div>
+  </div>
 
 </main>
 
-
-<!-- =====================================================
-     PROPERTIES
-===================================================== -->
-
+<!-- RIGHT -->
 <aside class="properties">
 
-    <div class="section-label">
-        Properties
+  <div class="prop-title">
+    <h2>PROPERTIES</h2>
+    <span class="badge" id="selectedType">NONE</span>
+  </div>
+
+  <div id="noSelection">
+
+    <div style="color:#777;font-size:11px;line-height:1.7">
+      Pilih objek di canvas untuk mengatur ukuran, posisi, rotasi, material dan layer.
     </div>
 
+  </div>
 
-    <!-- ROOM -->
+  <div id="selectionPanel" style="display:none">
 
-    <div class="prop-card">
+    <div class="field">
+      <label>Object Name</label>
+      <input class="input" id="propName">
+    </div>
 
-        <h3>
-            <span>▣</span>
-            Room Dimensions
-        </h3>
+    <div class="prop-block">
 
-        <div class="field-row">
+      <div class="section-title">Transform</div>
 
-            <div class="field">
-
-                <label>Length</label>
-
-                <input id="roomLength"
-                       type="number"
-                       value="6"
-                       min="1"
-                       max="30"
-                       step=".1"
-                       onchange="updateRoomDimensions()">
-
-            </div>
-
-            <div class="field">
-
-                <label>Width</label>
-
-                <input id="roomWidth"
-                       type="number"
-                       value="4"
-                       min="1"
-                       max="30"
-                       step=".1"
-                       onchange="updateRoomDimensions()">
-
-            </div>
-
-        </div>
-
+      <div class="prop-grid">
 
         <div class="field">
-
-            <label>Wall Thickness</label>
-
-            <select id="wallThickness"
-                    onchange="updateWallThickness()">
-
-                <option value="15">15 cm</option>
-                <option value="10">10 cm</option>
-                <option value="20">20 cm</option>
-                <option value="25">25 cm</option>
-
-            </select>
-
+          <label>X</label>
+          <input class="input prop-input" id="propX" type="number" step=".05">
         </div>
-
-    </div>
-
-
-    <!-- SELECTED -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>◆</span>
-            Selected Object
-        </h3>
-
-        <div id="selectionPanel"
-             class="empty-selection">
-
-            Belum ada object dipilih.
-
-            <br><br>
-
-            Klik furniture pada canvas
-            untuk melihat properties.
-
-        </div>
-
-    </div>
-
-
-    <!-- MATERIAL -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>✦</span>
-            Floor Material
-        </h3>
 
         <div class="field">
-
-            <select id="floorMaterial"
-                    onchange="changeFloor(this.value)">
-
-                <option value="wood">
-                    Classic Oak
-                </option>
-
-                <option value="marble">
-                    White Marble
-                </option>
-
-                <option value="stone">
-                    Natural Stone
-                </option>
-
-                <option value="concrete">
-                    Modern Concrete
-                </option>
-
-            </select>
-
+          <label>Y</label>
+          <input class="input prop-input" id="propY" type="number" step=".05">
         </div>
-
-
-        <div class="color-row">
-
-            <div class="color"
-                 style="background:#d7c4a5"
-                 onclick="setFloorColor('#d7c4a5')">
-            </div>
-
-            <div class="color"
-                 style="background:#eee8dc"
-                 onclick="setFloorColor('#eee8dc')">
-            </div>
-
-            <div class="color"
-                 style="background:#9d9180"
-                 onclick="setFloorColor('#9d9180')">
-            </div>
-
-            <div class="color"
-                 style="background:#6f665c"
-                 onclick="setFloorColor('#6f665c')">
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- OBJECT ACTIONS -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>↻</span>
-            Object Actions
-        </h3>
-
-        <div class="action-grid">
-
-            <button class="action-btn"
-                    onclick="rotateSelected(-15)">
-                ↶ Rotate
-            </button>
-
-            <button class="action-btn"
-                    onclick="rotateSelected(15)">
-                Rotate ↷
-            </button>
-
-            <button class="action-btn"
-                    onclick="duplicateSelected()">
-                ⧉ Duplicate
-            </button>
-
-            <button class="action-btn danger"
-                    onclick="deleteSelected()">
-                🗑 Delete
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- MATERIAL OBJECT -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>◆</span>
-            Object Material
-        </h3>
 
         <div class="field">
-
-            <select id="objectMaterial"
-                    onchange="changeObjectMaterial(this.value)">
-
-                <option value="wood">
-                    Premium Wood
-                </option>
-
-                <option value="marble">
-                    Marble
-                </option>
-
-                <option value="fabric">
-                    Luxury Fabric
-                </option>
-
-                <option value="metal">
-                    Brushed Metal
-                </option>
-
-                <option value="glass">
-                    Glass
-                </option>
-
-            </select>
-
+          <label>Width</label>
+          <input class="input prop-input" id="propW" type="number" step=".05" min=".05">
         </div>
-
-    </div>
-
-
-    <!-- LAYERS -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>☷</span>
-            Object / Layers
-        </h3>
-
-        <div id="layerList"
-             class="layer-list">
-        </div>
-
-    </div>
-
-
-    <!-- PROJECT -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>⌘</span>
-            Project
-        </h3>
 
         <div class="field">
-
-            <label>Project Name</label>
-
-            <input id="projectName"
-                   value="Rumah Luxury Classic"
-                   onchange="updateProjectName()">
-
+          <label>Depth</label>
+          <input class="input prop-input" id="propD" type="number" step=".05" min=".05">
         </div>
 
+        <div class="field">
+          <label>Height</label>
+          <input class="input prop-input" id="propH" type="number" step=".05" min=".05">
+        </div>
 
-        <button class="action-btn"
-                style="width:100%"
-                onclick="saveProject()">
-            💾 Save Project
-        </button>
+        <div class="field">
+          <label>Rotation</label>
+          <input class="input prop-input" id="propR" type="number" step="1">
+        </div>
 
-        <br><br>
+      </div>
 
-        <button class="action-btn"
-                style="width:100%"
-                onclick="loadProject()">
-            ↻ Load Saved Project
-        </button>
+      <div class="prop-actions">
 
-    </div>
+        <button class="btn" id="rotateLeft">↶ Rotate</button>
+        <button class="btn" id="rotateRight">Rotate ↷</button>
 
-
-    <!-- FILE -->
-
-    <div class="prop-card">
-
-        <h3>
-            <span>⇩</span>
-            Project File
-        </h3>
-
-        <button class="action-btn"
-                style="width:100%"
-                onclick="exportJSON()">
-            ⇩ Export JSON
-        </button>
-
-        <br><br>
-
-        <button class="action-btn"
-                style="width:100%"
-                onclick="document.getElementById('importFile').click()">
-            ⇧ Import JSON
-        </button>
-
-        <input type="file"
-               id="importFile"
-               accept=".json"
-               style="display:none"
-               onchange="importJSON(event)">
-
-        <br><br>
-
-        <button class="action-btn"
-                style="width:100%"
-                onclick="exportPNG()">
-            🖼 Export PNG
-        </button>
+      </div>
 
     </div>
 
+    <div class="prop-block">
 
-    <!-- CANVAS -->
+      <div class="section-title">Appearance</div>
 
-    <div class="prop-card">
-
-        <h3>
-            <span>⚙</span>
-            Canvas
-        </h3>
-
-        <button class="action-btn"
-                style="width:100%"
-                onclick="resetView()">
-            Reset View
-        </button>
-
-        <br><br>
-
-        <button class="action-btn"
-                style="width:100%"
-                onclick="clearObjects()">
-            Clear Furniture
-        </button>
+      <div class="color-row">
+        <input type="color" id="propColor" value="#806044">
+        <span style="font-size:10px;color:#aaa">Object Material</span>
+      </div>
 
     </div>
+
+    <div class="prop-block">
+
+      <div class="section-title">Layer</div>
+
+      <div class="layer">
+        <span><span class="dot"></span> Furniture</span>
+        <span id="layerStatus">ACTIVE</span>
+      </div>
+
+    </div>
+
+    <div class="prop-block">
+
+      <div class="prop-actions">
+
+        <button class="btn" id="duplicateBtn">Duplicate</button>
+        <button class="btn danger" id="deleteBtn">Delete</button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </aside>
 
 </div>
 
+<footer class="statusbar">
+  <span>ALFA INTERIOR V1.3 • <b>ARCHITECT MODE</b></span>
+  <span id="statusText">Ready</span>
+</footer>
 
-<div class="toast"
-     id="toast">
 </div>
 
+<!-- JSON MODAL -->
+<div class="modal" id="jsonModal">
+
+  <div class="modal-box">
+
+    <h2>PROJECT JSON</h2>
+
+    <textarea id="jsonArea"></textarea>
+
+    <div class="modal-actions">
+
+      <button class="btn" id="jsonCancel">Close</button>
+      <button class="btn" id="jsonCopy">Copy</button>
+      <button class="btn gold" id="jsonImport">Import JSON</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PRESENTATION -->
+<div class="presentation" id="presentation">
+
+  <canvas id="presentationCanvas"></canvas>
+
+  <button class="btn gold presentation-close" id="closePresentation">
+    EXIT PRESENTATION
+  </button>
+
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
+"use strict";
 
-/* =========================================================
-   ALFA INTERIOR DESIGNER V1.2
-   CORE ENGINE
-========================================================= */
+/* ============================================================
+   ALFA INTERIOR DESIGNER V1.3
+   SINGLE FILE ARCHITECTURAL INTERIOR PLANNER
+   ============================================================ */
 
-let objects = [];
-let selectedObject = null;
-let objectId = 0;
+const $ = id => document.getElementById(id);
 
-let zoomLevel = 1;
+const planCanvas = $("planCanvas");
+const threeCanvas = $("threeCanvas");
+const ctx = planCanvas.getContext("2d");
+const ctx3 = threeCanvas.getContext("2d");
 
-let undoStack = [];
-let redoStack = [];
+const state = {
 
-let dragging = false;
-let dragOffsetX = 0;
-let dragOffsetY = 0;
+  version:"1.3",
 
-let snapEnabled = true;
-let gridEnabled = true;
-let currentTool = "select";
+  project:{
+    name:"Untitled Interior",
+    width:6,
+    depth:5,
+    wallHeight:3,
+    floorColor:"#6c5845",
+    wallColor:"#d9d2c4",
+    accentColor:"#b08a50",
+    ceiling:true
+  },
 
-let measureStart = null;
-let measureActive = false;
+  objects:[],
 
+  selected:null,
 
-/* =========================================================
-   TOAST
-========================================================= */
+  tool:"select",
 
-function showToast(message){
+  mode:"2d",
 
-    const toast =
-        document.getElementById("toast");
+  view3d:"top",
 
-    toast.textContent = message;
+  zoom2d:1,
 
-    toast.classList.add("show");
+  offsetX:0,
 
-    clearTimeout(window.toastTimer);
+  offsetY:0,
 
-    window.toastTimer =
-        setTimeout(function(){
+  camera:{
+    yaw:-.65,
+    pitch:.48,
+    distance:12
+  },
 
-            toast.classList.remove("show");
+  history:[],
 
-        },2200);
+  future:[],
+
+  dragging:null,
+
+  drawingRoom:false,
+
+  pointerStart:null,
+
+  lastPointer:null,
+
+  grid:.25,
+
+  saved:false
+
+};
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
+function uid(){
+
+  return "obj_" +
+    Date.now().toString(36) +
+    "_" +
+    Math.random().toString(36).slice(2,8);
+
 }
 
+function clamp(v,min,max){
 
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+  return Math.max(min,Math.min(max,v));
 
 }
 
+function rad(deg){
 
-/* =========================================================
-   SAVE STATE
-========================================================= */
+  return deg * Math.PI / 180;
 
-function saveState(){
+}
 
-    undoStack.push(
-        JSON.stringify(objects)
+function deg(radValue){
+
+  return radValue * 180 / Math.PI;
+
+}
+
+function hexToRgb(hex){
+
+  hex = hex.replace("#","");
+
+  if(hex.length===3){
+
+    hex = hex.split("").map(x=>x+x).join("");
+
+  }
+
+  return {
+    r:parseInt(hex.slice(0,2),16),
+    g:parseInt(hex.slice(2,4),16),
+    b:parseInt(hex.slice(4,6),16)
+  };
+
+}
+
+function shade(hex,factor){
+
+  const c=hexToRgb(hex);
+
+  const r=clamp(Math.round(c.r*factor),0,255);
+  const g=clamp(Math.round(c.g*factor),0,255);
+  const b=clamp(Math.round(c.b*factor),0,255);
+
+  return `rgb(${r},${g},${b})`;
+
+}
+
+function toast(message){
+
+  const t=$("toast");
+
+  t.textContent=message;
+
+  t.classList.add("show");
+
+  clearTimeout(toast.timer);
+
+  toast.timer=setTimeout(()=>{
+    t.classList.remove("show");
+  },1800);
+
+}
+
+function setStatus(message){
+
+  $("statusText").textContent=message;
+
+}
+
+function clone(data){
+
+  return JSON.parse(JSON.stringify(data));
+
+}
+
+/* ============================================================
+   OBJECT FACTORIES
+   ============================================================ */
+
+function createObject(type,x=0,y=0){
+
+  const presets={
+
+    sofa:{
+      name:"Sofa",
+      w:2.4,
+      d:.9,
+      h:.85,
+      color:"#665447"
+    },
+
+    bed:{
+      name:"Bed",
+      w:2,
+      d:2,
+      h:.55,
+      color:"#7b6a5a"
+    },
+
+    table:{
+      name:"Dining Table",
+      w:1.6,
+      d:.9,
+      h:.75,
+      color:"#8a6746"
+    },
+
+    chair:{
+      name:"Chair",
+      w:.55,
+      d:.55,
+      h:.9,
+      color:"#66513e"
+    },
+
+    wardrobe:{
+      name:"Wardrobe",
+      w:1.5,
+      d:.6,
+      h:2.2,
+      color:"#554333"
+    },
+
+    kitchen:{
+      name:"Kitchen Set",
+      w:2.8,
+      d:.65,
+      h:.9,
+      color:"#4e5054"
+    },
+
+    tv:{
+      name:"TV Cabinet",
+      w:1.8,
+      d:.45,
+      h:1.1,
+      color:"#26282d"
+    },
+
+    plant:{
+      name:"Indoor Plant",
+      w:.55,
+      d:.55,
+      h:1.5,
+      color:"#53684d"
+    },
+
+    door:{
+      name:"Door",
+      w:.9,
+      d:.12,
+      h:2.1,
+      color:"#7d5739"
+    },
+
+    window:{
+      name:"Window",
+      w:1.4,
+      d:.1,
+      h:1.2,
+      color:"#7899a5"
+    }
+
+  };
+
+  const p=presets[type] || presets.table;
+
+  return {
+
+    id:uid(),
+
+    type,
+
+    name:p.name,
+
+    x,
+
+    y,
+
+    w:p.w,
+
+    d:p.d,
+
+    h:p.h,
+
+    r:0,
+
+    color:p.color,
+
+    visible:true,
+
+    layer:type==="door" || type==="window" ? "Architecture" : "Furniture"
+
+  };
+
+}
+
+/* ============================================================
+   ROOM
+   ============================================================ */
+
+function applyRoom(){
+
+  const width=parseFloat($("roomWidth").value)||6;
+  const depth=parseFloat($("roomDepth").value)||5;
+  const wallHeight=parseFloat($("wallHeight").value)||3;
+
+  state.project.width=clamp(width,1,30);
+  state.project.depth=clamp(depth,1,30);
+  state.project.wallHeight=clamp(wallHeight,2,6);
+
+  saveHistory();
+
+  state.selected=null;
+
+  state.objects=state.objects.filter(o=>o.layer!=="Architecture");
+
+  updateUI();
+  drawAll();
+
+  toast("Ukuran room diperbarui");
+
+}
+
+$("applyRoom").addEventListener("click",applyRoom);
+
+/* ============================================================
+   HISTORY
+   ============================================================ */
+
+function snapshot(){
+
+  return {
+
+    project:clone(state.project),
+
+    objects:clone(state.objects)
+
+  };
+
+}
+
+function saveHistory(){
+
+  state.history.push(snapshot());
+
+  if(state.history.length>50){
+
+    state.history.shift();
+
+  }
+
+  state.future=[];
+
+}
+
+function undo(){
+
+  if(!state.history.length){
+
+    toast("Tidak ada Undo");
+
+    return;
+
+  }
+
+  state.future.push(snapshot());
+
+  const previous=state.history.pop();
+
+  state.project=previous.project;
+  state.objects=previous.objects;
+
+  state.selected=null;
+
+  syncInputs();
+  updateUI();
+  drawAll();
+
+  toast("Undo");
+
+}
+
+function redo(){
+
+  if(!state.future.length){
+
+    toast("Tidak ada Redo");
+
+    return;
+
+  }
+
+  state.history.push(snapshot());
+
+  const next=state.future.pop();
+
+  state.project=next.project;
+  state.objects=next.objects;
+
+  state.selected=null;
+
+  syncInputs();
+  updateUI();
+  drawAll();
+
+  toast("Redo");
+
+}
+
+$("undoBtn").addEventListener("click",undo);
+$("redoBtn").addEventListener("click",redo);
+
+/* ============================================================
+   NEW
+   ============================================================ */
+
+$("newBtn").addEventListener("click",()=>{
+
+  if(!confirm("Buat project baru?")) return;
+
+  saveHistory();
+
+  state.project={
+    name:"Untitled Interior",
+    width:6,
+    depth:5,
+    wallHeight:3,
+    floorColor:"#6c5845",
+    wallColor:"#d9d2c4",
+    accentColor:"#b08a50",
+    ceiling:true
+  };
+
+  state.objects=[];
+  state.selected=null;
+  state.zoom2d=1;
+  state.offsetX=0;
+  state.offsetY=0;
+
+  syncInputs();
+  updateUI();
+  drawAll();
+
+  toast("Project baru dibuat");
+
+});
+
+/* ============================================================
+   TOOL SELECTION
+   ============================================================ */
+
+document.querySelectorAll("[data-tool]").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    state.tool=btn.dataset.tool;
+
+    document.querySelectorAll("[data-tool]").forEach(b=>{
+      b.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+
+    setStatus("Tool: "+state.tool);
+
+  });
+
+});
+
+document.querySelectorAll("[data-furniture]").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    const type=btn.dataset.furniture;
+
+    const obj=createObject(
+      type,
+      state.project.width/2,
+      state.project.depth/2
     );
 
-    if(undoStack.length > 40){
+    saveHistory();
 
-        undoStack.shift();
+    state.objects.push(obj);
+    state.selected=obj.id;
+
+    updateUI();
+    drawAll();
+
+    toast(obj.name+" ditambahkan");
+
+  });
+
+});
+
+/* ============================================================
+   2D COORDINATES
+   ============================================================ */
+
+function fitScale(){
+
+  const pad=80;
+
+  return Math.min(
+    (planCanvas.width-pad)/state.project.width,
+    (planCanvas.height-pad)/state.project.depth
+  ) * state.zoom2d;
+
+}
+
+function worldToScreen(x,y){
+
+  const scale=fitScale();
+
+  const cx=planCanvas.width/2 + state.offsetX;
+  const cy=planCanvas.height/2 + state.offsetY;
+
+  return {
+
+    x:cx+(x-state.project.width/2)*scale,
+
+    y:cy+(y-state.project.depth/2)*scale
+
+  };
+
+}
+
+function screenToWorld(sx,sy){
+
+  const scale=fitScale();
+
+  const cx=planCanvas.width/2 + state.offsetX;
+  const cy=planCanvas.height/2 + state.offsetY;
+
+  return {
+
+    x:(sx-cx)/scale+state.project.width/2,
+
+    y:(sy-cy)/scale+state.project.depth/2
+
+  };
+
+}
+
+/* ============================================================
+   2D DRAWING
+   ============================================================ */
+
+function resizeCanvas(){
+
+  const rect=planCanvas.getBoundingClientRect();
+
+  const dpr=window.devicePixelRatio||1;
+
+  planCanvas.width=rect.width*dpr;
+  planCanvas.height=rect.height*dpr;
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  threeCanvas.width=rect.width*dpr;
+  threeCanvas.height=rect.height*dpr;
+
+  ctx3.setTransform(dpr,0,0,dpr,0,0);
+
+  drawAll();
+
+}
+
+window.addEventListener("resize",resizeCanvas);
+
+function drawGrid(){
+
+  const scale=fitScale();
+
+  const step=.5;
+
+  const left=-2;
+  const right=state.project.width+2;
+  const top=-2;
+  const bottom=state.project.depth+2;
+
+  ctx.save();
+
+  ctx.lineWidth=1;
+
+  for(let x=Math.floor(left/step)*step;x<=right;x+=step){
+
+    const p1=worldToScreen(x,top);
+    const p2=worldToScreen(x,bottom);
+
+    ctx.strokeStyle=
+      Math.abs(x%1)<.01
+      ? "rgba(255,255,255,.07)"
+      : "rgba(255,255,255,.028)";
+
+    ctx.beginPath();
+    ctx.moveTo(p1.x,p1.y);
+    ctx.lineTo(p2.x,p2.y);
+    ctx.stroke();
+
+  }
+
+  for(let y=Math.floor(top/step)*step;y<=bottom;y+=step){
+
+    const p1=worldToScreen(left,y);
+    const p2=worldToScreen(right,y);
+
+    ctx.strokeStyle=
+      Math.abs(y%1)<.01
+      ? "rgba(255,255,255,.07)"
+      : "rgba(255,255,255,.028)";
+
+    ctx.beginPath();
+    ctx.moveTo(p1.x,p1.y);
+    ctx.lineTo(p2.x,p2.y);
+    ctx.stroke();
+
+  }
+
+  ctx.restore();
+
+}
+
+function drawRoom(){
+
+  const a=worldToScreen(0,0);
+  const b=worldToScreen(
+    state.project.width,
+    state.project.depth
+  );
+
+  const w=b.x-a.x;
+  const h=b.y-a.y;
+
+  ctx.save();
+
+  ctx.fillStyle=state.project.floorColor;
+
+  ctx.globalAlpha=.82;
+
+  ctx.fillRect(a.x,a.y,w,h);
+
+  ctx.globalAlpha=1;
+
+  ctx.strokeStyle=state.project.wallColor;
+
+  ctx.lineWidth=12;
+
+  ctx.strokeRect(a.x,a.y,w,h);
+
+  ctx.strokeStyle="#4b4d52";
+
+  ctx.lineWidth=1;
+
+  ctx.strokeRect(a.x,a.y,w,h);
+
+  ctx.restore();
+
+  drawDimension(
+    a.x,
+    b.y+35,
+    b.x,
+    b.y+35,
+    state.project.width.toFixed(2)+" m"
+  );
+
+  drawDimension(
+    b.x+35,
+    a.y,
+    b.x+35,
+    b.y,
+    state.project.depth.toFixed(2)+" m"
+  );
+
+}
+
+function drawDimension(x1,y1,x2,y2,text){
+
+  ctx.save();
+
+  ctx.strokeStyle="#a99872";
+
+  ctx.fillStyle="#d9c18b";
+
+  ctx.lineWidth=1;
+
+  ctx.beginPath();
+
+  ctx.moveTo(x1,y1);
+  ctx.lineTo(x2,y2);
+
+  ctx.stroke();
+
+  const horizontal=Math.abs(y2-y1)<Math.abs(x2-x1);
+
+  if(horizontal){
+
+    ctx.beginPath();
+
+    ctx.moveTo(x1,y1-5);
+    ctx.lineTo(x1,y1+5);
+
+    ctx.moveTo(x2,y2-5);
+    ctx.lineTo(x2,y2+5);
+
+    ctx.stroke();
+
+    ctx.textAlign="center";
+    ctx.textBaseline="bottom";
+
+    ctx.font="10px Arial";
+
+    ctx.fillText(text,(x1+x2)/2,y1-5);
+
+  }else{
+
+    ctx.beginPath();
+
+    ctx.moveTo(x1-5,y1);
+    ctx.lineTo(x1+5,y1);
+
+    ctx.moveTo(x2-5,y2);
+    ctx.lineTo(x2+5,y2);
+
+    ctx.stroke();
+
+    ctx.save();
+
+    ctx.translate(x1-8,(y1+y2)/2);
+
+    ctx.rotate(-Math.PI/2);
+
+    ctx.textAlign="center";
+    ctx.font="10px Arial";
+
+    ctx.fillText(text,0,0);
+
+    ctx.restore();
+
+  }
+
+  ctx.restore();
+
+}
+
+function drawFurniture(obj){
+
+  const p=worldToScreen(obj.x,obj.y);
+
+  const scale=fitScale();
+
+  const w=obj.w*scale;
+  const d=obj.d*scale;
+
+  ctx.save();
+
+  ctx.translate(p.x,p.y);
+  ctx.rotate(rad(obj.r));
+
+  const x=-w/2;
+  const y=-d/2;
+
+  ctx.fillStyle=shade(obj.color,.65);
+
+  ctx.shadowColor="rgba(0,0,0,.5)";
+  ctx.shadowBlur=10;
+  ctx.shadowOffsetY=5;
+
+  roundRect(ctx,x,y,w,d,5);
+
+  ctx.fill();
+
+  ctx.shadowColor="transparent";
+
+  ctx.strokeStyle=
+    obj.id===state.selected
+    ? "#f0d18a"
+    : "rgba(255,255,255,.25)";
+
+  ctx.lineWidth=obj.id===state.selected?2:1;
+
+  ctx.stroke();
+
+  /* realistic symbols */
+
+  ctx.shadowColor="transparent";
+
+  if(obj.type==="sofa"){
+
+    ctx.fillStyle=shade(obj.color,.8);
+
+    roundRect(ctx,x+5,y+5,w-10,d*.32,4);
+    ctx.fill();
+
+    ctx.fillStyle=shade(obj.color,.55);
+
+    ctx.fillRect(x+5,y+d*.45,w-10,d*.42);
+
+    ctx.fillStyle="rgba(255,255,255,.08)";
+
+    ctx.fillRect(x+10,y+d*.48,w*.28,d*.25);
+    ctx.fillRect(x+w*.68,y+d*.48,w*.22,d*.25);
+
+  }
+
+  if(obj.type==="bed"){
+
+    ctx.fillStyle="#d6d0c5";
+
+    roundRect(
+      ctx,
+      x+6,
+      y+6,
+      w-12,
+      d*.42,
+      5
+    );
+
+    ctx.fill();
+
+    ctx.fillStyle="#b5a999";
+
+    ctx.fillRect(
+      x+6,
+      y+d*.52,
+      w-12,
+      d*.42
+    );
+
+    ctx.strokeStyle="rgba(0,0,0,.18)";
+
+    ctx.strokeRect(
+      x+6,
+      y+6,
+      w-12,
+      d-12
+    );
+
+  }
+
+  if(obj.type==="table"){
+
+    ctx.beginPath();
+
+    ctx.arc(
+      0,
+      0,
+      Math.min(w,d)*.32,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=shade(obj.color,.8);
+
+    ctx.fill();
+
+    ctx.stroke();
+
+  }
+
+  if(obj.type==="chair"){
+
+    ctx.fillStyle=shade(obj.color,.8);
+
+    roundRect(
+      ctx,
+      x+5,
+      y+5,
+      w-10,
+      d*.55,
+      4
+    );
+
+    ctx.fill();
+
+    ctx.fillRect(
+      x+w*.25,
+      y+d*.6,
+      w*.5,
+      d*.3
+    );
+
+  }
+
+  if(obj.type==="wardrobe" || obj.type==="kitchen"){
+
+    ctx.strokeStyle="rgba(255,255,255,.2)";
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+w/2,y);
+    ctx.lineTo(x+w/2,y+d);
+
+    ctx.stroke();
+
+    ctx.fillStyle="rgba(255,255,255,.3)";
+
+    ctx.beginPath();
+
+    ctx.arc(
+      x+w/2,
+      0,
+      2,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fill();
+
+  }
+
+  if(obj.type==="tv"){
+
+    ctx.fillStyle="#090a0c";
+
+    ctx.fillRect(
+      x+4,
+      y+4,
+      w-8,
+      d*.58
+    );
+
+    ctx.strokeStyle="#aaa";
+
+    ctx.strokeRect(
+      x+4,
+      y+4,
+      w-8,
+      d*.58
+    );
+
+  }
+
+  if(obj.type==="plant"){
+
+    ctx.fillStyle="#7a5739";
+
+    ctx.fillRect(
+      -w*.18,
+      d*.05,
+      w*.36,
+      d*.25
+    );
+
+    ctx.fillStyle="#6b875e";
+
+    for(let i=0;i<5;i++){
+
+      ctx.beginPath();
+
+      const angle=(i/5)*Math.PI*2;
+
+      ctx.ellipse(
+        Math.cos(angle)*w*.18,
+        -Math.sin(angle)*d*.15,
+        w*.16,
+        d*.25,
+        angle,
+        0,
+        Math.PI*2
+      );
+
+      ctx.fill();
 
     }
 
-    redoStack = [];
+  }
 
-}
+  if(obj.type==="door"){
 
+    ctx.strokeStyle="#dfc18b";
 
-/* =========================================================
-   SNAP
-========================================================= */
+    ctx.lineWidth=3;
 
-function snapValue(value){
+    ctx.beginPath();
 
-    if(!snapEnabled){
-        return value;
-    }
-
-    return Math.round(value / 10) * 10;
-
-}
-
-
-/* =========================================================
-   ADD FURNITURE
-========================================================= */
-
-function addFurniture(
-    name,
-    icon,
-    width,
-    height
-){
-
-    saveState();
-
-    const id =
-        ++objectId;
-
-    const object = {
-
-        id:id,
-
-        type:"furniture",
-
-        name:name,
-
-        icon:icon,
-
-        width:width,
-
-        height:height,
-
-        x:snapValue(
-            280 + Math.random()*150
-        ),
-
-        y:snapValue(
-            140 + Math.random()*150
-        ),
-
-        rotation:0,
-
-        material:"wood"
-
-    };
-
-    objects.push(object);
-
-    renderAll();
-
-    selectObject(id);
-
-    showToast(
-        name + " ditambahkan."
+    ctx.arc(
+      x+w,
+      y+d,
+      w,
+      Math.PI,
+      Math.PI*1.5
     );
 
-}
+    ctx.stroke();
 
+  }
 
-/* =========================================================
-   ADD DOOR
-========================================================= */
+  if(obj.type==="window"){
 
-function addDoor(){
+    ctx.strokeStyle="#8fbacb";
 
-    saveState();
+    ctx.lineWidth=3;
 
-    const id =
-        ++objectId;
+    ctx.beginPath();
 
-    objects.push({
+    ctx.moveTo(x,y+d/2);
+    ctx.lineTo(x+w,y+d/2);
 
-        id:id,
+    ctx.moveTo(0,y);
+    ctx.lineTo(0,y+d);
 
-        type:"door",
+    ctx.stroke();
 
-        name:"Door",
+  }
 
-        icon:"🚪",
-
-        width:85,
-
-        height:18,
-
-        x:300,
-
-        y:20,
-
-        rotation:0,
-
-        material:"wood"
-
-    });
-
-    renderAll();
-
-    selectObject(id);
-
-    showToast("Door ditambahkan.");
+  ctx.restore();
 
 }
 
+function roundRect(ctx,x,y,w,h,r){
 
-/* =========================================================
-   ADD WINDOW
-========================================================= */
+  const rr=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);
 
-function addWindow(){
+  ctx.beginPath();
 
-    saveState();
+  ctx.moveTo(x+rr,y);
 
-    const id =
-        ++objectId;
+  ctx.arcTo(x+w,y,x+w,y+h,rr);
 
-    objects.push({
+  ctx.arcTo(x+w,y+h,x,y+h,rr);
 
-        id:id,
+  ctx.arcTo(x,y+h,x,y,rr);
 
-        type:"window",
+  ctx.arcTo(x,y,x+w,y,rr);
 
-        name:"Window",
-
-        icon:"▣",
-
-        width:120,
-
-        height:18,
-
-        x:420,
-
-        y:20,
-
-        rotation:0,
-
-        material:"glass"
-
-    });
-
-    renderAll();
-
-    selectObject(id);
-
-    showToast("Window ditambahkan.");
+  ctx.closePath();
 
 }
 
+function drawAll(){
 
-/* =========================================================
-   ADD WALL
-========================================================= */
+  const rect=planCanvas.getBoundingClientRect();
 
-function addWall(){
+  const width=rect.width;
+  const height=rect.height;
 
-    saveState();
+  ctx.clearRect(0,0,width,height);
 
-    const id =
-        ++objectId;
+  ctx.fillStyle="#08090c";
 
-    objects.push({
+  ctx.fillRect(0,0,width,height);
 
-        id:id,
+  drawGrid();
 
-        type:"wall",
+  drawRoom();
 
-        name:"Interior Wall",
+  state.objects.forEach(obj=>{
 
-        icon:"🧱",
+    if(obj.visible!==false){
 
-        width:220,
+      drawFurniture(obj);
 
-        height:15,
+    }
 
-        x:240,
+  });
 
-        y:180,
+  $("emptyInfo").style.display=
+    state.objects.length===0 ? "block":"none";
 
-        rotation:0,
+  if(state.mode==="3d"){
 
-        material:"wood"
+    draw3D();
 
-    });
-
-    renderAll();
-
-    selectObject(id);
-
-    showToast("Wall ditambahkan.");
+  }
 
 }
 
+/* ============================================================
+   HIT TEST
+   ============================================================ */
 
-/* =========================================================
-   RENDER OBJECT
-========================================================= */
+function pointInsideObject(world,obj){
 
-function renderObject(object){
+  const dx=world.x-obj.x;
+  const dy=world.y-obj.y;
 
-    const container =
-        document.getElementById(
-            "objectsContainer"
-        );
+  const angle=-rad(obj.r);
 
-    const el =
-        document.createElement("div");
+  const rx=dx*Math.cos(angle)-dy*Math.sin(angle);
+  const ry=dx*Math.sin(angle)+dy*Math.cos(angle);
 
+  return (
+    Math.abs(rx)<=obj.w/2 &&
+    Math.abs(ry)<=obj.d/2
+  );
 
-    if(object.type === "wall"){
+}
 
-        el.className =
-            "wall-object";
+function findObjectAt(world){
 
-    }else if(
-        object.type === "door"
-    ){
+  for(let i=state.objects.length-1;i>=0;i--){
 
-        el.className =
-            "arch-object";
+    const obj=state.objects[i];
 
-    }else if(
-        object.type === "window"
-    ){
+    if(obj.visible!==false && pointInsideObject(world,obj)){
 
-        el.className =
-            "arch-object window-object";
+      return obj;
+
+    }
+
+  }
+
+  return null;
+
+}
+
+/* ============================================================
+   CANVAS POINTER
+   ============================================================ */
+
+planCanvas.addEventListener("pointerdown",e=>{
+
+  const rect=planCanvas.getBoundingClientRect();
+
+  const sx=e.clientX-rect.left;
+  const sy=e.clientY-rect.top;
+
+  const world=screenToWorld(sx,sy);
+
+  state.lastPointer={sx,sy,world};
+
+  if(state.tool==="select"){
+
+    const obj=findObjectAt(world);
+
+    state.selected=obj?obj.id:null;
+
+    if(obj){
+
+      saveHistory();
+
+      state.dragging={
+        id:obj.id,
+        dx:world.x-obj.x,
+        dy:world.y-obj.y
+      };
+
+      planCanvas.setPointerCapture(e.pointerId);
+
+    }
+
+    updateUI();
+    drawAll();
+
+    return;
+
+  }
+
+  if(state.tool==="room"){
+
+    const width=clamp(
+      parseFloat($("roomWidth").value)||6,
+      1,
+      30
+    );
+
+    const depth=clamp(
+      parseFloat($("roomDepth").value)||5,
+      1,
+      30
+    );
+
+    saveHistory();
+
+    state.project.width=width;
+    state.project.depth=depth;
+
+    syncInputs();
+    updateUI();
+    drawAll();
+
+    toast("Room dibuat");
+
+    return;
+
+  }
+
+  if(state.tool==="wall"){
+
+    const obj=createObject(
+      "window",
+      clamp(world.x,.1,state.project.width-.1),
+      clamp(world.y,.1,state.project.depth-.1)
+    );
+
+    obj.name="Wall Opening";
+    obj.type="wall";
+    obj.w=2;
+    obj.d=.18;
+    obj.h=state.project.wallHeight;
+
+    saveHistory();
+
+    state.objects.push(obj);
+    state.selected=obj.id;
+
+    updateUI();
+    drawAll();
+
+    toast("Wall ditambahkan");
+
+    return;
+
+  }
+
+  if(state.tool==="door" || state.tool==="window"){
+
+    const obj=createObject(
+      state.tool,
+      clamp(world.x,.1,state.project.width-.1),
+      clamp(world.y,.1,state.project.depth-.1)
+    );
+
+    saveHistory();
+
+    state.objects.push(obj);
+    state.selected=obj.id;
+
+    updateUI();
+    drawAll();
+
+    toast(
+      state.tool==="door"
+      ? "Door ditambahkan"
+      : "Window ditambahkan"
+    );
+
+  }
+
+});
+
+planCanvas.addEventListener("pointermove",e=>{
+
+  const rect=planCanvas.getBoundingClientRect();
+
+  const sx=e.clientX-rect.left;
+  const sy=e.clientY-rect.top;
+
+  const world=screenToWorld(sx,sy);
+
+  if(state.dragging){
+
+    const obj=state.objects.find(
+      o=>o.id===state.dragging.id
+    );
+
+    if(obj){
+
+      obj.x=clamp(
+        world.x-state.dragging.dx,
+        0,
+        state.project.width
+      );
+
+      obj.y=clamp(
+        world.y-state.dragging.dy,
+        0,
+        state.project.depth
+      );
+
+      updatePropertiesOnly();
+      drawAll();
+
+    }
+
+  }
+
+});
+
+planCanvas.addEventListener("pointerup",e=>{
+
+  state.dragging=null;
+
+  try{
+    planCanvas.releasePointerCapture(e.pointerId);
+  }catch(_){}
+
+});
+
+planCanvas.addEventListener("wheel",e=>{
+
+  e.preventDefault();
+
+  const old=state.zoom2d;
+
+  state.zoom2d=clamp(
+    state.zoom2d+(e.deltaY<0?.1:-.1),
+    .5,
+    3
+  );
+
+  if(old!==state.zoom2d){
+
+    $("zoom2d").value=state.zoom2d;
+    $("zoomValue").textContent=
+      Math.round(state.zoom2d*100)+"%";
+
+    drawAll();
+
+  }
+
+},{passive:false});
+
+/* ============================================================
+   2D PAN
+   ============================================================ */
+
+let pan=null;
+
+planCanvas.addEventListener("contextmenu",e=>e.preventDefault());
+
+planCanvas.addEventListener("pointerdown",e=>{
+
+  if(e.button!==2) return;
+
+  pan={
+    x:e.clientX,
+    y:e.clientY,
+    ox:state.offsetX,
+    oy:state.offsetY
+  };
+
+  planCanvas.setPointerCapture(e.pointerId);
+
+});
+
+planCanvas.addEventListener("pointermove",e=>{
+
+  if(!pan) return;
+
+  state.offsetX=pan.ox+(e.clientX-pan.x);
+  state.offsetY=pan.oy+(e.clientY-pan.y);
+
+  drawAll();
+
+});
+
+planCanvas.addEventListener("pointerup",e=>{
+
+  pan=null;
+
+  try{
+    planCanvas.releasePointerCapture(e.pointerId);
+  }catch(_){}
+
+});
+
+/* ============================================================
+   PROPERTY PANEL
+   ============================================================ */
+
+function selectedObject(){
+
+  return state.objects.find(
+    o=>o.id===state.selected
+  ) || null;
+
+}
+
+function updateUI(){
+
+  $("objectCount").textContent=state.objects.length;
+
+  $("sizeReadout").textContent=
+    state.project.width.toFixed(1)+" × "+
+    state.project.depth.toFixed(1)+" m";
+
+  $("projectName").textContent=
+    state.project.name;
+
+  const obj=selectedObject();
+
+  if(!obj){
+
+    $("noSelection").style.display="block";
+    $("selectionPanel").style.display="none";
+    $("selectedType").textContent="NONE";
+
+  }else{
+
+    $("noSelection").style.display="none";
+    $("selectionPanel").style.display="block";
+
+    $("selectedType").textContent=
+      obj.type.toUpperCase();
+
+    updatePropertiesOnly();
+
+  }
+
+}
+
+function updatePropertiesOnly(){
+
+  const obj=selectedObject();
+
+  if(!obj) return;
+
+  $("propName").value=obj.name;
+  $("propX").value=obj.x.toFixed(2);
+  $("propY").value=obj.y.toFixed(2);
+  $("propW").value=obj.w.toFixed(2);
+  $("propD").value=obj.d.toFixed(2);
+  $("propH").value=obj.h.toFixed(2);
+  $("propR").value=Math.round(obj.r);
+  $("propColor").value=obj.color;
+
+}
+
+function syncInputs(){
+
+  $("roomWidth").value=state.project.width;
+  $("roomDepth").value=state.project.depth;
+  $("wallHeight").value=state.project.wallHeight;
+
+  $("floorColor").value=state.project.floorColor;
+  $("wallColor").value=state.project.wallColor;
+  $("accentColor").value=state.project.accentColor;
+
+  $("zoom2d").value=state.zoom2d;
+  $("zoomValue").textContent=
+    Math.round(state.zoom2d*100)+"%";
+
+}
+
+function propertyChanged(){
+
+  const obj=selectedObject();
+
+  if(!obj) return;
+
+  saveHistory();
+
+  obj.name=$("propName").value || "Object";
+
+  obj.x=parseFloat($("propX").value)||obj.x;
+  obj.y=parseFloat($("propY").value)||obj.y;
+  obj.w=Math.max(.05,parseFloat($("propW").value)||obj.w);
+  obj.d=Math.max(.05,parseFloat($("propD").value)||obj.d);
+  obj.h=Math.max(.05,parseFloat($("propH").value)||obj.h);
+  obj.r=parseFloat($("propR").value)||0;
+
+  obj.color=$("propColor").value;
+
+  updateUI();
+  drawAll();
+
+}
+
+[
+  "propName",
+  "propX",
+  "propY",
+  "propW",
+  "propD",
+  "propH",
+  "propR",
+  "propColor"
+].forEach(id=>{
+
+  $(id).addEventListener("change",propertyChanged);
+
+});
+
+$("rotateLeft").addEventListener("click",()=>{
+
+  const obj=selectedObject();
+
+  if(!obj)return;
+
+  saveHistory();
+
+  obj.r-=15;
+
+  updateUI();
+  drawAll();
+
+});
+
+$("rotateRight").addEventListener("click",()=>{
+
+  const obj=selectedObject();
+
+  if(!obj)return;
+
+  saveHistory();
+
+  obj.r+=15;
+
+  updateUI();
+  drawAll();
+
+});
+
+$("deleteBtn").addEventListener("click",()=>{
+
+  const obj=selectedObject();
+
+  if(!obj)return;
+
+  saveHistory();
+
+  state.objects=
+    state.objects.filter(o=>o.id!==obj.id);
+
+  state.selected=null;
+
+  updateUI();
+  drawAll();
+
+  toast("Object dihapus");
+
+});
+
+$("duplicateBtn").addEventListener("click",()=>{
+
+  const obj=selectedObject();
+
+  if(!obj)return;
+
+  saveHistory();
+
+  const copy=clone(obj);
+
+  copy.id=uid();
+  copy.name=obj.name+" Copy";
+  copy.x+=.4;
+  copy.y+=.4;
+
+  copy.x=clamp(
+    copy.x,
+    0,
+    state.project.width
+  );
+
+  copy.y=clamp(
+    copy.y,
+    0,
+    state.project.depth
+  );
+
+  state.objects.push(copy);
+  state.selected=copy.id;
+
+  updateUI();
+  drawAll();
+
+  toast("Object duplicated");
+
+});
+
+/* ============================================================
+   MATERIALS
+   ============================================================ */
+
+$("floorColor").addEventListener("input",()=>{
+
+  state.project.floorColor=$("floorColor").value;
+  drawAll();
+
+});
+
+$("wallColor").addEventListener("input",()=>{
+
+  state.project.wallColor=$("wallColor").value;
+  drawAll();
+
+});
+
+$("accentColor").addEventListener("input",()=>{
+
+  state.project.accentColor=$("accentColor").value;
+  drawAll();
+
+});
+
+$("zoom2d").addEventListener("input",()=>{
+
+  state.zoom2d=parseFloat($("zoom2d").value);
+
+  $("zoomValue").textContent=
+    Math.round(state.zoom2d*100)+"%";
+
+  drawAll();
+
+});
+
+$("resetView").addEventListener("click",()=>{
+
+  state.zoom2d=1;
+  state.offsetX=0;
+  state.offsetY=0;
+
+  syncInputs();
+  drawAll();
+
+});
+
+/* ============================================================
+   2D / 3D MODE
+   ============================================================ */
+
+function setMode(mode){
+
+  state.mode=mode;
+
+  $("mode2d").classList.toggle(
+    "active",
+    mode==="2d"
+  );
+
+  $("mode3d").classList.toggle(
+    "active",
+    mode==="3d"
+  );
+
+  $("workspace").classList.toggle(
+    "mode3d",
+    mode==="3d"
+  );
+
+  if(mode==="3d"){
+
+    setStatus("3D Architect View");
+
+  }else{
+
+    setStatus("2D Floor Planner");
+
+  }
+
+  drawAll();
+
+}
+
+$("mode2d").addEventListener(
+  "click",
+  ()=>setMode("2d")
+);
+
+$("mode3d").addEventListener(
+  "click",
+  ()=>setMode("3d")
+);
+
+/* ============================================================
+   3D ENGINE - LIGHTWEIGHT SOFTWARE RENDERER
+   ============================================================ */
+
+function project3D(x,y,z){
+
+  const canvas=threeCanvas;
+
+  const width=canvas.clientWidth;
+  const height=canvas.clientHeight;
+
+  const yaw=state.camera.yaw;
+  const pitch=state.camera.pitch;
+
+  const cy=Math.cos(yaw);
+  const sy=Math.sin(yaw);
+
+  let X=x*cy-y*sy;
+  let Y=x*sy+y*cy;
+
+  const cp=Math.cos(pitch);
+  const sp=Math.sin(pitch);
+
+  let Z=Y*sp+z*cp;
+  let depth=Y*cp-z*sp;
+
+  const scale=
+    Math.min(width,height)/
+    state.camera.distance;
+
+  const cx=width/2;
+  const cyScreen=height/2;
+
+  const perspective=
+    state.view3d==="perspective"
+    ? 1/(1+depth*.035)
+    : 1;
+
+  return {
+
+    x:cx+X*scale*perspective,
+
+    y:cyScreen-Z*scale*perspective,
+
+    depth
+
+  };
+
+}
+
+function drawPoly(points,fill,stroke){
+
+  ctx3.beginPath();
+
+  points.forEach((p,i)=>{
+
+    if(i===0){
+
+      ctx3.moveTo(p.x,p.y);
 
     }else{
 
-        el.className =
-            "object";
+      ctx3.lineTo(p.x,p.y);
 
     }
 
+  });
 
-    el.dataset.id =
-        object.id;
+  ctx3.closePath();
 
-    el.style.width =
-        object.width + "px";
+  ctx3.fillStyle=fill;
+  ctx3.fill();
 
-    el.style.height =
-        object.height + "px";
+  if(stroke){
 
-    el.style.left =
-        object.x + "px";
+    ctx3.strokeStyle=stroke;
+    ctx3.lineWidth=1;
+    ctx3.stroke();
 
-    el.style.top =
-        object.y + "px";
+  }
 
-    el.style.transform =
-        "rotate(" +
-        object.rotation +
-        "deg)";
+}
 
+function box3D(cx,cy,w,d,h,color){
 
-    if(object.type === "wall"){
+  const x1=cx-w/2;
+  const x2=cx+w/2;
 
-        el.innerHTML = "";
+  const y1=cy-d/2;
+  const y2=cy+d/2;
 
-    }else{
+  const p000=project3D(x1,y1,0);
+  const p100=project3D(x2,y1,0);
+  const p110=project3D(x2,y2,0);
+  const p010=project3D(x1,y2,0);
 
-        const icon =
-            document.createElement("div");
+  const p001=project3D(x1,y1,h);
+  const p101=project3D(x2,y1,h);
+  const p111=project3D(x2,y2,h);
+  const p011=project3D(x1,y2,h);
 
-        icon.className =
-            "object-icon";
+  drawPoly(
+    [p001,p101,p111,p011],
+    shade(color,1.08),
+    "rgba(255,255,255,.15)"
+  );
 
-        icon.textContent =
-            object.icon || "▣";
+  drawPoly(
+    [p000,p100,p101,p001],
+    shade(color,.78),
+    "rgba(0,0,0,.3)"
+  );
 
-        icon.style.fontSize =
-            Math.min(
-                object.width,
-                object.height
-            ) * .42 + "px";
+  drawPoly(
+    [p100,p110,p111,p101],
+    shade(color,.62),
+    "rgba(0,0,0,.4)"
+  );
 
-        el.appendChild(icon);
+  drawPoly(
+    [p000,p010,p110,p100],
+    shade(color,.9),
+    "rgba(255,255,255,.08)"
+  );
 
-        if(
-            object.type === "door" ||
-            object.type === "window"
-        ){
+  return {
+    points:[
+      p000,p100,p110,p010,
+      p001,p101,p111,p011
+    ]
+  };
 
-            const text =
-                document.createElement("span");
+}
 
-            text.textContent =
-                object.name;
+function drawFloor3D(){
 
-            el.appendChild(text);
+  const W=state.project.width;
+  const D=state.project.depth;
 
-        }
+  const x1=-W/2;
+  const x2=W/2;
+  const y1=-D/2;
+  const y2=D/2;
 
-    }
+  const p1=project3D(x1,y1,0);
+  const p2=project3D(x2,y1,0);
+  const p3=project3D(x2,y2,0);
+  const p4=project3D(x1,y2,0);
 
+  drawPoly(
+    [p1,p2,p3,p4],
+    state.project.floorColor,
+    "rgba(255,255,255,.16)"
+  );
 
-    if(object.type === "furniture"){
+  /* grid */
+  ctx3.save();
 
-        const label =
-            document.createElement("div");
+  ctx3.strokeStyle="rgba(255,255,255,.07)";
+  ctx3.lineWidth=1;
 
-        label.className =
-            "object-label";
+  for(let x=0;x<=W;x+=.5){
 
-        label.textContent =
-            object.name;
+    const xx=x-W/2;
 
-        el.appendChild(label);
+    const a=project3D(xx,y1+.02,0.01);
+    const b=project3D(xx,y2-.02,0.01);
 
-    }
+    ctx3.beginPath();
+    ctx3.moveTo(a.x,a.y);
+    ctx3.lineTo(b.x,b.y);
+    ctx3.stroke();
 
+  }
 
-    applyMaterial(el,object.material);
+  for(let y=0;y<=D;y+=.5){
 
+    const yy=y-D/2;
 
-    el.addEventListener(
-        "mousedown",
-        startDrag
+    const a=project3D(x1+.02,yy,0.01);
+    const b=project3D(x2-.02,yy,0.01);
+
+    ctx3.beginPath();
+    ctx3.moveTo(a.x,a.y);
+    ctx3.lineTo(b.x,b.y);
+    ctx3.stroke();
+
+  }
+
+  ctx3.restore();
+
+}
+
+function drawWalls3D(){
+
+  const W=state.project.width;
+  const D=state.project.depth;
+  const H=state.project.wallHeight;
+
+  const t=.16;
+
+  box3D(0,-D/2,W,t,H,state.project.wallColor);
+  box3D(0,D/2,W,t,H,state.project.wallColor);
+  box3D(-W/2,0,t,D,H,state.project.wallColor);
+  box3D(W/2,0,t,D,H,state.project.wallColor);
+
+}
+
+function object3D(obj){
+
+  const x=obj.x-state.project.width/2;
+  const y=obj.y-state.project.depth/2;
+
+  return box3D(
+    x,
+    y,
+    obj.w,
+    obj.d,
+    obj.h,
+    obj.color
+  );
+
+}
+
+function draw3D(){
+
+  const width=threeCanvas.clientWidth;
+  const height=threeCanvas.clientHeight;
+
+  ctx3.clearRect(0,0,width,height);
+
+  const gradient=ctx3.createLinearGradient(
+    0,0,0,height
+  );
+
+  gradient.addColorStop(0,"#090a0e");
+  gradient.addColorStop(1,"#171419");
+
+  ctx3.fillStyle=gradient;
+  ctx3.fillRect(0,0,width,height);
+
+  drawFloor3D();
+
+  if(state.view3d!=="front"){
+
+    drawWalls3D();
+
+  }else{
+
+    /* front elevation */
+    const W=state.project.width;
+    const H=state.project.wallHeight;
+
+    box3D(
+      0,
+      -state.project.depth/2,
+      W,
+      .12,
+      H,
+      state.project.wallColor
     );
 
-    el.addEventListener(
-        "click",
-        function(e){
+  }
 
-            e.stopPropagation();
+  const sorted=[...state.objects]
+    .filter(o=>o.visible!==false)
+    .sort((a,b)=>{
 
-            selectObject(
-                object.id
-            );
+      const da=
+        Math.hypot(
+          a.x-state.project.width/2,
+          a.y-state.project.depth/2
+        );
 
-        }
+      const db=
+        Math.hypot(
+          b.x-state.project.width/2,
+          b.y-state.project.depth/2
+        );
+
+      return db-da;
+
+    });
+
+  sorted.forEach(obj=>{
+
+    object3D(obj);
+
+    if(obj.id===state.selected){
+
+      const x=obj.x-state.project.width/2;
+      const y=obj.y-state.project.depth/2;
+
+      const w=obj.w;
+      const d=obj.d;
+      const h=obj.h+.025;
+
+      const a=project3D(
+        x-w/2,
+        y-d/2,
+        h
+      );
+
+      const b=project3D(
+        x+w/2,
+        y-d/2,
+        h
+      );
+
+      const c=project3D(
+        x+w/2,
+        y+d/2,
+        h
+      );
+
+      const d2=project3D(
+        x-w/2,
+        y+d/2,
+        h
+      );
+
+      drawPoly(
+        [a,b,c,d2],
+        "rgba(214,179,106,.06)",
+        "#f0d18a"
+      );
+
+    }
+
+  });
+
+  /* ceiling */
+  if(state.project.ceiling && state.view3d!=="front"){
+
+    const W=state.project.width;
+    const D=state.project.depth;
+    const H=state.project.wallHeight;
+
+    const p1=project3D(-W/2,-D/2,H);
+    const p2=project3D(W/2,-D/2,H);
+    const p3=project3D(W/2,D/2,H);
+    const p4=project3D(-W/2,D/2,H);
+
+    ctx3.save();
+
+    ctx3.globalAlpha=.13;
+
+    drawPoly(
+      [p1,p2,p3,p4],
+      "#ddd4c3",
+      "rgba(255,255,255,.12)"
     );
 
+    ctx3.restore();
 
-    container.appendChild(el);
+  }
+
+  draw3DLabels();
 
 }
 
+function draw3DLabels(){
 
-/* =========================================================
-   RENDER ALL
-========================================================= */
+  ctx3.save();
 
-function renderAll(){
+  ctx3.font="10px Arial";
+  ctx3.fillStyle="rgba(240,209,138,.8)";
 
-    const container =
-        document.getElementById(
-            "objectsContainer"
-        );
+  const W=state.project.width;
+  const D=state.project.depth;
 
-    container.innerHTML = "";
+  const center=project3D(0,0,.02);
 
-    objects.forEach(
-        renderObject
+  ctx3.textAlign="center";
+
+  ctx3.fillText(
+    W.toFixed(2)+" m",
+    center.x,
+    center.y+30
+  );
+
+  ctx3.restore();
+
+}
+
+/* ============================================================
+   3D CAMERA CONTROLS
+   ============================================================ */
+
+let cameraDrag=null;
+
+threeCanvas.addEventListener("pointerdown",e=>{
+
+  cameraDrag={
+    x:e.clientX,
+    y:e.clientY,
+    yaw:state.camera.yaw,
+    pitch:state.camera.pitch
+  };
+
+  threeCanvas.setPointerCapture(e.pointerId);
+
+});
+
+threeCanvas.addEventListener("pointermove",e=>{
+
+  if(!cameraDrag)return;
+
+  const dx=e.clientX-cameraDrag.x;
+  const dy=e.clientY-cameraDrag.y;
+
+  state.camera.yaw=
+    cameraDrag.yaw+dx*.008;
+
+  state.camera.pitch=clamp(
+    cameraDrag.pitch-dy*.008,
+    -.9,
+    1.3
+  );
+
+  draw3D();
+
+});
+
+threeCanvas.addEventListener("pointerup",e=>{
+
+  cameraDrag=null;
+
+  try{
+    threeCanvas.releasePointerCapture(e.pointerId);
+  }catch(_){}
+
+});
+
+threeCanvas.addEventListener("wheel",e=>{
+
+  e.preventDefault();
+
+  state.camera.distance=clamp(
+    state.camera.distance+
+      (e.deltaY>0?0.7:-0.7),
+    4,
+    30
+  );
+
+  draw3D();
+
+},{passive:false});
+
+/* ============================================================
+   3D VIEW BUTTONS
+   ============================================================ */
+
+function set3DView(view){
+
+  state.view3d=view;
+
+  $("viewTop").classList.toggle(
+    "active",
+    view==="top"
+  );
+
+  $("viewFront").classList.toggle(
+    "active",
+    view==="front"
+  );
+
+  $("viewPerspective").classList.toggle(
+    "active",
+    view==="perspective"
+  );
+
+  if(view==="top"){
+
+    state.camera.yaw=0;
+    state.camera.pitch=.02;
+    state.camera.distance=11;
+
+  }
+
+  if(view==="front"){
+
+    state.camera.yaw=0;
+    state.camera.pitch=.05;
+    state.camera.distance=10;
+
+  }
+
+  if(view==="perspective"){
+
+    state.camera.yaw=-.65;
+    state.camera.pitch=.48;
+    state.camera.distance=11;
+
+  }
+
+  draw3D();
+
+}
+
+$("viewTop").addEventListener(
+  "click",
+  ()=>set3DView("top")
+);
+
+$("viewFront").addEventListener(
+  "click",
+  ()=>set3DView("front")
+);
+
+$("viewPerspective").addEventListener(
+  "click",
+  ()=>set3DView("perspective")
+);
+
+$("toggleCeiling").addEventListener("click",()=>{
+
+  state.project.ceiling=
+    !state.project.ceiling;
+
+  $("toggleCeiling").classList.toggle(
+    "active",
+    state.project.ceiling
+  );
+
+  draw3D();
+
+  toast(
+    state.project.ceiling
+    ? "Ceiling ON"
+    : "Ceiling OFF"
+  );
+
+});
+
+/* ============================================================
+   3D OBJECT SELECTION
+   ============================================================ */
+
+threeCanvas.addEventListener("click",e=>{
+
+  if(cameraDrag)return;
+
+  const rect=threeCanvas.getBoundingClientRect();
+
+  const mx=e.clientX-rect.left;
+  const my=e.clientY-rect.top;
+
+  let closest=null;
+  let best=45;
+
+  state.objects.forEach(obj=>{
+
+    const p=project3D(
+      obj.x-state.project.width/2,
+      obj.y-state.project.depth/2,
+      obj.h
     );
 
-    updateObjectCount();
-
-    updateLayerList();
-
-}
-
-
-/* =========================================================
-   SELECT
-========================================================= */
-
-function selectObject(id){
-
-    selectedObject =
-        objects.find(
-            function(o){
-
-                return o.id === id;
-
-            }
-        );
-
-
-    document
-        .querySelectorAll(
-            ".object,.wall-object,.arch-object"
-        )
-        .forEach(
-            function(el){
-
-                el.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    if(!selectedObject){
-
-        document.getElementById(
-            "selectionPanel"
-        ).innerHTML =
-            "Belum ada object dipilih.";
-
-        updateLayerList();
-
-        return;
-
-    }
-
-
-    const selected =
-        document.querySelector(
-            '[data-id="' +
-            id +
-            '"]'
-        );
-
-
-    if(selected){
-
-        selected.classList.add(
-            "selected"
-        );
-
-    }
-
-
-    updateSelectionPanel();
-
-    updateLayerList();
-
-}
-
-
-/* =========================================================
-   SELECTION PANEL
-========================================================= */
-
-function updateSelectionPanel(){
-
-    if(!selectedObject){
-
-        document.getElementById(
-            "selectionPanel"
-        ).innerHTML =
-            "Belum ada object dipilih.";
-
-        return;
-
-    }
-
-
-    const o =
-        selectedObject;
-
-
-    document.getElementById(
-        "selectionPanel"
-    ).innerHTML = `
-
-        <div class="field">
-
-            <label>Object</label>
-
-            <input
-                value="${escapeHTML(o.name)}"
-                onchange="changeSelectedName(this.value)"
-            >
-
-        </div>
-
-        <div class="field-row">
-
-            <div class="field">
-
-                <label>Width</label>
-
-                <input
-                    type="number"
-                    value="${Math.round(o.width)}"
-                    min="10"
-                    onchange="
-                        changeSelectedSize(
-                            'width',
-                            this.value
-                        )
-                    "
-                >
-
-            </div>
-
-            <div class="field">
-
-                <label>Height</label>
-
-                <input
-                    type="number"
-                    value="${Math.round(o.height)}"
-                    min="10"
-                    onchange="
-                        changeSelectedSize(
-                            'height',
-                            this.value
-                        )
-                    "
-                >
-
-            </div>
-
-        </div>
-
-        <div class="field">
-
-            <label>Rotation</label>
-
-            <input
-                type="number"
-                value="${Math.round(o.rotation)}"
-                onchange="
-                    changeSelectedRotation(
-                        this.value
-                    )
-                "
-            >
-
-        </div>
-
-        <div style="
-            color:#877966;
-            font:9px Arial;
-            line-height:1.7;
-        ">
-
-            Type:
-            ${escapeHTML(o.type)}
-
-            <br>
-
-            Position:
-            X ${Math.round(o.x)}
-            /
-            Y ${Math.round(o.y)}
-
-        </div>
-    `;
-
-
-    const material =
-        document.getElementById(
-            "objectMaterial"
-        );
-
-    if(material){
-
-        material.value =
-            o.material || "wood";
-
-    }
-
-}
-
-
-/* =========================================================
-   MATERIAL
-========================================================= */
-
-function applyMaterial(
-    el,
-    material
-){
-
-    el.style.background = "";
-
-    el.style.color = "";
-
-    if(material === "wood"){
-
-        if(
-            el.classList.contains(
-                "object"
-            )
-        ){
-
-            el.style.background =
-                "linear-gradient(145deg,#9a7046,#5d3e24)";
-
-            el.style.color =
-                "#f5e5c8";
-
-        }
-
-    }
-
-    if(material === "marble"){
-
-        el.style.background =
-            "linear-gradient(135deg,#eee9df,#cfc7b9)";
-
-        el.style.color =
-            "#403a32";
-
-    }
-
-    if(material === "fabric"){
-
-        el.style.background =
-            "linear-gradient(145deg,#806c5b,#4c4036)";
-
-        el.style.color =
-            "#eee1d0";
-
-    }
-
-    if(material === "metal"){
-
-        el.style.background =
-            "linear-gradient(145deg,#b8b0a5,#5e5952)";
-
-        el.style.color =
-            "#fff";
-
-    }
-
-    if(material === "glass"){
-
-        el.style.background =
-            "linear-gradient(145deg,rgba(190,220,225,.85),rgba(90,130,140,.7))";
-
-        el.style.color =
-            "#173039";
-
-    }
-
-}
-
-
-/* =========================================================
-   CHANGE MATERIAL
-========================================================= */
-
-function changeObjectMaterial(
-    material
-){
-
-    if(!selectedObject){
-
-        showToast(
-            "Pilih object dahulu."
-        );
-
-        return;
-
-    }
-
-    saveState();
-
-    selectedObject.material =
-        material;
-
-    renderAll();
-
-    selectObject(
-        selectedObject.id
+    const dist=Math.hypot(
+      p.x-mx,
+      p.y-my
     );
 
-    showToast(
-        "Material diperbarui."
-    );
+    if(dist<best){
 
-}
-
-
-/* =========================================================
-   DRAG
-========================================================= */
-
-function startDrag(e){
-
-    if(currentTool !== "select"){
-
-        return;
+      best=dist;
+      closest=obj;
 
     }
 
-    const id =
-        Number(
-            e.currentTarget.dataset.id
-        );
+  });
 
-    selectObject(id);
+  if(closest){
 
-    dragging = true;
+    state.selected=closest.id;
 
+    updateUI();
+    draw3D();
 
-    const rect =
-        e.currentTarget.getBoundingClientRect();
+  }
 
+});
 
-    dragOffsetX =
-        e.clientX -
-        rect.left;
+/* ============================================================
+   KEYBOARD
+   ============================================================ */
 
-    dragOffsetY =
-        e.clientY -
-        rect.top;
+window.addEventListener("keydown",e=>{
 
+  if(
+    e.target.tagName==="INPUT" ||
+    e.target.tagName==="TEXTAREA"
+  ) return;
 
-    function move(event){
+  const obj=selectedObject();
 
-        if(
-            !dragging ||
-            !selectedObject
-        ){
+  if(e.key==="Delete" && obj){
 
-            return;
+    $("deleteBtn").click();
 
-        }
+  }
 
+  if(e.key.toLowerCase()==="r" && obj){
 
-        const roomRect =
-            document
-            .getElementById("room")
-            .getBoundingClientRect();
+    saveHistory();
 
+    obj.r+=15;
 
-        let x =
-            (event.clientX -
-            roomRect.left) /
-            zoomLevel -
-            dragOffsetX;
+    updateUI();
+    drawAll();
 
+  }
 
-        let y =
-            (event.clientY -
-            roomRect.top) /
-            zoomLevel -
-            dragOffsetY;
+  if(e.ctrlKey && e.key.toLowerCase()==="z"){
 
+    e.preventDefault();
 
-        const maxX =
-            Math.max(
-                0,
-                roomRect.width /
-                zoomLevel -
-                selectedObject.width
-            );
+    undo();
 
+  }
 
-        const maxY =
-            Math.max(
-                0,
-                roomRect.height /
-                zoomLevel -
-                selectedObject.height
-            );
+  if(
+    e.ctrlKey &&
+    e.key.toLowerCase()==="y"
+  ){
 
+    e.preventDefault();
 
-        x =
-            Math.max(
-                0,
-                Math.min(
-                    x,
-                    maxX
-                )
-            );
+    redo();
 
+  }
 
-        y =
-            Math.max(
-                0,
-                Math.min(
-                    y,
-                    maxY
-                )
-            );
+  if(
+    e.ctrlKey &&
+    e.key.toLowerCase()==="s"
+  ){
 
+    e.preventDefault();
 
-        selectedObject.x =
-            snapValue(x);
+    saveProject();
 
-        selectedObject.y =
-            snapValue(y);
+  }
 
+  if(e.key==="Escape"){
 
-        const el =
-            document.querySelector(
-                '[data-id="' +
-                selectedObject.id +
-                '"]'
-            );
+    $("jsonModal").classList.remove("show");
+    $("presentation").classList.remove("show");
 
+  }
 
-        if(el){
+});
 
-            el.style.left =
-                selectedObject.x +
-                "px";
+/* ============================================================
+   LOCAL STORAGE SAVE / LOAD
+   ============================================================ */
 
-            el.style.top =
-                selectedObject.y +
-                "px";
-
-        }
-
-
-        updateSelectionPanel();
-
-    }
-
-
-    function up(){
-
-        if(dragging){
-
-            saveState();
-
-        }
-
-        dragging = false;
-
-        document.removeEventListener(
-            "mousemove",
-            move
-        );
-
-        document.removeEventListener(
-            "mouseup",
-            up
-        );
-
-    }
-
-
-    document.addEventListener(
-        "mousemove",
-        move
-    );
-
-    document.addEventListener(
-        "mouseup",
-        up
-    );
-
-}
-
-
-/* =========================================================
-   DELETE
-========================================================= */
-
-function deleteSelected(){
-
-    if(!selectedObject){
-
-        showToast(
-            "Pilih object terlebih dahulu."
-        );
-
-        return;
-
-    }
-
-    saveState();
-
-    const id =
-        selectedObject.id;
-
-    objects =
-        objects.filter(
-            function(o){
-
-                return o.id !== id;
-
-            }
-        );
-
-    selectedObject = null;
-
-    renderAll();
-
-    updateSelectionPanel();
-
-    showToast(
-        "Object dihapus."
-    );
-
-}
-
-
-/* =========================================================
-   DUPLICATE
-========================================================= */
-
-function duplicateSelected(){
-
-    if(!selectedObject){
-
-        showToast(
-            "Pilih object terlebih dahulu."
-        );
-
-        return;
-
-    }
-
-    saveState();
-
-    const copy =
-        Object.assign(
-            {},
-            selectedObject
-        );
-
-    copy.id =
-        ++objectId;
-
-    copy.x =
-        Math.min(
-            copy.x + 30,
-            620
-        );
-
-    copy.y =
-        Math.min(
-            copy.y + 30,
-            380
-        );
-
-    objects.push(copy);
-
-    renderAll();
-
-    selectObject(
-        copy.id
-    );
-
-    showToast(
-        "Object diduplikasi."
-    );
-
-}
-
-
-/* =========================================================
-   ROTATE
-========================================================= */
-
-function rotateSelected(amount){
-
-    if(!selectedObject){
-
-        showToast(
-            "Pilih object terlebih dahulu."
-        );
-
-        return;
-
-    }
-
-    saveState();
-
-    selectedObject.rotation +=
-        amount;
-
-    renderAll();
-
-    selectObject(
-        selectedObject.id
-    );
-
-}
-
-
-/* =========================================================
-   SIZE
-========================================================= */
-
-function changeSelectedSize(
-    property,
-    value
-){
-
-    if(!selectedObject){
-        return;
-    }
-
-    value =
-        Number(value);
-
-    if(
-        !Number.isFinite(value) ||
-        value < 10
-    ){
-
-        return;
-
-    }
-
-    saveState();
-
-    selectedObject[property] =
-        value;
-
-    renderAll();
-
-    selectObject(
-        selectedObject.id
-    );
-
-}
-
-
-/* =========================================================
-   ROTATION INPUT
-========================================================= */
-
-function changeSelectedRotation(
-    value
-){
-
-    if(!selectedObject){
-        return;
-    }
-
-    saveState();
-
-    selectedObject.rotation =
-        Number(value) || 0;
-
-    renderAll();
-
-    selectObject(
-        selectedObject.id
-    );
-
-}
-
-
-/* =========================================================
-   NAME
-========================================================= */
-
-function changeSelectedName(
-    value
-){
-
-    if(!selectedObject){
-        return;
-    }
-
-    saveState();
-
-    selectedObject.name =
-        value || "Object";
-
-    renderAll();
-
-    selectObject(
-        selectedObject.id
-    );
-
-}
-
-
-/* =========================================================
-   COUNT
-========================================================= */
-
-function updateObjectCount(){
-
-    document.getElementById(
-        "objectCount"
-    ).textContent =
-        "Objects: " +
-        objects.length;
-
-}
-
-
-/* =========================================================
-   LAYER LIST
-========================================================= */
-
-function updateLayerList(){
-
-    const list =
-        document.getElementById(
-            "layerList"
-        );
-
-    if(!list){
-        return;
-    }
-
-    if(objects.length === 0){
-
-        list.innerHTML =
-            '<div style="color:#81735f;font:10px Arial;padding:6px">No objects</div>';
-
-        return;
-
-    }
-
-
-    list.innerHTML =
-        objects
-        .slice()
-        .reverse()
-        .map(
-            function(o){
-
-                return `
-
-                    <div
-                        class="layer-item ${
-                            selectedObject &&
-                            selectedObject.id === o.id
-                            ? "active"
-                            : ""
-                        }"
-                        onclick="selectObject(${o.id})"
-                    >
-
-                        <span>
-                            ${escapeHTML(o.icon || "▣")}
-                            ${escapeHTML(o.name)}
-                        </span>
-
-                        <small>
-                            ${escapeHTML(o.type)}
-                        </small>
-
-                    </div>
-                `;
-
-            }
-        )
-        .join("");
-
-}
-
-
-/* =========================================================
-   ROOM DIMENSIONS
-========================================================= */
-
-function updateRoomDimensions(){
-
-    const length =
-        Number(
-            document.getElementById(
-                "roomLength"
-            ).value
-        ) || 6;
-
-    const width =
-        Number(
-            document.getElementById(
-                "roomWidth"
-            ).value
-        ) || 4;
-
-
-    document.querySelector(
-        ".room-size-label"
-    ).textContent =
-        length.toFixed(2) +
-        " m";
-
-
-    document.querySelector(
-        ".room-side-label"
-    ).textContent =
-        width.toFixed(2) +
-        " m";
-
-
-    showToast(
-        "Dimensi ruangan diperbarui."
-    );
-
-}
-
-
-/* =========================================================
-   WALL THICKNESS
-========================================================= */
-
-function updateWallThickness(){
-
-    const thickness =
-        Number(
-            document.getElementById(
-                "wallThickness"
-            ).value
-        ) || 15;
-
-    document.getElementById(
-        "room"
-    ).style.borderWidth =
-        thickness + "px";
-
-    showToast(
-        "Wall thickness: " +
-        thickness +
-        " cm"
-    );
-
-}
-
-
-/* =========================================================
-   FLOOR
-========================================================= */
-
-function changeFloor(type){
-
-    const room =
-        document.getElementById(
-            "room"
-        );
-
-
-    const patterns = {
-
-        wood:
-        `
-        repeating-linear-gradient(
-            0deg,
-            rgba(103,78,49,.10) 0,
-            rgba(103,78,49,.10) 2px,
-            transparent 2px,
-            transparent 32px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 118px,
-            rgba(103,78,49,.08) 119px,
-            rgba(103,78,49,.08) 121px
-        ),
-        #d8c4a4
-        `,
-
-        marble:
-        `
-        linear-gradient(
-            125deg,
-            #eee9df,
-            #d8d1c5,
-            #f1ece4
-        )
-        `,
-
-        stone:
-        `
-        repeating-linear-gradient(
-            45deg,
-            #aaa093 0,
-            #aaa093 3px,
-            #a09587 3px,
-            #a09587 42px
-        )
-        `,
-
-        concrete:
-        `
-        linear-gradient(
-            135deg,
-            #9d978f,
-            #bbb5ad
-        )
-        `
-
-    };
-
-
-    room.style.background =
-        patterns[type] ||
-        patterns.wood;
-
-
-    showToast(
-        "Material lantai: " +
-        type
-    );
-
-}
-
-
-function setFloorColor(color){
-
-    document.getElementById(
-        "room"
-    ).style.background =
-        color;
-
-    showToast(
-        "Warna lantai diperbarui."
-    );
-
-}
-
-
-/* =========================================================
-   PROJECT NAME
-========================================================= */
-
-function updateProjectName(){
-
-    const value =
-        document.getElementById(
-            "projectName"
-        ).value;
-
-    document.getElementById(
-        "projectTitle"
-    ).textContent =
-        value ||
-        "Untitled Project";
-
-}
-
-
-/* =========================================================
-   BUILD PROJECT DATA
-========================================================= */
-
-function getProjectData(){
-
-    return {
-
-        version:"1.2",
-
-        projectName:
-            document.getElementById(
-                "projectName"
-            ).value,
-
-        roomLength:
-            document.getElementById(
-                "roomLength"
-            ).value,
-
-        roomWidth:
-            document.getElementById(
-                "roomWidth"
-            ).value,
-
-        wallThickness:
-            document.getElementById(
-                "wallThickness"
-            ).value,
-
-        floorMaterial:
-            document.getElementById(
-                "floorMaterial"
-            ).value,
-
-        objects:objects,
-
-        objectId:objectId,
-
-        snapEnabled:snapEnabled,
-
-        gridEnabled:gridEnabled
-
-    };
-
-}
-
-
-/* =========================================================
-   SAVE PROJECT
-========================================================= */
+const STORAGE_KEY="ALFA_INTERIOR_V1_3_PROJECT";
 
 function saveProject(){
 
-    const data =
-        getProjectData();
-
+  try{
 
     localStorage.setItem(
-        "alfaInteriorDesignerV12",
-        JSON.stringify(data)
+      STORAGE_KEY,
+      JSON.stringify({
+        version:state.version,
+        project:state.project,
+        objects:state.objects
+      })
     );
 
+    state.saved=true;
 
-    /* keep V1.1 compatible backup */
+    setStatus("Project saved");
 
-    localStorage.setItem(
-        "alfaInteriorDesignerV11",
-        JSON.stringify(data)
-    );
+    toast("Project tersimpan di browser");
 
+  }catch(err){
 
-    showToast(
-        "✓ Project V1.2 berhasil disimpan."
-    );
+    toast("Gagal menyimpan project");
+
+  }
 
 }
-
-
-/* =========================================================
-   LOAD PROJECT
-========================================================= */
 
 function loadProject(){
 
-    let saved =
-        localStorage.getItem(
-            "alfaInteriorDesignerV12"
-        );
+  try{
 
-
-    if(!saved){
-
-        saved =
-            localStorage.getItem(
-                "alfaInteriorDesignerV11"
-            );
-
-    }
-
-
-    if(!saved){
-
-        showToast(
-            "Belum ada project tersimpan."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const data =
-            JSON.parse(saved);
-
-
-        document.getElementById(
-            "projectName"
-        ).value =
-            data.projectName ||
-            "Rumah Luxury Classic";
-
-
-        document.getElementById(
-            "roomLength"
-        ).value =
-            data.roomLength ||
-            6;
-
-
-        document.getElementById(
-            "roomWidth"
-        ).value =
-            data.roomWidth ||
-            4;
-
-
-        if(data.wallThickness){
-
-            document.getElementById(
-                "wallThickness"
-            ).value =
-                data.wallThickness;
-
-        }
-
-
-        if(data.floorMaterial){
-
-            document.getElementById(
-                "floorMaterial"
-            ).value =
-                data.floorMaterial;
-
-        }
-
-
-        objects =
-            Array.isArray(
-                data.objects
-            )
-            ? data.objects
-            : [];
-
-
-        objectId =
-            data.objectId ||
-            objects.length;
-
-
-        snapEnabled =
-            data.snapEnabled !== false;
-
-        gridEnabled =
-            data.gridEnabled !== false;
-
-
-        selectedObject =
-            null;
-
-
-        updateProjectName();
-
-        updateRoomDimensions();
-
-        updateWallThickness();
-
-        changeFloor(
-            document.getElementById(
-                "floorMaterial"
-            ).value
-        );
-
-        renderAll();
-
-        updateSnapUI();
-
-        applyGrid();
-
-
-        showToast(
-            "✓ Project berhasil dimuat."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        showToast(
-            "Data project tidak valid."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CLEAR
-========================================================= */
-
-function clearObjects(){
-
-    if(objects.length === 0){
-
-        showToast(
-            "Canvas sudah kosong."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            "Hapus semua object dari ruangan?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    saveState();
-
-    objects = [];
-
-    selectedObject = null;
-
-    renderAll();
-
-    updateSelectionPanel();
-
-    showToast(
-        "Semua object dihapus."
+    const raw=localStorage.getItem(
+      STORAGE_KEY
     );
 
-}
+    if(!raw){
 
+      toast("Belum ada project tersimpan");
 
-/* =========================================================
-   UNDO
-========================================================= */
-
-function undoAction(){
-
-    if(
-        undoStack.length === 0
-    ){
-
-        showToast(
-            "Tidak ada perubahan untuk di-undo."
-        );
-
-        return;
+      return;
 
     }
 
+    saveHistory();
 
-    redoStack.push(
-        JSON.stringify(objects)
-    );
+    const data=JSON.parse(raw);
 
+    state.project=data.project || state.project;
+    state.objects=data.objects || [];
 
-    objects =
-        JSON.parse(
-            undoStack.pop()
-        );
+    state.selected=null;
 
+    syncInputs();
+    updateUI();
+    drawAll();
 
-    selectedObject =
-        null;
+    toast("Project berhasil dimuat");
 
+  }catch(err){
 
-    renderAll();
+    toast("Data project rusak");
 
-    updateSelectionPanel();
-
-    showToast("Undo.");
-
-}
-
-
-/* =========================================================
-   REDO
-========================================================= */
-
-function redoAction(){
-
-    if(
-        redoStack.length === 0
-    ){
-
-        showToast(
-            "Tidak ada perubahan untuk di-redo."
-        );
-
-        return;
-
-    }
-
-
-    undoStack.push(
-        JSON.stringify(objects)
-    );
-
-
-    objects =
-        JSON.parse(
-            redoStack.pop()
-        );
-
-
-    selectedObject =
-        null;
-
-
-    renderAll();
-
-    updateSelectionPanel();
-
-    showToast("Redo.");
+  }
 
 }
 
-
-/* =========================================================
-   ZOOM
-========================================================= */
-
-function applyZoom(){
-
-    document.getElementById(
-        "designCanvas"
-    ).style.transform =
-        "scale(" +
-        zoomLevel +
-        ")";
-
-
-    document.getElementById(
-        "zoomText"
-    ).textContent =
-        Math.round(
-            zoomLevel * 100
-        ) + "%";
-
-}
-
-
-function zoomIn(){
-
-    zoomLevel =
-        Math.min(
-            1.8,
-            zoomLevel + .1
-        );
-
-    applyZoom();
-
-}
-
-
-function zoomOut(){
-
-    zoomLevel =
-        Math.max(
-            .5,
-            zoomLevel - .1
-        );
-
-    applyZoom();
-
-}
-
-
-function resetView(){
-
-    zoomLevel = 1;
-
-    applyZoom();
-
-    showToast(
-        "View dikembalikan ke 100%."
-    );
-
-}
-
-
-/* =========================================================
-   FULLSCREEN
-========================================================= */
-
-function toggleFullscreen(){
-
-    const workspace =
-        document.getElementById(
-            "workspace"
-        );
-
-
-    if(
-        !document.fullscreenElement
-    ){
-
-        workspace
-            .requestFullscreen()
-            .catch(
-                function(){
-
-                    showToast(
-                        "Fullscreen tidak tersedia."
-                    );
-
-                }
-            );
-
-    }else{
-
-        document.exitFullscreen();
-
-    }
-
-}
-
-
-/* =========================================================
-   TOOL
-========================================================= */
-
-function setTool(tool){
-
-    currentTool =
-        tool;
-
-
-    document
-        .querySelectorAll(
-            ".canvas-btn"
-        )
-        .forEach(
-            function(btn){
-
-                btn.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    if(tool === "select"){
-
-        document
-            .getElementById(
-                "selectTool"
-            )
-            .classList.add(
-                "active"
-            );
-
-    }
-
-    if(tool === "pan"){
-
-        document
-            .getElementById(
-                "panTool"
-            )
-            .classList.add(
-                "active"
-            );
-
-    }
-
-}
-
-
-/* =========================================================
-   GRID
-========================================================= */
-
-function toggleGrid(){
-
-    gridEnabled =
-        !gridEnabled;
-
-    applyGrid();
-
-    showToast(
-        gridEnabled
-        ? "Grid ON."
-        : "Grid OFF."
-    );
-
-}
-
-
-function applyGrid(){
-
-    const canvas =
-        document.getElementById(
-            "designCanvas"
-        );
-
-    canvas.classList.toggle(
-        "no-grid",
-        !gridEnabled
-    );
-
-}
-
-
-/* =========================================================
-   SNAP
-========================================================= */
-
-function updateSnapUI(){
-
-    const status =
-        document.getElementById(
-            "snapStatus"
-        );
-
-    status.textContent =
-        snapEnabled
-        ? "SNAP: ON"
-        : "SNAP: OFF";
-
-}
-
-
-/* =========================================================
-   MEASURE
-========================================================= */
-
-function activateMeasure(){
-
-    measureActive =
-        true;
-
-    currentTool =
-        "measure";
-
-    document
-        .querySelectorAll(
-            ".canvas-btn"
-        )
-        .forEach(
-            function(btn){
-
-                btn.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    document.getElementById(
-        "measureTool"
-    ).classList.add(
-        "active"
-    );
-
-
-    showToast(
-        "Klik dua titik pada ruangan untuk mengukur."
-    );
-
-}
-
-
-function handleMeasureClick(e){
-
-    if(!measureActive){
-
-        return false;
-
-    }
-
-
-    const room =
-        document.getElementById(
-            "room"
-        );
-
-
-    const rect =
-        room.getBoundingClientRect();
-
-
-    const x =
-        (e.clientX -
-        rect.left) /
-        zoomLevel;
-
-
-    const y =
-        (e.clientY -
-        rect.top) /
-        zoomLevel;
-
-
-    if(!measureStart){
-
-        measureStart = {
-            x:x,
-            y:y
-        };
-
-        showToast(
-            "Titik pertama tersimpan."
-        );
-
-        return true;
-
-    }
-
-
-    const dx =
-        x -
-        measureStart.x;
-
-    const dy =
-        y -
-        measureStart.y;
-
-
-    const px =
-        Math.sqrt(
-            dx*dx +
-            dy*dy
-        );
-
-
-    const meters =
-        px / 100;
-
-
-    const line =
-        document.createElement(
-            "div"
-        );
-
-    line.className =
-        "measure-line";
-
-
-    const label =
-        document.createElement(
-            "div"
-        );
-
-    label.className =
-        "measure-label";
-
-    label.textContent =
-        meters.toFixed(2) +
-        " m";
-
-
-    const angle =
-        Math.atan2(
-            dy,
-            dx
-        ) *
-        180 /
-        Math.PI;
-
-
-    line.style.left =
-        measureStart.x +
-        "px";
-
-    line.style.top =
-        measureStart.y +
-        "px";
-
-    line.style.width =
-        px +
-        "px";
-
-    line.style.transform =
-        "rotate(" +
-        angle +
-        "deg)";
-
-
-    label.style.left =
-        (
-            measureStart.x +
-            dx/2
-        ) +
-        "px";
-
-    label.style.top =
-        (
-            measureStart.y +
-            dy/2 -
-            18
-        ) +
-        "px";
-
-
-    document.getElementById(
-        "measureContainer"
-    ).appendChild(line);
-
-    document.getElementById(
-        "measureContainer"
-    ).appendChild(label);
-
-
-    measureStart =
-        null;
-
-    measureActive =
-        false;
-
-    setTool("select");
-
-    showToast(
-        "Jarak: " +
-        meters.toFixed(2) +
-        " meter"
-    );
-
-    return true;
-
-}
-
-
-/* =========================================================
-   ROOM CLICK
-========================================================= */
-
-document
-.getElementById("room")
-.addEventListener(
-    "click",
-    function(e){
-
-        if(
-            handleMeasureClick(e)
-        ){
-
-            return;
-
-        }
-
-
-        selectedObject =
-            null;
-
-
-        document
-            .querySelectorAll(
-                ".object,.wall-object,.arch-object"
-            )
-            .forEach(
-                function(el){
-
-                    el.classList.remove(
-                        "selected"
-                    );
-
-                }
-            );
-
-
-        updateSelectionPanel();
-
-        updateLayerList();
-
-    }
+$("saveBtn").addEventListener(
+  "click",
+  saveProject
 );
 
-
-/* =========================================================
-   CURSOR POSITION
-========================================================= */
-
-document
-.getElementById("room")
-.addEventListener(
-    "mousemove",
-    function(e){
-
-        const rect =
-            this.getBoundingClientRect();
-
-
-        const x =
-            Math.max(
-                0,
-                (e.clientX -
-                rect.left) /
-                zoomLevel
-            );
-
-
-        const y =
-            Math.max(
-                0,
-                (e.clientY -
-                rect.top) /
-                zoomLevel
-            );
-
-
-        document.getElementById(
-            "cursorPosition"
-        ).textContent =
-            "X: " +
-            (x/100).toFixed(2) +
-            "m / Y: " +
-            (y/100).toFixed(2) +
-            "m";
-
-    }
+$("loadBtn").addEventListener(
+  "click",
+  loadProject
 );
 
+/* ============================================================
+   JSON
+   ============================================================ */
 
-/* =========================================================
-   KEYBOARD
-========================================================= */
+function projectData(){
 
-document.addEventListener(
-    "keydown",
-    function(e){
+  return {
 
-        if(
-            e.target.tagName ===
-            "INPUT" ||
-            e.target.tagName ===
-            "SELECT"
-        ){
+    app:"ALFA INTERIOR DESIGNER",
 
-            return;
+    version:"1.3",
 
-        }
+    exportedAt:new Date().toISOString(),
 
+    project:clone(state.project),
 
-        if(
-            e.key === "Delete" &&
-            selectedObject
-        ){
+    objects:clone(state.objects)
 
-            deleteSelected();
-
-            return;
-
-        }
-
-
-        if(
-            e.ctrlKey &&
-            e.key.toLowerCase() === "z"
-        ){
-
-            e.preventDefault();
-
-            undoAction();
-
-            return;
-
-        }
-
-
-        if(
-            e.ctrlKey &&
-            e.key.toLowerCase() === "y"
-        ){
-
-            e.preventDefault();
-
-            redoAction();
-
-            return;
-
-        }
-
-
-        if(
-            e.ctrlKey &&
-            e.key.toLowerCase() === "s"
-        ){
-
-            e.preventDefault();
-
-            saveProject();
-
-            return;
-
-        }
-
-
-        if(
-            selectedObject &&
-            [
-                "ArrowUp",
-                "ArrowDown",
-                "ArrowLeft",
-                "ArrowRight"
-            ].includes(e.key)
-        ){
-
-            e.preventDefault();
-
-            const step =
-                e.shiftKey
-                ? 10
-                : 2;
-
-
-            saveState();
-
-
-            if(e.key === "ArrowUp"){
-
-                selectedObject.y -=
-                    step;
-
-            }
-
-            if(e.key === "ArrowDown"){
-
-                selectedObject.y +=
-                    step;
-
-            }
-
-            if(e.key === "ArrowLeft"){
-
-                selectedObject.x -=
-                    step;
-
-            }
-
-            if(e.key === "ArrowRight"){
-
-                selectedObject.x +=
-                    step;
-
-            }
-
-
-            selectedObject.x =
-                Math.max(
-                    0,
-                    Math.min(
-                        selectedObject.x,
-                        685 -
-                        selectedObject.width
-                    )
-                );
-
-
-            selectedObject.y =
-                Math.max(
-                    0,
-                    Math.min(
-                        selectedObject.y,
-                        445 -
-                        selectedObject.height
-                    )
-                );
-
-
-            renderAll();
-
-            selectObject(
-                selectedObject.id
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ROOM PRESETS
-========================================================= */
-
-function roomPreset(type){
-
-    saveState();
-
-    objects = [];
-
-    if(type === "living"){
-
-        document.getElementById(
-            "roomLength"
-        ).value = 6;
-
-        document.getElementById(
-            "roomWidth"
-        ).value = 4;
-
-        addFurniture(
-            "Sofa",
-            "🛋️",
-            180,
-            80
-        );
-
-        addFurniture(
-            "Coffee Table",
-            "▰",
-            110,
-            65
-        );
-
-        addFurniture(
-            "TV Cabinet",
-            "▤",
-            160,
-            45
-        );
-
-        addFurniture(
-            "Plant",
-            "🪴",
-            55,
-            55
-        );
-
-    }
-
-
-    if(type === "bedroom"){
-
-        document.getElementById(
-            "roomLength"
-        ).value = 5;
-
-        document.getElementById(
-            "roomWidth"
-        ).value = 4;
-
-        addFurniture(
-            "Bed",
-            "🛏️",
-            180,
-            140
-        );
-
-        addFurniture(
-            "Wardrobe",
-            "🚪",
-            120,
-            55
-        );
-
-        addFurniture(
-            "Nightstand",
-            "▣",
-            55,
-            45
-        );
-
-    }
-
-
-    if(type === "kitchen"){
-
-        document.getElementById(
-            "roomLength"
-        ).value = 5;
-
-        document.getElementById(
-            "roomWidth"
-        ).value = 3.5;
-
-        addFurniture(
-            "Kitchen Set",
-            "🍳",
-            220,
-            55
-        );
-
-        addFurniture(
-            "Kitchen Island",
-            "▰",
-            130,
-            65
-        );
-
-        addFurniture(
-            "Dining Table",
-            "▰",
-            170,
-            85
-        );
-
-    }
-
-
-    if(type === "office"){
-
-        document.getElementById(
-            "roomLength"
-        ).value = 4.5;
-
-        document.getElementById(
-            "roomWidth"
-        ).value = 3.5;
-
-        addFurniture(
-            "Office Desk",
-            "▤",
-            150,
-            70
-        );
-
-        addFurniture(
-            "Armchair",
-            "🪑",
-            75,
-            75
-        );
-
-        addFurniture(
-            "Plant",
-            "🪴",
-            55,
-            55
-        );
-
-    }
-
-
-    updateRoomDimensions();
-
-    renderAll();
-
-    selectedObject = null;
-
-    updateSelectionPanel();
-
-    showToast(
-        "Preset " +
-        type +
-        " dibuat."
-    );
+  };
 
 }
 
+$("jsonBtn").addEventListener("click",()=>{
 
-/* =========================================================
-   EXPORT JSON
-========================================================= */
+  $("jsonArea").value=
+    JSON.stringify(projectData(),null,2);
 
-function exportJSON(){
+  $("jsonModal").classList.add("show");
 
-    const data =
-        JSON.stringify(
-            getProjectData(),
-            null,
-            2
-        );
+});
 
+$("jsonCancel").addEventListener("click",()=>{
 
-    const blob =
-        new Blob(
-            [data],
-            {
-                type:"application/json"
-            }
-        );
+  $("jsonModal").classList.remove("show");
 
+});
 
-    const url =
-        URL.createObjectURL(blob);
+$("jsonCopy").addEventListener("click",async()=>{
 
+  try{
 
-    const a =
-        document.createElement("a");
-
-    a.href =
-        url;
-
-    a.download =
-        "ALFA-Interior-Project.json";
-
-    a.click();
-
-
-    URL.revokeObjectURL(url);
-
-    showToast(
-        "Project JSON diexport."
+    await navigator.clipboard.writeText(
+      $("jsonArea").value
     );
 
-}
+    toast("JSON copied");
 
+  }catch(_){
 
-/* =========================================================
-   IMPORT JSON
-========================================================= */
+    $("jsonArea").select();
+    document.execCommand("copy");
 
-function importJSON(event){
+    toast("JSON copied");
 
-    const file =
-        event.target.files[0];
+  }
 
+});
 
-    if(!file){
+$("jsonImport").addEventListener("click",()=>{
 
-        return;
+  try{
+
+    const data=JSON.parse(
+      $("jsonArea").value
+    );
+
+    if(!data.project || !Array.isArray(data.objects)){
+
+      throw new Error("Invalid");
 
     }
 
+    saveHistory();
 
-    const reader =
-        new FileReader();
+    state.project=data.project;
+    state.objects=data.objects;
+    state.selected=null;
 
+    syncInputs();
+    updateUI();
+    drawAll();
 
-    reader.onload =
-        function(){
+    $("jsonModal").classList.remove("show");
 
-            try{
+    toast("JSON berhasil diimport");
 
-                const data =
-                    JSON.parse(
-                        reader.result
-                    );
+  }catch(err){
 
-
-                document.getElementById(
-                    "projectName"
-                ).value =
-                    data.projectName ||
-                    "Imported Project";
-
-
-                document.getElementById(
-                    "roomLength"
-                ).value =
-                    data.roomLength ||
-                    6;
-
-
-                document.getElementById(
-                    "roomWidth"
-                ).value =
-                    data.roomWidth ||
-                    4;
-
-
-                objects =
-                    Array.isArray(
-                        data.objects
-                    )
-                    ? data.objects
-                    : [];
-
-
-                objectId =
-                    data.objectId ||
-                    objects.length;
-
-
-                updateProjectName();
-
-                updateRoomDimensions();
-
-                renderAll();
-
-                showToast(
-                    "✓ JSON berhasil diimport."
-                );
-
-
-            }catch(error){
-
-                console.error(error);
-
-                showToast(
-                    "JSON tidak valid."
-                );
-
-            }
-
-        };
-
-
-    reader.readAsText(file);
-
-    event.target.value = "";
-
-}
-
-
-/* =========================================================
-   EXPORT PNG
-========================================================= */
-
-function exportPNG(){
-
-    const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-    canvas.width = 1200;
-
-    canvas.height = 800;
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    ctx.fillStyle =
-        "#17130f";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
+    alert(
+      "JSON tidak valid atau format project tidak sesuai."
     );
 
+  }
 
-    ctx.fillStyle =
-        "#e0d5c2";
+});
 
-    ctx.fillRect(
-        100,
-        100,
-        1000,
-        600
-    );
+/* ============================================================
+   PNG EXPORT
+   ============================================================ */
 
+$("pngBtn").addEventListener("click",()=>{
 
-    ctx.strokeStyle =
-        "#705b42";
+  if(state.mode==="2d"){
 
-    ctx.lineWidth =
-        18;
+    const link=document.createElement("a");
 
-    ctx.strokeRect(
-        100,
-        100,
-        1000,
-        600
-    );
+    link.download="ALFA-INTERIOR-PLAN-V1.3.png";
 
-
-    /* grid */
-
-    ctx.strokeStyle =
-        "rgba(100,80,50,.13)";
-
-    ctx.lineWidth = 1;
-
-
-    for(
-        let x=110;
-        x<1090;
-        x+=25
-    ){
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x,
-            110
-        );
-
-        ctx.lineTo(
-            x,
-            690
-        );
-
-        ctx.stroke();
-
-    }
-
-
-    for(
-        let y=110;
-        y<690;
-        y+=25
-    ){
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            110,
-            y
-        );
-
-        ctx.lineTo(
-            1090,
-            y
-        );
-
-        ctx.stroke();
-
-    }
-
-
-    objects.forEach(
-        function(o){
-
-            const x =
-                115 +
-                o.x * 1.38;
-
-            const y =
-                115 +
-                o.y * 1.25;
-
-            const w =
-                o.width * 1.38;
-
-            const h =
-                o.height * 1.25;
-
-
-            ctx.save();
-
-            ctx.translate(
-                x+w/2,
-                y+h/2
-            );
-
-            ctx.rotate(
-                (o.rotation || 0) *
-                Math.PI /
-                180
-            );
-
-
-            if(o.type === "wall"){
-
-                ctx.fillStyle =
-                    "#705b42";
-
-            }else if(
-                o.type === "window"
-            ){
-
-                ctx.fillStyle =
-                    "#91b5be";
-
-            }else if(
-                o.type === "door"
-            ){
-
-                ctx.fillStyle =
-                    "#9a7446";
-
-            }else{
-
-                ctx.fillStyle =
-                    "#9a7046";
-
-            }
-
-
-            ctx.fillRect(
-                -w/2,
-                -h/2,
-                w,
-                h
-            );
-
-
-            ctx.strokeStyle =
-                "#4d3a27";
-
-            ctx.lineWidth =
-                2;
-
-            ctx.strokeRect(
-                -w/2,
-                -h/2,
-                w,
-                h
-            );
-
-
-            ctx.font =
-                Math.max(
-                    14,
-                    Math.min(
-                        w,
-                        h
-                    )*.35
-                ) +
-                "px Arial";
-
-            ctx.textAlign =
-                "center";
-
-            ctx.textBaseline =
-                "middle";
-
-            ctx.fillStyle =
-                "#fff5df";
-
-            ctx.fillText(
-                o.icon || "",
-                0,
-                0
-            );
-
-
-            ctx.restore();
-
-        }
-    );
-
-
-    ctx.fillStyle =
-        "#c9a45c";
-
-    ctx.font =
-        "bold 24px Georgia";
-
-    ctx.fillText(
-        "ALFA INTERIOR DESIGNER",
-        100,
-        55
-    );
-
-
-    ctx.fillStyle =
-        "#b7a891";
-
-    ctx.font =
-        "14px Arial";
-
-    ctx.fillText(
-        document.getElementById(
-            "projectName"
-        ).value ||
-        "Untitled Project",
-        100,
-        78
-    );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-    link.download =
-        "ALFA-Interior-Design.png";
-
-    link.href =
-        canvas.toDataURL(
-            "image/png"
-        );
+    link.href=planCanvas.toDataURL("image/png");
 
     link.click();
 
+    toast("2D Plan diekspor");
 
-    showToast(
-        "✓ Desain PNG berhasil dibuat."
+  }else{
+
+    const link=document.createElement("a");
+
+    link.download="ALFA-INTERIOR-3D-V1.3.png";
+
+    link.href=threeCanvas.toDataURL("image/png");
+
+    link.click();
+
+    toast("3D View diekspor");
+
+  }
+
+});
+
+/* ============================================================
+   PRESENTATION MODE
+   ============================================================ */
+
+$("presentBtn").addEventListener("click",()=>{
+
+  const modal=$("presentation");
+
+  modal.classList.add("show");
+
+  const canvas=$("presentationCanvas");
+
+  const dpr=window.devicePixelRatio||1;
+
+  canvas.width=innerWidth*dpr;
+  canvas.height=innerHeight*dpr;
+
+  canvas.style.width=innerWidth+"px";
+  canvas.style.height=innerHeight+"px";
+
+  const pc=canvas.getContext("2d");
+
+  pc.setTransform(dpr,0,0,dpr,0,0);
+
+  if(state.mode==="2d"){
+
+    pc.drawImage(
+      planCanvas,
+      0,
+      0,
+      innerWidth,
+      innerHeight
     );
+
+  }else{
+
+    pc.drawImage(
+      threeCanvas,
+      0,
+      0,
+      innerWidth,
+      innerHeight
+    );
+
+  }
+
+});
+
+$("closePresentation").addEventListener(
+  "click",
+  ()=>{
+    $("presentation").classList.remove("show");
+  }
+);
+
+/* ============================================================
+   AUTO SAVE
+   ============================================================ */
+
+setInterval(()=>{
+
+  if(state.objects.length>0){
+
+    try{
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          version:state.version,
+          project:state.project,
+          objects:state.objects
+        })
+      );
+
+    }catch(_){}
+
+  }
+
+},30000);
+
+/* ============================================================
+   PROJECT NAME
+   ============================================================ */
+
+$("projectName").addEventListener?.("click",()=>{});
+
+/* ============================================================
+   INITIALIZATION
+   ============================================================ */
+
+function initialize(){
+
+  syncInputs();
+
+  $("toggleCeiling").classList.add("active");
+
+  updateUI();
+
+  resizeCanvas();
+
+  set3DView("perspective");
+
+  setStatus(
+    "Ready • 2D Floor Planner"
+  );
 
 }
 
-
-/* =========================================================
-   STARTUP
-========================================================= */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        loadProject();
-
-        applyZoom();
-
-        applyGrid();
-
-        updateSnapUI();
-
-        renderAll();
-
-    }
-);
+initialize();
 
 </script>
 
